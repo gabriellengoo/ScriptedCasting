@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Hide vertical scrollbar */
+::-webkit-scrollbar {
+  width: 0;
+}
+
+/* Hide horizontal scrollbar */
+::-webkit-scrollbar {
+  height: 0;
+}
+
+#__nuxt,
+#__layout,
+body,
+html {
+  height: auto;
+  min-height: 100vh !important;
+  background: #f7f7f7;
+  /* overflow: hidden; */
+  overflow-x: hidden;
+  /* cursor: crosshair; */
+   cursor: default;
+  /* cursor: url('/CURSOR.svg'), auto !important; */
+}
+
+
+
+
+a{
+  /* cursor: url('/CURSOR.svg'), auto !important; */
+}
+
+/* button{
+  cursor: url('/CURSOR.svg'), auto !important;
+}
+
+figcaption{
+  cursor: url('/CURSOR.svg'), auto !important;
+} */
+
+svg{
+  /* cursor: url('/CURSOR.svg'), auto !important; */
+}
+
+
+
+@media (min-width: 768px) {
+  .pr-6 {
+    padding-right: 0rem !important;
+  }
+  pr-6 {
+    padding-right: 0rem;
+}
+}
+
+.content-container {
+  transition: transform 0.5s ease; /* Add smooth transition for content movement */
+}
+
+.blurry-image {
+  filter: blur(5px); /* Adjust the blur amount as needed */
+}
+
+.resize-animation {
+  transition: width 0.3s ease-in-out, height 0.3s ease-in-out !important;
+}
+/* html.lenis {
+  height: auto;
+}
+
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+} */
+
+/* Remove default styles for elements with tabindex */
+[tabindex] {
+  outline: none;
+  border: none;
+}
+
+/* Optionally add your own styles for focus state if needed */
+[tabindex]:focus {
+  outline: none;
+}
+
+
+@media (max-width: 768px) {
+  .mbcopyr{
+    padding-bottom: 11vh
+}
+
+.copyr{
+  width: 40vw !important;
+}
+}
+
+ {
+  /* .md\:overflow-hidden {
+    overflow: hidden;
+    overflow: scroll !important;
+} */
+    /* overflow: scroll !important;
+    min-height: 100vh !important; */
+    /* pr-6 {
+    padding-right: 0rem;
+} */
+}
+
+
+
+

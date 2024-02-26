@@ -1,0 +1,69 @@
+.masonry {
+    &.full {
+      @apply mt-4 md:mt-0;
+      .item {
+        @apply w-full md:p-2 p-0;
+        figure {
+          @apply h-auto;
+        }
+      }
+    }
+    &.small {
+      figure {
+        @apply h-auto;
+      }
+    }
+    .item {
+      @apply w-fit;
+      &.double {
+        @apply w-2/3;
+      }
+      img {
+        /* max-w-full */
+        /* @apply w-full h-auto ; */
+        @apply w-[30vw] h-auto ;
+
+      }
+      figure {
+      }
+    }
+    &.large {
+      .item {
+        img {
+          @apply w-auto h-full;
+        }
+        figure {
+          span {
+            @apply w-auto h-full;
+          }
+        }
+      }
+    }
+  }
+  
+  @screen md {
+    .masonry {
+      &.large {
+        .item {
+          width: 40%;
+          &.double {
+            width: 40%;
+          }
+        }
+      }
+    }
+  }
+  
+  @screen 2xl {
+    .masonry {
+      &.large {
+        .item {
+          width: 22.5%;
+          &.double {
+            width: 45%;
+          }
+        }
+      }
+    }
+  }
+  
