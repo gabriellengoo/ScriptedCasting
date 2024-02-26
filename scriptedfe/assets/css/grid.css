@@ -21,7 +21,7 @@
       img {
         /* max-w-full */
         /* @apply w-full h-auto ; */
-        @apply w-[30vw] h-auto ;
+        /* @apply w-[30vw] h-auto ; */
 
       }
       figure {

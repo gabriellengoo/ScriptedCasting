@@ -8,7 +8,7 @@
     loop
     playsinline
     :autoplay="mobile"
-    :src="`https://stream.mux.com/${this.id}.m3u8?max_resolution=720p`"
+    :src="`https://stream.mux.com/${this.id}.m3u8`"
   ></video>
 
 </template>

@@ -1,8 +1,9 @@
 <template>
-   <div class="gap-2 p-2 ">
+   <div class=" ">
+    <div><h1 class="titleText flex w-screen justify-between items-center text-[12rem] text-center uppercase">Scripted<p class="text-5xl p-3">Casting by Coralie</p></h1></div>
 
 <!-- <div class="md:pr-6" :class="home.meta ? 'md:w-7/16' : 'w-full'"> -->
-  <Grid2 size="small" :items="home.grid2"></Grid2>
+  <Grid2 class="imagemarquee" size="small" :items="home.grid2"></Grid2>
 <!-- </div> -->
 
 </div> 
@@ -149,12 +150,27 @@ export default {
 
 
 <style scoped>
+.titleText{
+  z-index: 10000 !important;
+  font-weight: bolder;
+  color: whitesmoke;
+  /* color: #2a2a2a; */
+  left: 50%;
+    top: 50%;
+    /* width: 100vw; */
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.imagemarquee{
+  z-index: 10 !important;
+}
 /* header {  
   animation: 1.5s ease-out 0s 1 slideInFromLeft;
 } */
 
-.item {
+/* .item {
   width: 33.3333%;
-}
+} */
 
 </style>
