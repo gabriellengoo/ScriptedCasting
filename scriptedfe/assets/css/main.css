@@ -19,7 +19,7 @@ body,
 html {
   height: auto;
   min-height: 100vh !important;
-  background: #f7f7f7;
+  /* background: #f7f7f7; */
   /* overflow: hidden; */
   overflow-x: hidden;
   /* cursor: crosshair; */
@@ -27,20 +27,16 @@ html {
   /* cursor: url('/CURSOR.svg'), auto !important; */
 }
 
-
+.titleText{
+  font-family: 'GTWalsheimb';
+}
 
 
 a{
   /* cursor: url('/CURSOR.svg'), auto !important; */
 }
 
-/* button{
-  cursor: url('/CURSOR.svg'), auto !important;
-}
 
-figcaption{
-  cursor: url('/CURSOR.svg'), auto !important;
-} */
 
 svg{
   /* cursor: url('/CURSOR.svg'), auto !important; */
@@ -102,25 +98,7 @@ svg{
 
 
 @media (max-width: 768px) {
-  .mbcopyr{
-    padding-bottom: 11vh
-}
 
-.copyr{
-  width: 40vw !important;
-}
-}
-
- {
-  /* .md\:overflow-hidden {
-    overflow: hidden;
-    overflow: scroll !important;
-} */
-    /* overflow: scroll !important;
-    min-height: 100vh !important; */
-    /* pr-6 {
-    padding-right: 0rem;
-} */
 }
 
 

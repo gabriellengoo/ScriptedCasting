@@ -1,11 +1,28 @@
 <template>
    <div class=" ">
-    <div><h1 class="titleText flex w-screen justify-between items-center text-[12rem] text-center uppercase">Scripted<p class="text-5xl p-3">Casting by Coralie</p></h1></div>
+    <!-- <div><h1 class="titleText flex w-screen justify-between items-center text-[12rem] text-center uppercase">Scripted<p class="text-5xl p-3">Casting by Coralie</p></h1></div> -->
 
 <!-- <div class="md:pr-6" :class="home.meta ? 'md:w-7/16' : 'w-full'"> -->
   <Grid2 class="imagemarquee" size="small" :items="home.grid2"></Grid2>
 <!-- </div> -->
+<!-- <p>Founded by Coralie Rose in 2013. We specialise in street casting with particular focus on promoting underrepresented people in advertising and film. 
+At Road Casting, we celebrate diversity and individuality, seeking out fresh faces and personalities for music videos, short films, features, branded content and commercials.</p>
+   -->
+<div>
 
+  <div v-if="home.sections" class=" pl-20 md:pb-5 sm:pb-5">
+                    <span class=" aboutsec text-5xl  " v-for="sections in home.sections" :key="sections._key">
+                      <div class="pt-[2vw] w-4/6 p-10" v-if="sections.title">
+                        <p class="abouttitle">About</p>
+                        <Richtext :blocks="sections.content" v-if="sections.content"></Richtext>
+                      </div>
+                    </span>
+                 
+                  </div>
+
+
+
+</div>
 </div> 
 </template>
 
@@ -155,11 +172,22 @@ export default {
   font-weight: bolder;
   color: whitesmoke;
   /* color: #2a2a2a; */
+  font-family: 'GTWalsheimb';
   left: 50%;
     top: 50%;
     /* width: 100vw; */
     transform: translate(-50%, -50%);
     position: absolute;
+}
+
+.abouttitle{
+  /* font-family: 'GTWalsheimb'; */
+}
+
+.aboutsec{
+width: 100vw;
+display: flex;
+justify-content: center;
 }
 
 .imagemarquee{

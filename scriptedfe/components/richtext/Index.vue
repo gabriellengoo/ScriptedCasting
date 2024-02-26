@@ -37,8 +37,10 @@ export default {
   text-indent: 1rem;
 } */
 
+
 p{
-  padding-bottom: .5vw;
+  font-family: 'GTWalsheiml';
+  text-indent: 10vw;
 }
 </style>
 <!-- <style scoped lang="css">

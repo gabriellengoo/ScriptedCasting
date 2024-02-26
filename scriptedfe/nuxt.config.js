@@ -64,6 +64,14 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extend(config, ctx) {
+      config.module.rules.push({
+        test: /\.mjs$/,
+        include: /node_modules\/@studio-freight\/lenis/,
+        type: 'javascript/auto',
+        use: 'babel-loader',
+      });
+    },
     postcss: {
       postcssOptions: {
         plugins: {

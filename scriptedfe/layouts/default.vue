@@ -4,15 +4,29 @@
     <TransitionComponent />
     
     <Nuxt />
-    <LayoutFooter
-      class="fixed"
-      v-if="
-        $nuxt.$route.name != 'index' &&
-        $nuxt.$route.name != 'project-slug' &&
-        $nuxt.$route.name == 'archive-slug' &&
-        $nuxt.$route.name != 'slug'
+    <LayoutHeader
+      :class="
+        $nuxt.$route.name == 'index' ||
+        $nuxt.$route.name == 'index-bak' ||
+        $nuxt.$route.name == 'about' ||
+        $nuxt.$route.name == 'production' ||
+        $nuxt.$route.name == 'artists'
+          ? ''
+          : ' md:hidden'
       "
-    ></LayoutFooter>
+    ></LayoutHeader>
+    <LayoutHeaderMin
+      :class="
+        $nuxt.$route.name == 'index' ||
+        $nuxt.$route.name == 'index-bak' ||
+        $nuxt.$route.name == 'about' ||
+        $nuxt.$route.name == 'production' ||
+        $nuxt.$route.name == 'artists'
+          ? 'hidden'
+          : 'hidden md:flex'
+      "
+    ></LayoutHeaderMin>
+ 
   </main>
 </template>
 <script>
@@ -28,38 +42,37 @@ export default {
   },
   data() {
     return {
+      // lenis: null,
       // loading: true,
       // ... other data properties
     };
   },
   mounted() {
-    // Create a new instance of Lenis
-//     const lenis = new Lenis({
-//     duration: 1,
-//     easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
-//     direction: "vertical",
-//     gestureDirection: "vertical",
-//     smooth: true,
-//     smoothTouch: true,
-//     touchMultiplier: 2,
-// });
+  //   this.lenis = new Lenis({
+  //     // Your configuration options
+  //     duration: 1,
+  //     easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+  //     direction: "vertical",
+  //     gestureDirection: "vertical",
+  //     smooth: true,
+  //     smoothTouch: true,
+  //     touchMultiplier: 2,
+  //   });
 
-    // Set up a scroll event listener
-    // lenis.on('scroll', (e) => {
-      // Handle scroll events here
-      // console.log(e);
-// 
-      // You can access scroll-related properties from the 'e' object
-      // For example, you can use e.scrollTop to get the current scroll position.
-    // });
-        // Create a requestAnimationFrame function to keep the scroll listener active
-    //     function raf(time) {
-    //   lenis.raf(time);
-    //   requestAnimationFrame(raf);
-    // }
+  //   // Set up a scroll event listener
+  //   this.lenis.on('scroll', (e) => {
+  //     // Handle scroll events here
+  //     console.log(e);
+  //   });
 
-    // Start the requestAnimationFrame loop
-    // requestAnimationFrame(raf);
+  //   // Create a requestAnimationFrame function to keep the scroll listener active
+  //   function raf(time) {
+  //     this.lenis.raf(time);
+  //     requestAnimationFrame(raf);
+  //   }
+
+  //     // Start the requestAnimationFrame loop
+  //     requestAnimationFrame(raf);
   },
   components: {
     TransitionComponent,

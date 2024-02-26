@@ -4,7 +4,7 @@ import Emoji from "a11y-react-emoji";
 
 export default {
   name: "project",
-  title: "Projects",
+  title: "Projects Archive",
   type: "document",
   // liveEdit: true,
   // icon: Project,
@@ -15,91 +15,11 @@ export default {
       type: "string",
     },
     {
-      name: "year",
-      title: "Year",
-      type: "string",
-    },
-    {
       name: "slug",
       title: "Slug",
       type: "slug",
       options: { source: "title" },
     },
-    // {
-    //   name: "metadis",
-    //   title: "About Text",
-    //   type: "array",
-    //   options: {
-    //    modal: "popover",
-    //   },
-    //   of: [
-    //     {
-    //       name: "meta",
-    //       title: "Meta", 
-    //       type: "object",
-    //       fields: [
-    //         {
-    //           name: "title",
-    //           title: "Title",
-    //           type: "string",
-    //         },
-    //         {
-    //           name: "content",
-    //           title: "Content",
-    //           type: "string",
-    //         },
-    //       ],
-    //       preview: {
-    //         select: {
-    //           title: "content",
-    //           subtitle: "title",
-    //         },
-    //       },
-    //     },
-    //   ],
-    // },
-    // {
-    //   name: "metaemails",
-    //   title: "About emails",
-    //   type: "array",
-    //   options: {
-    //     modal: "popover",
-    //   },
-    //   of: [
-    //     {
-    //       name: "meta",
-    //       title: "Meta",
-    //       type: "object",
-    //       fields: [
-    //         {
-    //           name: "title",
-    //           title: "Title",
-    //           type: "string",
-    //         },
-    //         {
-    //           name: "content",
-    //           title: "Content",
-    //           type: "string",
-    //         },
-    //         {
-    //           name: "link",
-    //           title: "Link",
-    //           type: "url",
-    //           validation: (Rule) =>
-    //             Rule.uri({
-    //               scheme: ["http", "https", "mailto", "tel"],
-    //             }),
-    //         },
-    //       ],
-    //       preview: {
-    //         select: {
-    //           title: "content",
-    //           subtitle: "title",
-    //         },
-    //       },
-    //     },
-    //   ],
-    // },
     {
       name: "meta",
       title: "Meta",
@@ -132,17 +52,6 @@ export default {
           },
         },
       ], 
-    },
-    {
-      name: "production",
-      title: "Project footer",
-      description: " This is the footer on project pages",
-      type: "string",
-    },
-    {
-      name: "location",
-      title: "Location",
-      type: "string",
     },
     {
       name: "slider",

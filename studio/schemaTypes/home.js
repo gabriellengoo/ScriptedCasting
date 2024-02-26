@@ -21,43 +21,9 @@ export default {
       title: 'Home grid',
       type: 'grid2',
     },
-       {
-      name: "meta",
-      title: "About text first paragraph",
-      description: "This will be the paragraph inline with the logo",
-      type: "array",
-      options: {
-        modal: "popover",
-      },
-      of: [
-        {
-          name: "meta",
-          title: "Meta",
-          type: "object",
-          fields: [
-            {
-              name: "title",
-              title: "Title",
-              type: "string",
-            },
-            {
-              name: "content",
-              title: "Content",
-              type: "string",
-            }, 
-          ],
-          preview: {
-            select: {
-              title: "content",
-              subtitle: "title",
-            },
-          },
-        },
-      ],
-    },
     {
       name: "sections",
-      title: "Rest of about text",
+      title: "About text",
       type: "array",
       of: [
         {

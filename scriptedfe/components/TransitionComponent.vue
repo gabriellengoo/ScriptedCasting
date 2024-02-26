@@ -96,6 +96,7 @@
 }
 
 .screen-transition-enter {
+  /* transition-delay: .005s; Pause for 1 second before leaving */
   opacity: 0; /* Initially transparent when entering */
 }
 
