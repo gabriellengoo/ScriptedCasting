@@ -77,10 +77,10 @@
          
 
         <NuxtLink :to="`/projects`">
-          <h1 class="morep w-screen p-10 pt-0">View Projects</h1>
+          <h1 class="morep w-screen p-10 pt-0 pb-0">View Projects</h1>
         </NuxtLink>
 
-        <Grid3 class="imagemarquee" size="small" :items="home.grid2"></Grid3>
+        <Grid3 class="imagemarquee" size="double" :items="home.grid2"></Grid3>
         <!-- <Grid size="small" :items="home.grid2"></Grid> -->
       </div>
     </div>
@@ -252,7 +252,7 @@ export default {
   color: #000; /* Change the color as needed */
 }
 .morep {
-  font-size: 13.75rem;
+  font-size: 6.75rem;
   /* line-height: 4.3rem; */
   text-transform: uppercase;
   font-family: "GTWalsheimbb";

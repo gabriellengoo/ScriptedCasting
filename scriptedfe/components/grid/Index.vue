@@ -1,10 +1,11 @@
 <template>
   <client-only>
+    <!-- pt-28 -->
     <div
       v-masonry
       column-width=".item"
       item-selector=".item"
-      class="w-full masonry pt-28"
+      class="w-full masonry "
       :class="size"
       horizontal-order="true"
     > 
