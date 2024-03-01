@@ -19,11 +19,11 @@
           item.spacer != 0 ? 'p-2' : '',
           item.image.image || item.video.id ? '' : 'hidden md:block',
           // mobile test?
-          item.double && size == 'small' ? '' : '',
+          item.double && size == 'small' && 'double' ? '' : '',
           activeTalent &&
           activeTalent != item.reference.talentId &&
           activeTalent != item.reference
-            ? 'opacity-5'
+            ? 'opacity-25'
             : '', 
         ]"
         

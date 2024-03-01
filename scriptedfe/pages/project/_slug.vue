@@ -316,5 +316,25 @@ export default {
 }
 </script>
 <style scoped>
+.swiper-wrapper {
+  z-index: 40 !important;
+}
+.next {
+  cursor: e-resize;
+  mix-blend-mode: difference;
+}
+.previous {
+  cursor: w-resize;
+  mix-blend-mode: difference;
+  &.disabled {
+    @apply pointer-events-none;
+  }
+}
+.slider {
+  height: calc(100% - 0.5rem);
+}
 
+canvas {
+    display: none !important;
+}
 </style>

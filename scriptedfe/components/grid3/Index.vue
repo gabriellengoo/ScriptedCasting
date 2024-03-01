@@ -12,7 +12,7 @@
       >
         <div
           v-masonry-tile
-          class="item "
+          class="item marquee2"
           v-for="item in items"
           :key="item._key"
         >
@@ -82,6 +82,7 @@
                   :aspect="item.image.aspect"
                   :style="{     
                           height: `100vh`,
+                          padding: `5vw !important`,
                         }"
                   :src="item.image.image"
                   v-if="item.image.image"
@@ -91,6 +92,7 @@
                   class="vidsize"
                   :style="{     
                           height: `100vh`,
+                          padding: `5vw !important`,
                         }"
                   v-if="item.video.id"
                 ></MediaVideo>
@@ -160,6 +162,10 @@ export default {
 </script>
 
 <style scoped>
+
+.img{
+  padding: 5vw !important;
+}
 /* @media (min-width: 768px){
   .masonry.large .item.double {
     height: 55vh;
@@ -191,11 +197,12 @@ export default {
   max-width: 100%;
   height: 100vh !important;
   display: flex;
-  overflow-x: scroll;
-  /* -webkit-animation: 0.75s ease 0s normal forwards 1 fadein;
-  animation: 0.75s ease 0s normal forwards 1 fadein; */
+  /* overflow: hidden; */
+  /* overflow: scroll; */
+  -webkit-animation: 0.75s ease 0s normal forwards 1 fadein;
+  animation: 0.75s ease 0s normal forwards 1 fadein;
   z-index: -1 !important;
-  /* animation: marquee2 3000s linear infinite; */
+  animation: marquee2 3000s linear infinite;
   /* animation: marquee2 10 steps(340);  */
 }
 

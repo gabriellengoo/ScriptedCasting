@@ -3,10 +3,11 @@
   <header
     class="absolute top-0 left-0 z-20 w-full  text-xs leading-snug uppercase   "
   >
+  <!-- justify-center -->
     <div
-      class="fixed flex flex-wrap w-full bg-white items-end gap-4 p-2 pt-8 md:pb-2 md:pt-2 md:items-start md:flex-nowrap"
+      class="fixed flex flex-wrap w-full  bg-white items-center gap-4 p-2 pt-8 md:pb-2 md:pt-2 md:flex-nowrap"
     >
-    <div><h1 class="titleText flex justify-between items-center text-7xl text-center uppercase">Scripted</h1></div>
+    <div><h1 class="titleText flex justify-between items-center text-9xl align-baseline text-center uppercase">Scripted</h1></div>
       <nav class="flex-col hidden text-[1.125rem] w-1/16 md:flex">
         <NuxtLink to="/projects">Work</NuxtLink>
         <NuxtLink to="/">About</NuxtLink>

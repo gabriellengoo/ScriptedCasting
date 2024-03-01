@@ -1,6 +1,6 @@
 <template>
   <nuxt-link class="bg-yellow" :to="url">
-    <!-- <slot /> -->
+    <slot />
   </nuxt-link>
 </template>
 

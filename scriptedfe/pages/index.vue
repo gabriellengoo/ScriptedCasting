@@ -1,40 +1,100 @@
 <template>
-   <div class=" ">
-    <!-- <div><h1 class="titleText flex w-screen justify-between items-center text-[12rem] text-center uppercase">Scripted<p class="text-5xl p-3">Casting by Coralie</p></h1></div> -->
+  <div class=" ">
+    <NuxtLink :to="`/projects`">
+      <Grid2 class="imagemarquee" size="small" :items="home.grid2"></Grid2>
+    </NuxtLink>
+    <div>
+      <!-- md:pb-5 sm:pb-5  -->
+      <div v-if="home.sections" class="pb-0">
+<!-- about -->
+        <span
+          class="aboutsec text-6xl"
+          v-for="section in home.sections"
+          :key="section._key"
+        >
+          <div class="pt-[2vw] p-10" v-if="section.title">
+            <p class="abouttitle text-6xl">
+              <span>{{ section.title }}</span>
+            </p>
 
-<!-- <div class="md:pr-6" :class="home.meta ? 'md:w-7/16' : 'w-full'"> -->
-  <Grid2 class="imagemarquee" size="small" :items="home.grid2"></Grid2>
-<!-- </div> -->
-<!-- <p>Founded by Coralie Rose in 2013. We specialise in street casting with particular focus on promoting underrepresented people in advertising and film. 
-At Road Casting, we celebrate diversity and individuality, seeking out fresh faces and personalities for music videos, short films, features, branded content and commercials.</p>
-   -->
-<div>
+            <!-- Display other content -->
+            <Richtext
+              :blocks="section.content"
+              v-if="section.content"
+            ></Richtext>
+<!-- contct -->
+            <!-- Display the About Image    v-if="section.image.image"-->
+            <div v-if="home.sections2" class="pt-20 flex justify-between">
+              <div
+                v-for="sections2 in home.sections2"
+                :key="sections2._key"
+                class="p-5 w-5/12"
+              >
+                <div class="contactsec">
+                  <p v-if="sections2.title2" class="contacttitle justify-start">
+                    <span>{{ sections2.title2 }}</span>
+                  </p>
+                  <Richtext
+                    :blocks="sections2.content2"
+                    v-if="sections2.content2"
+                  ></Richtext>
+                </div>
+              </div>
+              <MediaImage
+                :size="section.image.size"
+                :aspect="section.image.aspect"
+                :src="section.image.image"
+                v-if="section.image.image"
+                class="h-auto w-7/12"
+                :sizes="size == 'sm' ? 'sm:60vw md:15vw' : 'sm:150vw md:150vw'"
+              ></MediaImage>
+            </div>
+<!-- press -->
+            <div v-if="home.sections3" class="pt-20 flex justify-end">
+              <div
+                v-for="sections3 in home.sections3"
+                :key="sections3._key"
+                class="p-5 w-7/12"
+              >
+                <div class="presssec">
+                  <p v-if="sections3.title3" class="presstitle pb-10 justify-start">
+                    <span>{{ sections3.title3 }}</span>
+                  </p>
+                  <Richtext
+                    class="presssectext"
+                    :blocks="sections3.content3"
+                    v-if="sections3.content3"
+                  ></Richtext>
+                </div>
+                       <!-- Arrow pointing down -->
+                       <div class="justify-start arrow-down">
+          <i class="fas fa-arrow-down"></i>
+        </div>
+              </div>
+            </div>
+          </div>
+        </span>
+         
 
-  <div v-if="home.sections" class=" pl-20 md:pb-5 sm:pb-5">
-                    <span class=" aboutsec text-5xl  " v-for="sections in home.sections" :key="sections._key">
-                      <div class="pt-[2vw] w-4/6 p-10" v-if="sections.title">
-                        <p class="abouttitle">About</p>
-                        <Richtext :blocks="sections.content" v-if="sections.content"></Richtext>
-                      </div>
-                    </span>
-                 
-                  </div>
+        <NuxtLink :to="`/projects`">
+          <h1 class="morep w-screen p-10 pt-0">View Projects</h1>
+        </NuxtLink>
 
-
-
-</div>
-</div> 
+        <Grid3 class="imagemarquee" size="small" :items="home.grid2"></Grid3>
+        <!-- <Grid size="small" :items="home.grid2"></Grid> -->
+      </div>
+    </div>
+  </div>
 </template>
 
-
 <script>
-import { groq } from '@nuxtjs/sanity'
-import { mapState, mapActions } from 'vuex'
+import { groq } from "@nuxtjs/sanity";
+import { mapState, mapActions } from "vuex";
+import "@fortawesome/fontawesome-free/css/all.css"; 
 // import AboutPage from '~/components/AboutPage.vue'
 
 export default {
-
-  name: 'IndexPage',
+  name: "IndexPage",
   data() {
     return {
       project: false,
@@ -48,7 +108,7 @@ export default {
       back: false,
       abouts: [],
       activeStyle: { textDecoration: "none" },
-    }
+    };
   },
 
   scroll() {
@@ -97,38 +157,50 @@ export default {
           title,
           subtitle,
           content,
+          "image" : {"image" : image.asset._ref, "aspect" : image.asset->metadata.dimensions.aspectRatio, "position" : position}, 
+        }
+      }
+
+
+      {...,
+        sections2[]{
+          title2,
+          content2,
+        }
+      }
+
+      {...,
+        sections3[]{
+          title3,
+          content3,
         }
       }
       
       | order(_updatedAt desc)[0]
       `;
 
-      const home = await $sanity.fetch(homeQuery);
+    const home = await $sanity.fetch(homeQuery);
 
-      // Commit meta and metaemails to the Vuex store
-      store.commit('setMeta', home.meta);
-      store.commit('setMetaEmails', home.metaemails);
-      store.commit('setThumbnailTime', home.thumbnailTime);
-      // store.commit('setYear', home.year);
+    // Commit meta and metaemails to the Vuex store
+    store.commit("setMeta", home.meta);
+    store.commit("setMetaEmails", home.metaemails);
+    store.commit("setThumbnailTime", home.thumbnailTime);
+    // store.commit('setYear', home.year);
 
-      return { home };
+    return { home };
   },
 
-
-
- 
-
   methods: {
-    ...mapActions(['setTitle']),
+    ...mapActions(["setTitle"]),
     setProject(reference) {
-      this.project = reference
+      this.project = reference;
     },
 
     openGallery() {
-      this.$store.commit('setGalleryState', true); // Set gallery state as open
+      this.$store.commit("setGalleryState", true); // Set gallery state as open
     },
     closeGallery() {
-      this.$store.commit('setGalleryState', false); // Set gallery state as closed
+      this.$store.commit("setGalleryState", false); // Set gallery state as closed
     },
     toggleBlueBox() {
       // Toggle the blue box visibility
@@ -138,15 +210,21 @@ export default {
       this.updateContentContainerPosition();
 
       if (this.isBlueBoxActive) {
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = "hidden";
       } else {
-        document.body.style.overflow = 'auto';
+        document.body.style.overflow = "auto";
       }
     },
     updateContentContainerPosition() {
       const isMobile = window.innerWidth <= 768;
       // Calculate the offset based on blue box height
-      const offset = isMobile ? (this.isBlueBoxActive ? "100vh" : "0") : (this.isBlueBoxActive ? "365px" : "0");
+      const offset = isMobile
+        ? this.isBlueBoxActive
+          ? "100vh"
+          : "0"
+        : this.isBlueBoxActive
+        ? "365px"
+        : "0";
 
       // Calculate the offset based on whether it's a mobile screen or not
 
@@ -155,42 +233,94 @@ export default {
         transform: `translateY(${offset})`,
       };
     },
-
   },
   created() {
-    this.setTitle(this.home.title)
+    this.setTitle(this.home.title);
   },
-}
+};
 </script>
 
-
-
-
 <style scoped>
-.titleText{
+/* Arrow down styles */
+.arrow-down {
+  /* text-align: center; */
+  margin-bottom: 20px;
+}
+
+.fa-arrow-down {
+  font-size: 24px;
+  color: #000; /* Change the color as needed */
+}
+.morep {
+  font-size: 13.75rem;
+  /* line-height: 4.3rem; */
+  text-transform: uppercase;
+  font-family: "GTWalsheimbb";
+  text-align: center;
+}
+.titleText {
   z-index: 10000 !important;
-  font-weight: bolder;
+  /* font-weight: bolder; */
   color: whitesmoke;
   /* color: #2a2a2a; */
-  font-family: 'GTWalsheimb';
+  font-family: "GTWalsheimb";
   left: 50%;
-    top: 50%;
-    /* width: 100vw; */
-    transform: translate(-50%, -50%);
-    position: absolute;
+  top: 50%;
+  /* width: 100vw; */
+  transform: translate(-50%, -50%);
+  position: absolute;
 }
 
-.abouttitle{
-  /* font-family: 'GTWalsheimb'; */
+.abouttitle {
+  display: flex;
+  font-family: "GTWalsheimbb";
+  justify-content: right;
+  text-transform: uppercase;
+  line-height: 4.3rem;
 }
 
-.aboutsec{
-width: 100vw;
-display: flex;
-justify-content: center;
+.contacttitle {
+  display: flex;
+  font-family: "GTWalsheimbb";
+  text-transform: uppercase;
+  /* line-height: 4.3rem; */
 }
 
-.imagemarquee{
+.contactsec {
+  /* font-family: "GTWalsheiml" !important; */
+  font-size: 3rem !important;
+  line-height: 3rem !important;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.presssec {
+  /* font-family: "GTWalsheiml" !important; */
+  font-size: 3rem !important;
+  line-height: 3rem !important;
+  /* display: flex;
+  justify-content: space-between !important; */
+}
+
+.presstitle {
+  text-transform: uppercase;
+}
+
+.presssectext {
+  font-family: "GTWalsheiml";
+  text-transform: none !important;
+  display: flex;
+  justify-content: space-between !important;
+}
+.aboutsec {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  font-family: 'GTWalsheimbb';
+}
+
+.imagemarquee {
   z-index: 10 !important;
 }
 /* header {  
@@ -200,5 +330,4 @@ justify-content: center;
 /* .item {
   width: 33.3333%;
 } */
-
 </style>

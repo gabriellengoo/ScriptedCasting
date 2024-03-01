@@ -69,7 +69,12 @@ export default {
         test: /\.mjs$/,
         include: /node_modules\/@studio-freight\/lenis/,
         type: 'javascript/auto',
-        use: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
       });
     },
     postcss: {

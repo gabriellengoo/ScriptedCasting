@@ -44,7 +44,9 @@ export default {
       marks: {
         // Decorators usually describe a single property – e.g. a typographic
         // preference or highlighting by editors.
-        decorators: [],
+        decorators: [
+          { title: "Strong", value: "strong" }, // Add strong decorator
+        ],
         // Annotations can be any object structure – e.g. a link or a footnote.
 
         annotations: [
@@ -71,7 +73,28 @@ export default {
             to: [{ type: "project" }],
             icon: GoFileSymlinkFile,
           },
+          {
+            title: "Phone",
+            name: "phoneLink",
+            type: "object",
+            icon: GoFileSymlinkFile,
+            fields: [
+              {
+                title: "Phone Number",
+                name: "phoneNumber",
+                type: "string",
+                validation: (Rule) =>
+                  Rule.custom((value) => {
+                    if (!/^\d+$/.test(value)) {
+                      return 'Please enter a valid phone number (only digits allowed).';
+                    }
+                    return true;
+                  }),
+              },
+            ],
+          },
         ],
+        
       },
     },
   ],

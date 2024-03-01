@@ -23,7 +23,7 @@ export default {
     },
     {
       name: "sections",
-      title: "About text",
+      title: "About Text",
       type: "array",
       of: [
         {
@@ -36,16 +36,16 @@ export default {
               title: "Title",
               type: "string",
             },
-            {
-              name: "subtitle",
-              title: "Subtitle",
-              type: "string",
-            },
             // {
-            //   name: "image",
-            //   title: "Logo",
-            //   type: "image",
+            //   name: "subtitle",
+            //   title: "Subtitle",
+            //   type: "string",
             // },
+            {
+              name: "image",
+              title: "About Image",
+              type: "image",
+            },
             {
               name: "content",
               title: "Content",
@@ -56,45 +56,50 @@ export default {
       ],
     },
     {
-      name: "metaemails",
-      title: "Meta Emails",
+      name: "sections2",
+      title: "Contact Info",
       type: "array",
-      options: {
-        modal: "popover",
-      },
       of: [
         {
-          name: "meta",
-          title: "Meta",
+          name: "section2",
+          title: "Section",
           type: "object",
           fields: [
             {
-              name: "title",
+              name: "title2",
               title: "Title",
               type: "string",
             },
             {
-              name: "content",
+              name: "content2",
               title: "Content",
+              type: "blockContent",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "sections3",
+      title: "Press",
+      type: "array",
+      of: [
+        {
+          name: "section3",
+          title: "Section",
+          type: "object",
+          fields: [
+            {
+              name: "title3",
+              title: "Title",
               type: "string",
             },
             {
-              name: "link",
-              title: "Link",
-              type: "url",
-              validation: (Rule) =>
-                Rule.uri({
-                  scheme: ["http", "https", "mailto", "tel"],
-                }),
+              name: "content3",
+              title: "Content",
+              type: "blockContent",
             },
-           
           ],
-          preview: {
-            select: {
-              title: "content",
-              subtitle: "title",
-            },
-          },
         },
       ],
     },
