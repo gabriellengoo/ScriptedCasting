@@ -99,13 +99,13 @@ export default {
                       description: "Set the width of the image in viewporth width",
                       validation: (Rule) => Rule.min(0),
                     },
-                    {
-                      name: "overlayimageWidth",
-                      title: "Overlay Image Width",
-                      type: "number",
-                      description: "Set the width of the image in viewporth width",
-                      validation: (Rule) => Rule.min(0),
-                    },
+                    // {
+                    //   name: "overlayimageWidth",
+                    //   title: "Overlay Image Width",
+                    //   type: "number",
+                    //   description: "Set the width of the image in viewporth width",
+                    //   validation: (Rule) => Rule.min(0),
+                    // },
                     {
                       name: "video",
                       title: "Video",
