@@ -143,7 +143,7 @@
                     v-for="(slide, index) in project.slider"
                     :key="slide._key"
                     class="flex justify-center w-full h-full transition-opacity duration-300 swiper-slide"
-                    :class="realIndex == 0 ? 'opacity-95' : ''"
+                    :class="realIndex == 0 ? '' : ''"
                   >
                   
                     <div class="overlaycont flex h-full p-2 pb-0 w-13/16"
@@ -1014,10 +1014,10 @@ header{
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255);
   /* background-color: rgb(255 255 255 / 45%); */
-  backdrop-filter: blur(10px); /* Adjust the blur amount as needed */
-  transition: backdrop-filter 0.3s ease; /* Add a smooth transition effect */
+  /* backdrop-filter: blur(10px);  */
+  transition: backdrop-filter 0.3s ease; 
   display: flex;
   align-items: center;
   justify-content: center;
