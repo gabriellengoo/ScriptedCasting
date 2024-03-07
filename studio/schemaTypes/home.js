@@ -17,8 +17,32 @@ export default {
       type: 'string',
     },
     {
+      name: "sections4",
+      title: "Home main image",
+      type: "array",
+      of: [
+        {
+          name: "section4",
+          title: "Section",
+          type: "object",
+          fields: [
+            {
+              name: "title4",
+              title: "Title",
+              type: "string",
+            },
+            {
+              name: "image4",
+              title: "About Image",
+              type: "image",
+            },
+          ],
+        },
+      ],
+    },
+    {
       name: 'grid2',
-      title: 'Home grid',
+      title: 'More projects grid',
       type: 'grid2',
     },
     {

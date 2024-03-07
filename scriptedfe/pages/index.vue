@@ -1,14 +1,28 @@
 <template>
   <div class=" ">
     <NuxtLink :to="`/projects`">
-      <Grid2 class="imagemarquee" size="small" :items="home.grid2"></Grid2>
+     
+      <div v-if="home.sections4">
+        <div v-for="section in home.sections4"
+          :key="section._key">
+          <MediaImage
+                :size="section.image4.size"
+                :aspect="section.image4.aspect"
+                :src="section.image4.image4"
+                v-if="section.image4.image4"
+                class="h-screen object-cover"
+                :sizes="size == 'sm' ? 'sm:60vw md:15vw' : 'sm:150vw md:150vw'"
+              ></MediaImage>
+        </div>
+      </div>
+      <!-- <Grid2 class="imagemarquee" size="small" :items="home.grid2"></Grid2> -->
     </NuxtLink>
     <div>
       <!-- md:pb-5 sm:pb-5  -->
       <div v-if="home.sections" class="pb-0">
 <!-- about -->
         <span
-          class="aboutsec text-6xl"
+          class="aboutsec text-4xl"
           v-for="section in home.sections"
           :key="section._key"
         >
@@ -45,7 +59,7 @@
                 :aspect="section.image.aspect"
                 :src="section.image.image"
                 v-if="section.image.image"
-                class="h-auto w-7/12"
+                class="h-auto w-4/12"
                 :sizes="size == 'sm' ? 'sm:60vw md:15vw' : 'sm:150vw md:150vw'"
               ></MediaImage>
             </div>
@@ -54,7 +68,7 @@
               <div
                 v-for="sections3 in home.sections3"
                 :key="sections3._key"
-                class="p-5 w-7/12"
+                class="p-5 w-4/12"
               >
                 <div class="presssec">
                   <p v-if="sections3.title3" class="presstitle pb-10 justify-start">
@@ -77,7 +91,7 @@
          
 
         <NuxtLink :to="`/projects`">
-          <h1 class="morep w-screen p-10 pt-0 pb-0">View Projects</h1>
+          <h1 class="morep text-6xl w-screen p-10 pt-0 pb-0">View Projects</h1>
         </NuxtLink>
 
         <Grid3 class="imagemarquee" size="double" :items="home.grid2"></Grid3>
@@ -175,6 +189,14 @@ export default {
           content3,
         }
       }
+
+      {...,
+        sections4[]{
+          title4,
+          "image4" : {"image4" : image4.asset._ref, "aspect" : image4.asset->metadata.dimensions.aspectRatio, "position" : position}, 
+
+        }
+      }
       
       | order(_updatedAt desc)[0]
       `;
@@ -252,7 +274,7 @@ export default {
   color: #000; /* Change the color as needed */
 }
 .morep {
-  font-size: 6.75rem;
+  /* font-size: 6.75rem; */
   /* line-height: 4.3rem; */
   text-transform: uppercase;
   font-family: "GTWalsheimbb";
@@ -288,8 +310,9 @@ export default {
 
 .contactsec {
   /* font-family: "GTWalsheiml" !important; */
-  font-size: 3rem !important;
-  line-height: 3rem !important;
+  flex-direction: column;
+  font-size: 2rem !important;
+  line-height: 2rem !important;
   display: flex;
   justify-content: space-between;
   text-transform: uppercase;
@@ -297,8 +320,8 @@ export default {
 
 .presssec {
   /* font-family: "GTWalsheiml" !important; */
-  font-size: 3rem !important;
-  line-height: 3rem !important;
+  font-size: 2rem !important;
+  line-height: 2rem !important;
   /* display: flex;
   justify-content: space-between !important; */
 }
