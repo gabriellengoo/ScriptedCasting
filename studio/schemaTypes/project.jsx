@@ -92,13 +92,13 @@ export default {
                       hidden: ({ parent, value }) =>
                         (!value && parent?.spacer) || (!value && parent?.video),
                     },
-                    {
-                      name: "imageWidth",
-                      title: "Image Width",
-                      type: "number",
-                      description: "Set the width of the image in viewporth width",
-                      validation: (Rule) => Rule.min(0),
-                    },
+                    // {
+                    //   name: "imageWidth",
+                    //   title: "Image Width",
+                    //   type: "number",
+                    //   description: "Set the width of the image in viewporth width",
+                    //   validation: (Rule) => Rule.min(0),
+                    // },
                     // {
                     //   name: "overlayimageWidth",
                     //   title: "Overlay Image Width",
@@ -112,6 +112,16 @@ export default {
                       type: "mux.video",
                       hidden: ({ parent, value }) =>
                         (!value && parent?.spacer) || (!value && parent?.image),
+                    },
+                    {
+                      name: 'youtubeUrl',
+                      title: 'YouTube Video URL',
+                      type: 'url',
+                    },
+                    {
+                      name: 'vimeoUrl',
+                      title: 'Vimeo Video URL',
+                      type: 'url',
                     },
                     {
                       name: "thumbnailTime",

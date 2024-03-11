@@ -6,7 +6,7 @@
         v-masonry
         column-width=".item"
         item-selector=".item"
-        class="w-full images_marquee_wrapper"
+        class="w-full images_marquee_wrapper marquee2"
         :class="size"
         horizontal-order="true"
       >
@@ -42,6 +42,31 @@
  }"
                     v-if="item.video.id"
                   ></MediaVideo>
+                               <!-- Render YouTube Video -->
+        <iframe
+          v-else-if="item.youtubeUrl"
+          :src="getYouTubeEmbedUrl(item.youtubeUrl)"
+          frameborder="0"
+          :style="{
+   
+   height: `100vh`,
+ }"
+          allowfullscreen
+          class="vidsize"
+        ></iframe>
+
+        <!-- Render Vimeo Video -->
+        <iframe
+          v-else-if="item.vimeoUrl"
+          :src="getVimeoEmbedUrl(item.vimeoUrl)"
+          frameborder="0"
+          :style="{
+   
+   height: `100vh`,
+ }"
+          allowfullscreen
+          class="vidsize"
+        ></iframe>
                 </figure>
                 <!-- <figcaption v-if="size == 'small'">
                   <span v-if="item.title">{{ item.title }}</span>
@@ -68,6 +93,23 @@
                         }"
                   v-if="item.video.id"
                 ></MediaVideo>
+                             <!-- Render YouTube Video -->
+        <iframe
+          v-else-if="item.youtubeUrl"
+          :src="getYouTubeEmbedUrl(item.youtubeUrl)"
+          frameborder="0"
+          allowfullscreen
+          class="dubvid object-contain object-top w-auto h-full"
+        ></iframe>
+
+        <!-- Render Vimeo Video -->
+        <iframe
+          v-else-if="item.vimeoUrl"
+          :src="getVimeoEmbedUrl(item.vimeoUrl)"
+          frameborder="0"
+          allowfullscreen
+          class="dubvid object-contain object-top w-auto h-full"
+        ></iframe>
                 <!-- :style="`aspect-ratio: ${item.video.aspect.replace(':', '/')}`" -->
                 <!-- <figcaption v-if="size == 'small'">
                   <span v-if="item.title">{{ item.title }}</span>
@@ -96,6 +138,23 @@
                         }"
                   v-if="item.video.id"
                 ></MediaVideo>
+                             <!-- Render YouTube Video -->
+        <iframe
+          v-else-if="item.youtubeUrl"
+          :src="getYouTubeEmbedUrl(item.youtubeUrl)"
+          frameborder="0"
+          allowfullscreen
+          class="dubvid object-contain object-top w-auto h-full"
+        ></iframe>
+
+        <!-- Render Vimeo Video -->
+        <iframe
+          v-else-if="item.vimeoUrl"
+          :src="getVimeoEmbedUrl(item.vimeoUrl)"
+          frameborder="0"
+          allowfullscreen
+          class="dubvid object-contain object-top w-auto h-full"
+        ></iframe>
                 <!-- <figcaption v-if="size == 'small'">
                   <span v-if="item.title">{{ item.title }}</span>
                   <span v-else>{{ item.reference.title }}</span>
@@ -140,6 +199,18 @@ export default {
       if (typeof this.$redrawVueMasonry === 'function') {
         this.$redrawVueMasonry();
       }
+    },
+    getYouTubeEmbedUrl(youtubeUrl) {
+      // Extract YouTube video ID from the URL
+      const videoId = youtubeUrl.split("v=")[1];
+      // Generate the YouTube embed URL with autoplay, mute, loop, and hide controls on hover parameters
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&showinfo=0`;
+    },
+    getVimeoEmbedUrl(vimeoUrl) {
+      // Extract Vimeo video ID from the URL
+      const videoId = vimeoUrl.split('/').pop();
+      // Generate the Vimeo embed URL
+      return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&autopause=0`;
     },
     hover(item) {
       if (item.reference.title) {
@@ -186,6 +257,17 @@ export default {
     transform: translateX(-100%);
   }
 } */
+
+@media (max-width: 768px) {
+img{
+  height: 29vh !important;
+}
+
+.images_marquee_wrapper{
+  height: auto !important;
+}
+}
+
 .masonry {
   height: 100vw;
     display: flex;
@@ -195,7 +277,7 @@ export default {
 .images_marquee_wrapper {
   /* justify-content: center; */
   max-width: 100%;
-  height: 100vh !important;
+  height: 100vh ;
   display: flex;
   /* overflow: hidden; */
   /* overflow: scroll; */
@@ -203,7 +285,7 @@ export default {
   animation: 0.75s ease 0s normal forwards 1 fadein;
   z-index: -1 !important;
   animation: marquee2 3000s linear infinite;
-  /* animation: marquee2 10 steps(340);  */
+  animation: marquee2 10 steps(340); 
 }
 
 @keyframes fadein{
@@ -216,7 +298,7 @@ export default {
   width: 40vw;
   display: flex;
   gap: 0;
-  /* animation: marquee2 500s linear infinite; */
+  animation: marquee2 500s linear infinite;
 }
 
 .marquee2.paused {

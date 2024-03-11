@@ -42,6 +42,23 @@
  }"
                     v-if="item.video.id"
                   ></MediaVideo>
+                               <!-- Render YouTube Video -->
+        <iframe
+          v-else-if="item.youtubeUrl"
+          :src="getYouTubeEmbedUrl(item.youtubeUrl)"
+          frameborder="0"
+          allowfullscreen
+          class="dubvid object-contain object-top w-auto h-full"
+        ></iframe>
+
+        <!-- Render Vimeo Video -->
+        <iframe
+          v-else-if="item.vimeoUrl"
+          :src="getVimeoEmbedUrl(item.vimeoUrl)"
+          frameborder="0"
+          allowfullscreen
+          class="dubvid object-contain object-top w-auto h-full"
+        ></iframe>
                 </figure>
                 <!-- <figcaption v-if="size == 'small'">
                   <span v-if="item.title">{{ item.title }}</span>
@@ -68,6 +85,23 @@
                         }"
                   v-if="item.video.id"
                 ></MediaVideo>
+                             <!-- Render YouTube Video -->
+        <iframe
+          v-else-if="item.youtubeUrl"
+          :src="getYouTubeEmbedUrl(item.youtubeUrl)"
+          frameborder="0"
+          allowfullscreen
+          class="dubvid object-contain object-top w-auto h-full"
+        ></iframe>
+
+        <!-- Render Vimeo Video -->
+        <iframe
+          v-else-if="item.vimeoUrl"
+          :src="getVimeoEmbedUrl(item.vimeoUrl)"
+          frameborder="0"
+          allowfullscreen
+          class="dubvid object-contain object-top w-auto h-full"
+        ></iframe>
                 <!-- :style="`aspect-ratio: ${item.video.aspect.replace(':', '/')}`" -->
                 <!-- <figcaption v-if="size == 'small'">
                   <span v-if="item.title">{{ item.title }}</span>
@@ -94,6 +128,23 @@
                         }"
                   v-if="item.video.id"
                 ></MediaVideo>
+                             <!-- Render YouTube Video -->
+        <iframe
+          v-else-if="item.youtubeUrl"
+          :src="getYouTubeEmbedUrl(item.youtubeUrl)"
+          frameborder="0"
+          allowfullscreen
+          class="dubvid object-contain object-top w-auto h-full"
+        ></iframe>
+
+        <!-- Render Vimeo Video -->
+        <iframe
+          v-else-if="item.vimeoUrl"
+          :src="getVimeoEmbedUrl(item.vimeoUrl)"
+          frameborder="0"
+          allowfullscreen
+          class="dubvid object-contain object-top w-auto h-full"
+        ></iframe>
                 <!-- <figcaption v-if="size == 'small'">
                   <span v-if="item.title">{{ item.title }}</span>
                   <span v-else>{{ item.reference.title }}</span>
@@ -138,6 +189,18 @@ export default {
       if (typeof this.$redrawVueMasonry === 'function') {
         this.$redrawVueMasonry();
       }
+    },
+    getYouTubeEmbedUrl(youtubeUrl) {
+      // Extract YouTube video ID from the URL
+      const videoId = youtubeUrl.split("v=")[1];
+      // Generate the YouTube embed URL with autoplay, mute, loop, and hide controls on hover parameters
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&showinfo=0`;
+    },
+    getVimeoEmbedUrl(vimeoUrl) {
+      // Extract Vimeo video ID from the URL
+      const videoId = vimeoUrl.split('/').pop();
+      // Generate the Vimeo embed URL
+      return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&autopause=0`;
     },
     hover(item) {
       if (item.reference.title) {

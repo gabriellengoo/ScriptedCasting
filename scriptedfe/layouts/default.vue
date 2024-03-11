@@ -12,10 +12,10 @@
         $nuxt.$route.name == 'production' ||
         $nuxt.$route.name == 'artists'
           ? ''
-          : ' md:hidden'
+          : 'hidden md:flex'
       "
     ></LayoutHeader>
-    <LayoutHeaderMin
+    <!-- <LayoutHeaderMin
       :class="
         $nuxt.$route.name == 'index' ||
         $nuxt.$route.name == 'index-bak' ||
@@ -25,7 +25,7 @@
           ? 'hidden'
           : 'hidden md:flex'
       "
-    ></LayoutHeaderMin>
+    ></LayoutHeaderMin> -->
  
   </main>
 </template>

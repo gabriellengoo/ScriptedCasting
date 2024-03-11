@@ -1,19 +1,22 @@
 <template>
   <!-- bg-white -->
   <header
-    class="absolute top-44 left-0 z-20 w-full  text-xs leading-snug uppercase   "
+    class="absolute top-0 left-0 z-20 w-full   text-xs leading-snug uppercase   "
   >
   <!-- justify-center -->
     <div
-      class="fixed flex flex-wrap w-full items-center gap-4 p-2 pt-8 md:pb-2 md:pt-2 md:flex-nowrap"
+      class="fixed mobilemenu flex flex-wrap w-full  bg-white items-center gap-4 p-2 pt-8 md:pb-2 md:pt-2 md:flex-nowrap"
     >
-    <div><h1 class="titleText flex justify-between items-center text-9xl align-baseline text-center uppercase">Scripted</h1></div>
-      <nav class="flex-col hidden text-[1.525rem] w-1/16 md:flex">
+    <!-- <Animation></Animation> -->
+    <!-- <div><h1 class="titleText flex justify-between items-center text-9xl align-baseline text-center uppercase">Scripted</h1></div> -->
+    <div><NuxtLink to="/" class="titleText flex justify-between items-center text-9xl align-baseline text-center uppercase">Scripted</NuxtLink></div>
+    <nav class="flex-col linktextmb text-[1.525rem] w-1/16 flex">
+        <!-- hidden -->
         <NuxtLink to="/projects">Work</NuxtLink>
-        <NuxtLink to="/">About</NuxtLink>
-        <NuxtLink to="/">Contact</NuxtLink>
+        <NuxtLink :to="{ path: '/', hash: '#about' }" >About</NuxtLink>
+        <NuxtLink :to="{ path: '/', hash: '#contact' }" class="header-link">Contact</NuxtLink>
       </nav>
-      <!-- <Animation></Animation> -->
+   
       <div class="flex-col hidden normal-case md:flex">
         <div class="flex" v-for="item in contact" :key="item._key">
           <span class="block w-24 uppercase">{{ item.title }}</span>
@@ -54,11 +57,27 @@ export default {
   },
   methods: {
     ...mapMutations(['TOGGLE_MENU']),
+    scrollToContact() {
+      this.$emit('scroll-to-contact');
+    },
   },
 }
 </script>
 
 <style scoped>
+@media (max-width: 768px) {
+.titleText{
+  font-size: 5rem;
+}
+
+.mobilemenu{
+  justify-content: space-between;
+}
+
+.linktextmb{
+  text-align: end;
+}
+}
 .titleText{
   font-family: 'GTWalsheimb';
 }

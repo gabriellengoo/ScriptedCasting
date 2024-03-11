@@ -1,7 +1,7 @@
 <template>
   <!-- bg-white -->
   <header
-    class="  top-0 left-0 z-20 flex w-full gap-2 p-2 pb-5 text-xs leading-snug uppercase "
+    class=" bg-white   top-0 left-0 z-20 flex w-full gap-2 p-2 pb-5 text-xs leading-snug uppercase "
     :class="
       $nuxt.$route.name == 'project-slug' || $nuxt.$route.name == 'slug'
         ? 'fixed'

@@ -52,9 +52,9 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    // '@nuxtjs/sanity'
-  ],
+  modules: ['vue-scrollto/nuxt'],
+
+  
   sanity: {
     // module options
     projectId: '03lhip23',

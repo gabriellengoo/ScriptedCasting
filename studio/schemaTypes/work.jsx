@@ -18,9 +18,25 @@ export default {
     },
     {
       name: 'grid',
-      title: 'Grid',
+      title: 'Grid Left',
       type: 'grid',
     },
+    {
+      name: 'gridm',
+      title: 'Grid Middle',
+      type: 'gridm',
+    },
+    {
+      name: 'gride',
+      title: 'Grid Middle 2',
+      type: 'gride',
+    },
+    {
+      name: 'gridl',
+      title: 'Grid End',
+      type: 'gride',
+    },
+    
 
 
   ],

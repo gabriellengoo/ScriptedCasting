@@ -35,6 +35,16 @@ export default {
               name: "image4",
               title: "About Image",
               type: "image",
+            }, 
+            {
+              name: 'youtubeUrl',
+              title: 'YouTube Video URL',
+              type: 'url',
+            },
+            {
+              name: 'vimeoUrl',
+              title: 'Vimeo Video URL',
+              type: 'url',
             },
           ],
         },

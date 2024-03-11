@@ -10,8 +10,8 @@ import { RiNumber6 } from "react-icons/Ri";
 import { RiNumber7 } from "react-icons/Ri";
 
 export default {
-  name: "grid",
-  title: "Grid",
+  name: "gridl",
+  title: "Gridl",
   type: "array",
   liveEdit: true,
   options: {
@@ -57,11 +57,11 @@ export default {
           hidden: ({ parent, value }) =>
             !value && (parent?.spacer || parent?.link),
         },
-        // {
-        //   name: "double",
-        //   title: "Double",
-        //   type: "boolean",
-        // },
+        {
+          name: "double",
+          title: "Double",
+          type: "boolean",
+        },
         {
           name: "title",
           title: "Title",

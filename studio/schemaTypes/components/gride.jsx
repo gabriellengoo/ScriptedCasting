@@ -10,8 +10,8 @@ import { RiNumber6 } from "react-icons/Ri";
 import { RiNumber7 } from "react-icons/Ri";
 
 export default {
-  name: "grid",
-  title: "Grid",
+  name: "gride",
+  title: "Gride",
   type: "array",
   liveEdit: true,
   options: {

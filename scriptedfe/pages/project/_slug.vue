@@ -1,10 +1,8 @@
 <template>
   <!-- md:h-screen -->
-  <div class=" relative md:min-h-fit md:overflow-hidden">
+  <div class="relative md:min-h-fit md:overflow-hidden">
     <!-- <Headerproject /> -->
 
-
- 
     <section>
       <!-- <div class="h-screen fixed z-[10]"     v-if="isGalleryExpanded"   @keydown="handleKeyDown" >
               <button v-if="isGalleryExpanded"
@@ -25,65 +23,58 @@
                       </button>
               </div> -->
       <!-- pt-28 -->
-      <div class="bottom-div  p-2 xl:pt-[14rem] 2xl:pt-[12rem] ">
-
-
-  
-
-
+      <div class="bottom-div p-2 xl:pt-[18rem] 2xl:pt-[14rem]">
         <div
           v-if="project"
-          
-          class="ml-auto  text-lg uppercase lg:text-xl md:text-xl font-heading w-full flex justify-center"
+          class="ml-auto text-lg uppercase lg:text-xl md:text-xl font-heading w-full flex justify-center"
         >
-          <div class="titles mobiletitle fixed z-[10] justify-between w-full flex items-end ">
+          <div
+            class="titles mobiletitle fixed z-[10] justify-between w-full flex items-end"
+          >
             <!-- text-[14.21px] -->
             <!-- <About/> -->
             <div
-              class="inner-div  pl-[1.5rem] textppad pb-5  top-[0vh]    w-[25vw] sm:w-screen projecttextmb"
+              class="inner-div pl-[1.5rem] textppad pb-5 top-[0vh] w-[25vw] sm:w-screen projecttextmb"
               id="titleInnerDiv"
-              >
+            >
               <div class="pb-5 mobileslugtitle">{{ project.title }}</div>
               <div
                 v-if="project.related"
-                class="flex flex-col   normal-case"
+                class="flex flex-col normal-case"
                 v-for="meta in project.meta"
               >
                 {{ meta.title }}
                 {{ meta.content }}
               </div>
               <div v-if="project.location" class="pt-3">
-                <div
-                class="flex flex-col  normal-case"
-              >
-                {{ project.location }}
+                <div class="flex flex-col normal-case">
+                  {{ project.location }}
+                </div>
               </div>
-              </div>
-         
+
               <button
                 v-if="isGalleryExpanded"
                 @click="closeImageModal"
                 class="block close-button leading-5"
               >
-                Close 
+                Close
               </button>
-             
-           
             </div>
           </div>
         </div>
 
-       
-
         <!-- non scroll copy -->
-<!-- pt-48 -->
-        <div class="md:pr-6 md:w-7/16 scroll-container  resize-animation" ref="scrollContainer">
+        <!-- pt-48 -->
+        <div
+          class="md:pr-6 md:w-7/16 scroll-container resize-animation"
+          ref="scrollContainer"
+        >
           <!-- md:p-5 -->
-         
+
           <div
             v-for="(slide, index) in project.slider"
             :key="slide._key"
-            class="gallmobile insidescrollcont "
+            class="gallmobile insidescrollcont"
             :style="{ width: `calc(${slide.imageWidth}vw - 20px)` }"
           >
             <figure
@@ -98,24 +89,40 @@
                 v-if="image.image"
                 :style="{ width: `calc(${image.imageWidth}vw - 20px)` }"
                 class="scrollcost"
-                
               >
               </MediaImage>
               <MediaVideo
                 :id="image.video.id"
                 :active="realIndex == index ? true : false"
                 v-else-if="image.video.id"
-                :poster="`https://image.mux.com/${image.video.id}/thumbnail.jpg?time=${image.thumbnailTime || 0}`"
+                :poster="`https://image.mux.com/${
+                  image.video.id
+                }/thumbnail.jpg?time=${image.thumbnailTime || 0}`"
                 :style="{ width: `calc(${image.imageWidth}vw - 20px)` }"
                 class="scrollcost resize-animation object-contain object-top w-auto h-full"
               ></MediaVideo>
+              <!-- Display YouTube Video -->
+              <iframe
+                v-else-if="image.youtubeUrl"
+                :src="getYouTubeEmbedUrl(image.youtubeUrl)"
+                frameborder="0"
+                allowfullscreen
+                :style="{ width: `calc(${image.imageWidth}vw - 20px)` }"
+                class="scrollcost youtube resize-animation object-contain object-top w-auto h-full"
+              ></iframe>
+              <!-- Display Vimeo Video -->
+              <iframe
+                v-else-if="image.vimeoUrl"
+                :src="getVimeoEmbedUrl(image.vimeoUrl)"
+                frameborder="0"
+                allowfullscreen
+                :style="{ width: `calc(${image.imageWidth}vw - 20px)` }"
+                class="scrollcost youtube resize-animation object-contain object-top w-auto h-full"
+              ></iframe>
             </figure>
-            
           </div>
-
         </div>
       </div>
-
 
       <!-- Image Overlay Gallery -->
       <div class="block">
@@ -125,10 +132,7 @@
           ref="overlayGallery"
           @mouseenter="showGalleryOnHover"
           @mouseleave="hideGalleryOnLeave"
-         
         >
-
-   
           <div class="gallery-content">
             <div class="gallery-images">
               <section
@@ -136,7 +140,6 @@
                 v-swiper:mySwiper="swiperOptions"
                 @slideChange="onSlideChange"
                 ref="slider"
-               
               >
                 <div class="relative z-40 w-full h-full swiper-wrapper">
                   <div
@@ -145,10 +148,7 @@
                     class="flex justify-center w-full h-full transition-opacity duration-300 swiper-slide"
                     :class="realIndex == 0 ? '' : ''"
                   >
-                  
-                    <div class="overlaycont flex h-full p-2 pb-0 w-13/16"
-                    >
-                 
+                    <div class="overlaycont flex h-full p-2 pb-0 w-13/16">
                       <figure
                         v-for="image in slide.images"
                         :key="image._key"
@@ -163,7 +163,6 @@
                             : ''
                         "
                       >
-                   
                         <MediaImage
                           :src="image.image.asset._ref"
                           v-if="image.image"
@@ -173,33 +172,52 @@
                               ? 'object-contain'
                               : 'object-contain max-w-full'
                           "
-                          :style="{ pointerEvents: 'auto' , width: `calc(${image.overlayimageWidth}vw - 20px)` }"
+                          :style="{
+                            pointerEvents: 'auto',
+                            width: `calc(${image.overlayimageWidth}vw - 20px)`,
+                          }"
                           :sizes="'sm:200vw md:150vw lg:200vw'"
                         ></MediaImage>
                         <MediaVideo
                           :id="image.video.id"
                           :active="realIndex == index ? true : false"
                           v-else-if="image.video.id"
-                          :poster="`https://image.mux.com/${image.video.id}/thumbnail.jpg?time=${image.thumbnailTime || 0}`"
-                          :style="{ pointerEvents: 'auto' , width: `calc(${image.overlayimageWidth}vw - 20px)` }"
+                          :poster="`https://image.mux.com/${
+                            image.video.id
+                          }/thumbnail.jpg?time=${image.thumbnailTime || 0}`"
+                          :style="{
+                            pointerEvents: 'auto',
+                            width: `calc(${image.overlayimageWidth}vw - 20px)`,
+                          }"
                           @click="handleVideoClick(image.video.id)"
-                       
                           class="gallery-image relative object-cover object-center z-[10000000] w-full h-auto p-4 my-auto"
                         ></MediaVideo>
-                
+                        <!-- Display YouTube Video -->
+                        <iframe
+                          v-else-if="image.youtubeUrl"
+                          :src="getYouTubeEmbedUrl(image.youtubeUrl)"
+                          frameborder="0"
+                          allowfullscreen
+                          class="gallery-image relative object-cover object-center z-[10000000] w-full h-auto p-4 my-auto"
+                        ></iframe>
+                         <!-- Display Vimeo Video -->
+              <iframe
+                v-else-if="image.vimeoUrl"
+                :src="getVimeoEmbedUrl(image.vimeoUrl)"
+                frameborder="0"
+                allowfullscreen
+                :style="{ width: `calc(${image.imageWidth}vw - 20px)` }"
+                class="gallery-image relative object-cover object-center z-[10000000] w-full h-auto p-4 my-auto"
+              ></iframe>
                       </figure>
-  
-                     
                     </div>
                   </div>
                 </div>
-         
               </section>
             </div>
           </div>
         </div>
       </div>
-
     </section>
   </div>
 </template>
@@ -211,7 +229,6 @@ import { mapMutations, mapState } from "vuex";
 // import Lenis from '@studio-freight/lenis';
 // import Headerproject from "~/components/layout/Headerproject.vue";
 
-
 export default {
   components: {
     // Headerproject,
@@ -220,10 +237,10 @@ export default {
     const query = groq`*[_type == "project" && slug.current == "${params.slug}" ] {
       ..., "archiveSlug": archive->slug.current,
       slider[] {
-        fullWidth, imageWidth, overlayimageWidth,thumbnailTime, images[] {
+        fullWidth, imageWidth, overlayimageWidth,thumbnailTime, youtubeUrl,vimeoUrl, images[] {
           ..., "video" : {"id" : video.asset->playbackId, "aspect" : video.asset->data.aspect_ratio, "thumbTime" : video.asset->thumbTime}
         }
-      },
+      }, 
       
       "talent" : talent->title, "talentSlug" : talent->slug.current,
       "footer" : footer,
@@ -242,7 +259,6 @@ export default {
     //    console.log('Fetched meta:', project.meta);
     // console.log('Fetched metaemails:', project.metaemails);
 
-  
     // // Commit meta and metaemails to the Vuex store
     // store.commit('setMeta', project.meta);
     // store.commit('setMetaEmails', project.metaemails);
@@ -271,7 +287,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(['meta', 'metaemails']), // Map Vuex state to local computed properties
+    ...mapState(["meta", "metaemails"]), // Map Vuex state to local computed properties
   },
   created() {
     if (
@@ -283,12 +299,11 @@ export default {
   },
 
   mounted() {
-
     // // Set initial focus on the first button
     // this.$refs.prev.focus();
 
     // Get a reference to the title's inner div
-    const titleInnerDiv = document.getElementById('titleInnerDiv');
+    // const titleInnerDiv = document.getElementById("titleInnerDiv");
 
     // Check if the titleInnerDiv exists
     if (titleInnerDiv) {
@@ -300,38 +315,47 @@ export default {
       const scrollContainer = this.$refs.scrollContainer; // Make sure you have a ref on your scroll container
 
       if (isMobile) {
-    scrollContainer.style.paddingTop = titleInnerDivHeight + 20 + 'px';
-  } else {
-    // For non-mobile screens, you can use different padding
-    scrollContainer.style.paddingTop = titleInnerDivHeight + 10 + 'px';
-  }
- 
+        scrollContainer.style.paddingTop = 0 + "px";
+      } else {
+        // For non-mobile screens, you can use different padding
+        scrollContainer.style.paddingTop = titleInnerDivHeight + 10 + "px";
+      }
     }
-  
-
 
     const overlay = document.querySelector(".overlay-gallery");
   },
   methods: {
     openGallery() {
-      this.$store.commit('setGalleryState', true); // Set gallery state as open
+      this.$store.commit("setGalleryState", true); // Set gallery state as open
     },
     closeGallery() {
-      this.$store.commit('setGalleryState', false); // Set gallery state as closed
+      this.$store.commit("setGalleryState", false); // Set gallery state as closed
+    },
+    getYouTubeEmbedUrl(youtubeUrl) {
+      // Extract YouTube video ID from the URL
+      const videoId = youtubeUrl.split("v=")[1];
+      // Generate the YouTube embed URL with autoplay, mute, loop, and hide controls on hover parameters
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&showinfo=0`;
+    },
+    getVimeoEmbedUrl(vimeoUrl) {
+      // Extract Vimeo video ID from the URL
+      const videoId = vimeoUrl.split('/').pop();
+      // Generate the Vimeo embed URL
+      return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&autopause=0`;
     },
     onSlideChange(swiper) {
-      this.index = swiper.activeIndex + 1
-      this.realIndex = swiper.activeIndex
-      const gsap = this.$gsap
+      this.index = swiper.activeIndex + 1;
+      this.realIndex = swiper.activeIndex;
+      const gsap = this.$gsap;
       if (swiper.activeIndex == 0 && !this.back) {
-        this.$refs['prev'].classList.add('disabled')
+        this.$refs["prev"].classList.add("disabled");
       } else {
-        this.$refs['prev'].classList.remove('disabled')
+        this.$refs["prev"].classList.remove("disabled");
       }
       if (this.index > 1) {
-        gsap.to(this.$refs['skew'], { x: '-150%' })
+        gsap.to(this.$refs["skew"], { x: "-150%" });
       } else {
-        gsap.to(this.$refs['skew'], { x: '0%' })
+        gsap.to(this.$refs["skew"], { x: "0%" });
       }
     },
     handleVideoClick(videoId) {
@@ -380,15 +404,21 @@ export default {
       this.updateContentContainerPosition();
 
       if (this.isBlueBoxActive) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
     },
     updateContentContainerPosition() {
       const isMobile = window.innerWidth <= 768;
       // Calculate the offset based on blue box height
-      const offset = isMobile ? (this.isBlueBoxActive ? "100vh" : "0") : (this.isBlueBoxActive ? "365px" : "0");
+      const offset = isMobile
+        ? this.isBlueBoxActive
+          ? "100vh"
+          : "0"
+        : this.isBlueBoxActive
+        ? "365px"
+        : "0";
 
       // Calculate the offset based on whether it's a mobile screen or not
 
@@ -398,12 +428,12 @@ export default {
       };
     },
     handleKeyDown(event) {
-    if (event.key === 'ArrowLeft' && this.mySwiper.slidePrev()) {
-      this.prev();
-    } else if (event.key === 'ArrowRight') {
-      this.next();
-    }
-  },
+      if (event.key === "ArrowLeft" && this.mySwiper.slidePrev()) {
+        this.prev();
+      } else if (event.key === "ArrowRight") {
+        this.next();
+      }
+    },
 
     next() {
       if (this.mySwiper.isEnd) {
@@ -416,12 +446,11 @@ export default {
     },
     prev() {
       if (this.mySwiper.isBeginning && this.back) {
-        this.$router.go(-1)
+        this.$router.go(-1);
       } else {
-        this.mySwiper.slidePrev()
+        this.mySwiper.slidePrev();
       }
     },
-
 
     ...mapMutations(["SET_FOOTER"]),
   },
@@ -429,6 +458,21 @@ export default {
 </script>
 
 <style scoped>
+.youtube {
+  height: 40vh;
+}
+
+.mobileslugtitle{
+  font-size: 4.25rem /* 36px */;
+    line-height: 2.5rem /* 40px */;
+}
+
+@media only screen and (min-width: 2560px){
+  .mobileslugtitle{
+  font-size: 6.25rem !important;
+    line-height: 3.5rem !important;
+}
+}
 /* header {  
   animation: 1.5s ease-out 0s 1 slideInFromLeft;
 } */
@@ -436,13 +480,13 @@ export default {
   width: 33.3333%;
 }
 
-.date{
+.date {
   display: flex;
-    align-items: center;
-    font-family: Helvetica,Arial,sans-serif !important;
+  align-items: center;
+  font-family: Helvetica, Arial, sans-serif !important;
 }
 
-.content-container{
+.content-container {
   width: 100vw !important;
 }
 
@@ -450,88 +494,82 @@ export default {
   transition: width 0.3s ease-in-out, height 0.3s ease-in-out !important;
 }
 
-.headposition{
-     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100vw !important;
-    justify-content: center;
-        /* padding-top: 1vh; */
-    position: fixed;
-    position: absolute;
+.headposition {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100vw !important;
+  justify-content: center;
+  /* padding-top: 1vh; */
+  position: fixed;
+  position: absolute;
 }
 
-.navele{
-   display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-        width: 98vw !important;
-        /* width: 100vw !important; */
-    justify-content: space-between;
+.navele {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 98vw !important;
+  /* width: 100vw !important; */
+  justify-content: space-between;
+}
 
-  }
-
-.button{
+.button {
   /* border-left: .8px solid #000; */
-   padding: .5vw;
-   font-size: 1.25rem ;
-    /* border-width: 3.9px;
+  padding: 0.5vw;
+  font-size: 1.25rem;
+  /* border-width: 3.9px;
     border-right: black;
     border-left: black; */
 }
 
-
-.buttonlogo{
-    padding: .5vw;
-    padding-left: 0;
-    /* border-right: .8px solid #000; */
-    /* border-width: 0.9px;
+.buttonlogo {
+  padding: 0.5vw;
+  padding-left: 0;
+  /* border-right: .8px solid #000; */
+  /* border-width: 0.9px;
     border-color: rgba(28, 25, 23, var(--tw-border-opacity));
     padding: 10.899999999999999px; */
-  }
-
-.content-container{
-      justify-content: center;
-      /* display: flex;
-    justify-content: center; */
-    /* background: #f7f7f7; */
 }
 
-
-
+.content-container {
+  justify-content: center;
+  /* display: flex;
+    justify-content: center; */
+  /* background: #f7f7f7; */
+}
 
 button .circle:hover {
-  transform: translate3d(0,-50%,0) scale(1.5);
+  transform: translate3d(0, -50%, 0) scale(1.5);
 }
 
 .circle {
-    /* position: absolute; */
-    top: 50%;
-    right: 15px;
-    -webkit-transform: translate3d(0,-50%,0) scale(.5);
-    transform: translate3d(0,-50%,0) scale(.5);
-    width: 16px;
-    height: 16px;
-    line-height: 30px;
-    border-radius: 50%;
-    background-color: #000;
-    transition: -webkit-transform 200ms cubic-bezier(.54,.57,0,.96);
-    transition: transform 200ms cubic-bezier(.54,.57,0,.96);
-    transition: transform 200ms cubic-bezier(.54,.57,0,.96), -webkit-transform 200ms cubic-bezier(.54,.57,0,.96);
+  /* position: absolute; */
+  top: 50%;
+  right: 15px;
+  -webkit-transform: translate3d(0, -50%, 0) scale(0.5);
+  transform: translate3d(0, -50%, 0) scale(0.5);
+  width: 16px;
+  height: 16px;
+  line-height: 30px;
+  border-radius: 50%;
+  background-color: #000;
+  transition: -webkit-transform 200ms cubic-bezier(0.54, 0.57, 0, 0.96);
+  transition: transform 200ms cubic-bezier(0.54, 0.57, 0, 0.96);
+  transition: transform 200ms cubic-bezier(0.54, 0.57, 0, 0.96),
+    -webkit-transform 200ms cubic-bezier(0.54, 0.57, 0, 0.96);
 
-    position: relative;
-    top: 50%;
-    right: 0%;
-    transform: translate3d(0,-50%,0) scale(.5);
-    width: 16px;
-    height: 16px;
-    /* line-height: 30px; */
-    border-radius: 50%;
-    background-color: #000;
-    transition: transform 200ms cubic-bezier(.54,.57,0,.96);
+  position: relative;
+  top: 50%;
+  right: 0%;
+  transform: translate3d(0, -50%, 0) scale(0.5);
+  width: 16px;
+  height: 16px;
+  /* line-height: 30px; */
+  border-radius: 50%;
+  background-color: #000;
+  transition: transform 200ms cubic-bezier(0.54, 0.57, 0, 0.96);
 }
-
-
 
 @keyframes slideInFromLeft {
   0% {
@@ -542,11 +580,13 @@ button .circle:hover {
   }
 }
 
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 10.5s;
   transition: height 1s ease, opacity 0.5s ease; /* Add smooth transitions */
 }
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0 10s;
   transition: height 1s ease, opacity 0.5s ease; /* Add smooth transitions */
 }
@@ -570,10 +610,10 @@ button .circle:hover {
 } */
 
 .icon {
-    display: inline-flex;
-    align-self: center;
-    top: 1vh;
-    position: relative;
+  display: inline-flex;
+  align-self: center;
+  top: 1vh;
+  position: relative;
 }
 
 /* @media only screen and (min-width: 768px) and (max-width: 1024px) {
@@ -589,33 +629,35 @@ button .circle:hover {
   .icon {
     display: inline-flex;
     align-self: center;
-    top: .5vh !important;
+    top: 0.5vh !important;
     position: relative;
+  }
+
+  .lgscpad {
+    padding-top: 2vh !important;
+  }
 }
 
-.lgscpad{
-  padding-top: 2vh !important;
-}
-}
-
-.lgscpad{
+.lgscpad {
   padding-top: unset;
 }
 
-.icon svg, .icon img {
-    height: 2em;
-    width: 5em;
-    fill: currentColor; 
+.icon svg,
+.icon img {
+  height: 2em;
+  width: 5em;
+  fill: currentColor;
 }
 
-.icon.baseline svg, .icon img {
-    top: .125em;
-    top: 0.9rem;
-    top: 2.9000000000000004rem;
-   top: -0.9em;
-    /* top: 2.9000000000000004rem; */
-    /* top: 0; */
-    position: relative;
+.icon.baseline svg,
+.icon img {
+  top: 0.125em;
+  top: 0.9rem;
+  top: 2.9000000000000004rem;
+  top: -0.9em;
+  /* top: 2.9000000000000004rem; */
+  /* top: 0; */
+  position: relative;
 }
 /* header{
   background-color: #ffffff00;
@@ -633,8 +675,8 @@ button .circle:hover {
   width: 110%;
   height: 0;
   /* background-color: #212121; */
-      background-color: #d2d2d2;
-      /* border: 0.5px solid #212121; */
+  background-color: #d2d2d2;
+  /* border: 0.5px solid #212121; */
   /* #d2d2d2; */
   /* border: 1.5px solid #11ff00; */
   /* background-color: rgb(14, 14, 53);  */
@@ -654,14 +696,14 @@ button .circle:hover {
   /* line-height: 1.375rem; */
   /* height: 365px; */
   will-change: auto;
-  padding-bottom: .5vh;
+  padding-bottom: 0.5vh;
   /* min-height: 365px; */
   /* height: fit-content; */
 }
 
 .text {
   /* color:  #f7f7f7; */
-  color:  #212121;
+  color: #212121;
   font-size: 1.125rem;
   line-height: 1.375rem;
   transition: height 1s ease, opacity 0.5s ease; /* Add smooth transitions */
@@ -692,10 +734,10 @@ button .circle:hover {
   transition: height 1s ease, opacity 0.5s ease;
 } */
 
-.textppad{
-      font-family: "GTWalsheimbb";
-          font-size: 2rem;
-          line-height: 2rem;
+.textppad {
+  font-family: "GTWalsheimbb";
+  font-size: 2rem;
+  line-height: 2rem;
 }
 /* Add styles for the active blue box */
 .blue-box.active {
@@ -706,55 +748,54 @@ button .circle:hover {
   /* opacity: 1; */
   background-color: #d2d2d2;
   /* background-color: blue; */
-    /* border-bottom: 0.5px solid #212121; */
+  /* border-bottom: 0.5px solid #212121; */
   z-index: 100002;
   pointer-events: auto; /* Enable pointer events when visible */
-    /* display: flex;
+  /* display: flex;
     align-items: center;
     justify-content: center; */
-        font-size: 1.1vw;
-        will-change: auto;
-      overflow: hidden;
-      /* min-height: 365px; */
-      width: 100vw;
-      max-width: 100vw;
- }
+  font-size: 1.1vw;
+  will-change: auto;
+  overflow: hidden;
+  /* min-height: 365px; */
+  width: 100vw;
+  max-width: 100vw;
+}
 
- .mobile{
-    display: none;
-  }
+.mobile {
+  display: none;
+}
 
-  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
   /* Your tablet-specific styles here */
   svg {
     width: 16vw !important;
   }
   .icon svg,
-.icon img {
-  height: 2em;
-  width: 8vw !important;
-  fill: currentColor;
-}
+  .icon img {
+    height: 2em;
+    width: 8vw !important;
+    fill: currentColor;
+  }
 }
 
 @media (max-width: 768px) {
-
   .text {
-  padding: 10px;
-}
-  .textppad{
-      padding-left: 1rem;
-    }
-
-    .textbpad{
-      padding-left: 0rem;
-    }
-
-  .mobile{
-    display:contents;
+    padding: 10px;
+  }
+  .textppad {
+    padding-left: 1rem;
   }
 
-  .content-container{
+  .textbpad {
+    padding-left: 0rem;
+  }
+
+  .mobile {
+    display: contents;
+  }
+
+  .content-container {
     position: fixed;
     width: 100vw !important;
     background-color: #f7f7f7;
@@ -762,110 +803,104 @@ button .circle:hover {
     /* border-top: 1px solid #11ff00; */
   }
   .blue-box.active {
-  height: fit-content;
-  height: 100vh;
-  height: 103vh;
-}
+    height: fit-content;
+    height: 100vh;
+    height: 103vh;
+  }
 
-.blue-box {
+  .blue-box {
     position: relative;
     top: 0 !important;
     left: 0 !important;
     width: 110%;
     height: 0;
     /* background-color: #212121; */
-}
+  }
 
-svg{
-  width: 26vw;
-}
+  svg {
+    width: 26vw;
+  }
 
-.white-box {
-  position: fixed;
-}
-.headposition {
+  .white-box {
+    position: fixed;
+  }
+  .headposition {
     padding-top: 0vh;
-}
+  }
 
-.blue-box {
-  top: 0vh;
-  /* left: -2vw; */
-  width: 110%;
-  height: 0;
-  /* transition: none; */
-  /* background-color: #212121; */
+  .blue-box {
+    top: 0vh;
+    /* left: -2vw; */
+    width: 110%;
+    height: 0;
+    /* transition: none; */
+    /* background-color: #212121; */
+  }
 
-}
+  .blue-box div {
+    /* height:100vh; */
+    /* padding: 10px; */
+    /* padding-top: 0vh; */
+  }
 
-.blue-box div {
-  /* height:100vh; */
-  /* padding: 10px; */
-  /* padding-top: 0vh; */
-}
+  .navelemb {
+    /* padding: 1vw; */
+    padding: 1.25rem;
+    width: 100vw;
+  }
 
-.navelemb{
-/* padding: 1vw; */
-padding: 1.25rem;
-width: 100vw;
-}
+  .mobilemenu {
+    padding: 1.25rem;
+    border-bottom: 0.8px solid #000;
+  }
 
-.mobilemenu{
-  padding: 1.25rem;
-  border-bottom: 0.8px solid #000;
-}
-
-header{
-  position: fixed;
-  width: 100vw;
-  background-color: #f7f7f7;
-}
-
+  header {
+    position: fixed;
+    width: 100vw;
+    background-color: #f7f7f7;
+  }
 }
 
 @media screen and (max-width: 1023px) {
   /* Your CSS styles for screens smaller than 1024px go here */
   /* For example, you can change the font size or layout */
-.textppad{
-  padding-left: 1rem;
-}
+  .textppad {
+    padding-left: 1rem;
+  }
 
-/* .textbpad{
+  /* .textbpad{
   padding-left: .05vw;
 } */
-  .blue-box.active{
+  .blue-box.active {
     height: 100vh;
   }
 
   /* svg{
   width: 18vw;
 } */
-  .blue-box{
-    top:0;
+  .blue-box {
+    top: 0;
   }
-  .mobile{
-    display:contents;
+  .mobile {
+    display: contents;
   }
 
-  .headposition{
-    display: none;   
-}
+  .headposition {
+    display: none;
+  }
 
-.mobilemenu{
-  border-bottom-width: 0.95px;
+  .mobilemenu {
+    border-bottom-width: 0.95px;
     border-color: rgba(28, 25, 23);
     padding-left: 1.5vw;
     padding-right: 1.5vw;
+  }
+
+  .mobilemenupad {
+    padding: 0.5vw;
+    font-size: 1.25rem;
+  }
 }
-
-.mobilemenupad{
-  padding: 0.5vw;
-  font-size: 1.25rem;
-}
-}
-
-
-
-
 
 .white-box.active {
   height: 100vh; /* Adjust the height as needed */
@@ -903,18 +938,16 @@ header{
   width: 90%;
 }
 
-
-
 /* end heeader  */
-.overlaydiv{
+.overlaydiv {
   display: flex;
-    flex-direction: row;
-    justify-content: end;
+  flex-direction: row;
+  justify-content: end;
 }
 
-.overlaycont{
+.overlaycont {
   width: 100vw;
-    height: 100vh;
+  height: 100vh;
 }
 .scroll-container {
   /* width: 98vw;
@@ -1017,12 +1050,12 @@ header{
   background-color: rgba(255, 255, 255);
   /* background-color: rgb(255 255 255 / 45%); */
   /* backdrop-filter: blur(10px);  */
-  transition: backdrop-filter 0.3s ease; 
+  transition: backdrop-filter 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9;
-      /* z-index: 100; */
+  /* z-index: 100; */
   cursor: crosshair;
 }
 
@@ -1074,16 +1107,16 @@ button {
   width: fit-content; */
 
   cursor: crosshair;
-    padding-left: 15vw;
-    /* position: relative; */
-    margin-top: auto;
-    margin-bottom: auto;
-    height: inherit;
-    width: -moz-fit-content;
-    width: fit-content;
+  padding-left: 15vw;
+  /* position: relative; */
+  margin-top: auto;
+  margin-bottom: auto;
+  height: inherit;
+  width: -moz-fit-content;
+  width: fit-content;
 
-    position: absolute;
-    left: 65vw;
+  position: absolute;
+  left: 65vw;
 }
 
 .backbtn {
@@ -1096,15 +1129,15 @@ button {
   width: fit-content; */
 
   cursor: crosshair;
-    padding-right: 15vw;
-    /* position: relative; */
-    margin-top: auto;
-    margin-bottom: auto;
-    height: inherit;
-    width: -moz-fit-content;
-    width: fit-content;
-    position: relative;
-    left: 18vw;
+  padding-right: 15vw;
+  /* position: relative; */
+  margin-top: auto;
+  margin-bottom: auto;
+  height: inherit;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  left: 18vw;
 }
 
 .gallery-images {
@@ -1123,35 +1156,35 @@ button {
   cursor: grab !important;
 
   padding-top: 20vh;
-    padding-bottom: 20vh;
+  padding-bottom: 20vh;
   max-width: 100vw;
-    width: calc(55.33vw - 20px);
-    align-items: center;
+  width: calc(55.33vw - 20px);
+  align-items: center;
 }
 
 @media (min-width: 2560px) {
-    .bottom-div {
-        padding-top: 19rem  !important;
-    }
+  .bottom-div {
+    padding-top: 21rem !important;
+  }
 
-    .textppad{
-      padding-left: 3rem;
-    }
+  .textppad {
+    padding-left: 3rem;
+  }
 
-    .textbpad{
-      padding-left: 2.5rem;
-    }
+  .textbpad {
+    padding-left: 2.5rem;
+  }
 }
 
 @media only screen and (min-width: 1440px) and (max-width: 1600px) {
-  .textppad{
-      padding-left: 2rem;
-    }
-
-    .textbpad{
-      padding-left: 1.5rem;
-    }
+  .textppad {
+    padding-left: 2rem;
   }
+
+  .textbpad {
+    padding-left: 1.5rem;
+  }
+}
 .scroll-container div img {
   /* object-fit: cover; */
   /* height: 55vh; */
@@ -1167,8 +1200,6 @@ button {
   transform: scale(1.01);
   overflow: hidden;
 }
-
-
 
 /* img{
   object-fit: cover;
@@ -1189,10 +1220,9 @@ button {
   height: calc(80% - 0.5rem);
 }
 
-
 .bottom-div {
-    padding-top: 11rem;
-    transition: padding-top 0.3s ease-in-out, height 0.3s ease-in-out !important;
+  padding-top: 14rem;
+  transition: padding-top 0.3s ease-in-out, height 0.3s ease-in-out !important;
 }
 
 /* section{
@@ -1204,18 +1234,18 @@ button {
   /* Your CSS styles for screens smaller than 1024px go here */
   /* For example, you can change the font size or layout */
   .bottom-div {
-    padding-top: 2rem;
+    padding-top: 5rem;
     transition: padding-top 0.3s ease-in-out, height 0.3s ease-in-out !important;
-}
+  }
 }
 
 /* ipad and tablet */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   /* Add your styles here */
   .bottom-div {
-    padding-top: 9rem !important;
+    padding-top: 12rem !important;
     transition: padding-top 0.3s ease-in-out, height 0.3s ease-in-out !important;
-}
+  }
 
   /* Other styles for tablets */
 }
@@ -1226,9 +1256,9 @@ button {
   }
 
   .bottom-div {
-    padding-top: 7rem;
+    padding-top: 10rem;
     transition: padding-top 0.3s ease-in-out, height 0.3s ease-in-out !important;
-}
+  }
   /*   display: block;
     position: absolute; */
 
@@ -1253,8 +1283,11 @@ button {
   }
 
   /* font-size: 1.25rem; */
-  .mobileslugtitle{
+  .mobileslugtitle {
     padding-bottom: 0.25rem;
+    font-size: 2.25rem/* 36px */;
+  line-height: 2.5rem/* 40px */;
+
   }
 
   .projecttextmb {
@@ -1321,7 +1354,7 @@ button {
   }
 
   .mobiletitle {
-    position: fixed;
+    position: relative;
     /* top: 17vw; */
     background: 0;
     height: fit-content;

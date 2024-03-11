@@ -56,13 +56,13 @@ export default {
           description: "Mark this item as a draft",
         },
     
-        {
-          name: "imageWidth",
-          title: "Image Width",
-          type: "number",
-          description: "Set the width of the image in viewport width",
-          validation: (Rule) => Rule.min(0),
-        },
+        // {
+        //   name: "imageWidth",
+        //   title: "Image Width",
+        //   type: "number",
+        //   description: "Set the width of the image in viewport width",
+        //   validation: (Rule) => Rule.min(0),
+        // },
       
         {
           name: "image",
@@ -77,6 +77,16 @@ export default {
           type: "mux.video",
           hidden: ({ parent, value }) =>
             (!value && parent?.spacer) || (!value && parent?.image),
+        },
+        {
+          name: 'youtubeUrl',
+          title: 'YouTube Video URL',
+          type: 'url',
+        },
+        {
+          name: 'vimeoUrl',
+          title: 'Vimeo Video URL',
+          type: 'url',
         },
         {
           name: "thumbnailTime",

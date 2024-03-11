@@ -164,28 +164,36 @@
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.5;
     /* font-size: 10.3px; */
-  } 
+  }  
+
+  strong{
+    font-size: 2rem;
+    line-height:2rem;
+    font-family: 'GTWalsheiml' !important;
+  }
 
   @media only screen and (min-width: 2560px) {
 
   .smaller-text {
-    font-size: 1.8rem !important;
-    line-height: 1.8rem !important;
+    font-size: 3.8rem !important;
+    line-height: 3.8rem !important;
 }
 
 .lgsctext{
-  font-size: 1.8rem !important;
-    line-height: 1.8rem !important;
+  font-size: 3.8rem !important;
+    line-height: 3.8rem !important;
 }
 
 .button-container{
-  font-size: 1.8rem !important;
-    line-height: 1.8rem !important;
+  font-size: 3.8rem !important;
+    line-height: 3.8rem !important;
 }
 
+
+
 .button{
-  font-size: 1.8rem !important;
-    line-height: 1.8rem !important;
+  font-size: 3.8rem !important;
+    line-height: 3.8rem !important;
 }
 
 .lgsctoppad{
@@ -193,23 +201,28 @@
 }
 
 .textppad{
-  font-size: 1.8rem !important;
-    line-height: 1.8rem !important;
+  font-size: 3.8rem !important;
+    line-height: 3.8rem !important;
 }
 
+/* .titleText{
+  font-size: 6.8rem !important;
+    line-height: 6.8rem !important;
+} */
+
 .textppad div{
-  font-size: 1.8rem !important;
-    line-height: 1.8rem !important;
+  font-size: 3.8rem !important;
+    line-height: 3.8rem !important;
 }
 
 .close-button{
-  font-size: 1.8rem !important;
-    line-height: 1.8rem !important;
+  font-size: 3.8rem !important;
+    line-height: 3.8rem !important;
 }
 
 .headtextlg{
-  font-size: 1.8rem !important;
-    line-height: 1.8rem !important;
+  font-size: 3.8rem !important;
+    line-height: 3.8rem !important;
 }
 }
 

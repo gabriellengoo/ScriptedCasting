@@ -33,6 +33,10 @@
 .copyr{
   width: 60vw;
 }
+
+.titleText{
+  font-size: 6rem;
+}
 }
 .text-content {
   position: fixed;
