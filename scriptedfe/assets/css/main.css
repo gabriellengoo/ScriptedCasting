@@ -54,6 +54,27 @@ svg {
    display: flex;
     justify-content: space-between;
     flex-direction: row; */
+    #fys-fp-video {
+      position: relative;
+      padding-bottom: 56.25%;
+      padding-top: 25px;
+      height: 600px;
+  }
+  #fys-fp-video iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 600px;
+  }
+  
+
+    .abouttextdesk div{
+      width: 83.333333%;
+      width: 66.666667%;
+    }
+
+
     .abtextmb div{
       padding-top: 1.25rem;
     }

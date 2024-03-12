@@ -1,6 +1,7 @@
 <template>
-  <div class="pt-40">
-    <NuxtLink :to="`/projects`">
+  <!-- pt-40 -->
+  <div class="">
+    <NuxtLink class="w-screen flex justify-center" :to="`/projects`">
       <div v-if="home.sections4">
         <div v-for="section in home.sections4" :key="section._key">
           <MediaImage
@@ -11,15 +12,18 @@
             class="landingimg h-screen object-cover"
             :sizes="size == 'sm' ? 'sm:60vw md:15vw' : 'sm:150vw md:150vw'"
           ></MediaImage>
-
+          <MediaVideo
+                  :id="section.video.id"
+                  v-if="section.video.id"
+                  class="md:min-h-screen min-w-full w-screen object-cover "
+                ></MediaVideo>
           <!-- Display YouTube Video -->
           <iframe
             v-else-if="section.youtubeUrl"
             :src="getYouTubeEmdedUrl(section.youtubeUrl)"
             frameborder="0"
             allowfullscreen
-            :style="{ width: `calc(${section.imageWidth}vw - 20px)` }"
-            class="min-h-screen min-w-full object-cover"
+            class="md:min-h-screen min-w-full w-screen object-cover pointer-events-none"
           ></iframe>
           <!-- Display Vimeo Video width="560" height="315"-->
 
@@ -28,14 +32,13 @@
             :src="getVimeoEmdedUrl(section.vimeoUrl)"
             frameborder="0"
             allowfullscreen
-            :style="{ width: `calc(${section.imageWidth}vw - 20px)` }"
-            class="min-w-full min-h-screen object-cover"
+            class="min-w-full md:min-h-screen  w-screen object-cover pointer-events-none"
           ></iframe>
         </div>
       </div>
       <!-- <Grid2 class="imagemarquee" size="small" :items="home.grid2"></Grid2> -->
     </NuxtLink>
-    <div>
+    <div c>
       <!-- md:pb-5 sm:pb-5  -->
       <div v-if="home.sections" class="pb-0" id="about">
         <!-- about -->
@@ -47,7 +50,7 @@
           <div class="pt-[5vw] pb-[5vw] w-screen p-10" v-if="section.title">
             <!-- text-[1.5rem] leading-[1.5rem] -->
 
-            <div>
+            <div class=" md:flex md:justify-between md:flex-row-reverse">
               <div
                 class="md:pt-0 pt-10 md:pb-20 abouttitle flex md:justify-end text-5xl md:text-6xl"
               >
@@ -61,13 +64,13 @@
             </p> -->
 
               <Richtext
-                class="md:p-5 md:w-5/6 text-[1.7rem] md:contents hidden leading-[1.7rem]"
+                class="abouttextdesk md:p-5 text-[1.7rem] md:contents hidden leading-[1.7rem]"
                 :blocks="section.content"
                 v-if="section.content"
               ></Richtext>
 
               <Richtext
-                class="abtextmb contents md:hidden  md:p-5 md:w-5/6 text-[1.7rem] leading-[1.7rem]"
+                class="abtextmb contents md:hidden  md:p-5  text-[1.7rem] leading-[1.7rem]"
                 :blocks="section.content"
                 v-if="section.content"
               ></Richtext>
@@ -319,6 +322,8 @@ export default {
           title4,
           youtubeUrl,
           vimeoUrl,
+          "video" : 
+                    {"id" : video.asset->playbackId, "aspect" : video.asset->data.aspect_ratio},
           "image4" : {"image4" : image4.asset._ref, "aspect" : image4.asset->metadata.dimensions.aspectRatio, "position" : position}, 
 
         }

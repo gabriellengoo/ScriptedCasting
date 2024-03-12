@@ -37,6 +37,13 @@ export default {
               type: "image",
             }, 
             {
+              name: "video",
+              title: "Video",
+              type: "mux.video",
+              hidden: ({ parent, value }) =>
+                (!value && parent?.spacer) || (!value && parent?.image),
+            },
+            {
               name: 'youtubeUrl',
               title: 'YouTube Video URL',
               type: 'url',
@@ -48,7 +55,7 @@ export default {
             },
           ],
         },
-      ],
+      ], 
     },
     {
       name: 'grid2',

@@ -3,9 +3,9 @@
   <header
     class="absolute top-0 left-0 z-20 w-full   text-xs leading-snug uppercase   "
   >
-  <!-- justify-center border-b-2 border-black -->
+  <!-- justify-center border-b-2 border-black pt-8 -->
     <div
-      class="fixed mobilemenu flex flex-wrap w-full    items-center gap-4 p-2 pt-8 md:pb-2 md:pt-2 md:flex-nowrap"
+      class="fixed mobilemenu flex flex-wrap w-full    items-center gap-4 p-2  md:pb-2 md:pt-2 md:flex-nowrap"
     >
     <!-- <Animation></Animation> -->
     <!-- <div><h1 class="titleText flex justify-between items-center text-9xl align-baseline text-center uppercase">Scripted</h1></div> -->
