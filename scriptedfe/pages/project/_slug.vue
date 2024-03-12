@@ -465,6 +465,7 @@ export default {
 .mobileslugtitle{
   font-size: 4.25rem /* 36px */;
     line-height: 2.5rem /* 40px */;
+    font-family: "GTWalsheimbb";
 }
 
 @media only screen and (min-width: 2560px){
@@ -735,9 +736,11 @@ button .circle:hover {
 } */
 
 .textppad {
-  font-family: "GTWalsheimbb";
-  font-size: 2rem;
-  line-height: 2rem;
+  /* font-family: "GTWalsheimbb"; */
+  /* font-size: 2rem;
+  line-height: 2rem; */
+  font-size: 1.5rem;
+  line-height: 1.5rem;
 }
 /* Add styles for the active blue box */
 .blue-box.active {
@@ -1292,7 +1295,7 @@ button {
 
   .projecttextmb {
     width: fit-content;
-    font-family: "GTWalsheimb";
+    /* font-family: "GTWalsheimb"; */
     /* padding-top: 7rem; */
     padding-left: 1vw;
     font-size: 11.84px;

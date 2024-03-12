@@ -12,7 +12,7 @@
         $nuxt.$route.name == 'production' ||
         $nuxt.$route.name == 'artists'
           ? ''
-          : 'hidden md:flex'
+          : ' md:flex'
       "
     ></LayoutHeader>
     <!-- <LayoutHeaderMin

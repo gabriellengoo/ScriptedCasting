@@ -1,40 +1,36 @@
 <template>
-  <div class="pt-40 ">
+  <div class="pt-40">
     <NuxtLink :to="`/projects`">
-     
       <div v-if="home.sections4">
-        <div v-for="section in home.sections4"
-          :key="section._key">
+        <div v-for="section in home.sections4" :key="section._key">
           <MediaImage
-                :size="section.image4.size"
-                :aspect="section.image4.aspect"
-                :src="section.image4.image4"
-                v-if="section.image4.image4"
-                class="landingimg h-screen object-cover"
-                :sizes="size == 'sm' ? 'sm:60vw md:15vw' : 'sm:150vw md:150vw'"
-              ></MediaImage>
+            :size="section.image4.size"
+            :aspect="section.image4.aspect"
+            :src="section.image4.image4"
+            v-if="section.image4.image4"
+            class="landingimg h-screen object-cover"
+            :sizes="size == 'sm' ? 'sm:60vw md:15vw' : 'sm:150vw md:150vw'"
+          ></MediaImage>
 
-              
-                 <!-- Display YouTube Video -->
-                 <iframe
-                v-else-if="section.youtubeUrl"
-                :src="getYouTubeEmbedUrl(section.youtubeUrl)"
-                frameborder="0"
-                allowfullscreen
-                :style="{ width: `calc(${section.imageWidth}vw - 20px)` }"
-                class="min-h-screen min-w-full object-cover"
-              ></iframe>
-              <!-- Display Vimeo Video width="560" height="315"-->
-              
-              <iframe
-                v-else-if="section.vimeoUrl"
-                :src="getVimeoEmbedUrl(section.vimeoUrl)"
-                frameborder="0"
-                allowfullscreen
-                
-                :style="{ width: `calc(${section.imageWidth}vw - 20px)` }"
-                class=" min-w-full min-h-screen object-cover"
-              ></iframe>
+          <!-- Display YouTube Video -->
+          <iframe
+            v-else-if="section.youtubeUrl"
+            :src="getYouTubeEmdedUrl(section.youtubeUrl)"
+            frameborder="0"
+            allowfullscreen
+            :style="{ width: `calc(${section.imageWidth}vw - 20px)` }"
+            class="min-h-screen min-w-full object-cover"
+          ></iframe>
+          <!-- Display Vimeo Video width="560" height="315"-->
+
+          <iframe
+            v-else-if="section.vimeoUrl"
+            :src="getVimeoEmdedUrl(section.vimeoUrl)"
+            frameborder="0"
+            allowfullscreen
+            :style="{ width: `calc(${section.imageWidth}vw - 20px)` }"
+            class="min-w-full min-h-screen object-cover"
+          ></iframe>
         </div>
       </div>
       <!-- <Grid2 class="imagemarquee" size="small" :items="home.grid2"></Grid2> -->
@@ -42,85 +38,179 @@
     <div>
       <!-- md:pb-5 sm:pb-5  -->
       <div v-if="home.sections" class="pb-0" id="about">
-<!-- about -->
+        <!-- about -->
         <span
           class="aboutsec text-4xl"
           v-for="section in home.sections"
           :key="section._key"
         >
-          <div class="pt-[2vw] p-10" v-if="section.title">
-            <p class="p-5 pb-0 abouttitle text-6xl">
-              <span>{{ section.title }}</span>
-            </p>
+          <div class="pt-[5vw] pb-[5vw] w-screen p-10" v-if="section.title">
+            <!-- text-[1.5rem] leading-[1.5rem] -->
 
-            <!-- Display other content -->
-            <Richtext
-            class="p-5"
-              :blocks="section.content"
-              v-if="section.content"
-            ></Richtext>
-<!-- contct -->
-            <!-- Display the About Image    v-if="section.image.image"-->
-            <div v-if="home.sections2" id="contact" class="contact-section contactsecmb pt-20 flex justify-between">
+            <div>
               <div
-                v-for="sections2 in home.sections2"
-                :key="sections2._key"
-                class="p-5 w-5/12 contacttextmb"
+                class="md:pt-0 pt-10 md:pb-20 abouttitle flex md:justify-end text-5xl md:text-6xl"
               >
-                <div class="contactsec ">
-                  <p v-if="sections2.title2" class="p-5 pb-0 contacttitle justify-start">
+                <p>
+                  {{ section.title }}
+                  <span class="scriptedt uppercase">Scripted</span>
+                </p>
+              </div>
+              <!-- <p class="md:p-5 md:pt-0 pt-10 md:pb-0 pb-5 abouttitle scriptedt flex justify-end text-6xl">
+              <span>Scripted</span>
+            </p> -->
+
+              <Richtext
+                class="md:p-5 md:w-5/6 text-[1.7rem] md:contents hidden leading-[1.7rem]"
+                :blocks="section.content"
+                v-if="section.content"
+              ></Richtext>
+
+              <Richtext
+                class="abtextmb contents md:hidden  md:p-5 md:w-5/6 text-[1.7rem] leading-[1.7rem]"
+                :blocks="section.content"
+                v-if="section.content"
+              ></Richtext>
+
+              <!-- Add a button to toggle the collapsible section -->
+              <button
+                @click="toggleCollapsible"
+                v-if="!isCollapsibleOpen"
+                class="contents md:hidden  collapsible-button"
+              >
+                ... view more
+                <!-- <i :class="arrowIconClass"></i> -->
+              </button>
+
+              <!-- <div class="flex justify-end"> -->
+              <!-- about textt -->
+              <div v-if="isCollapsibleOpen" class="collapsible-section">
+                <Richtext
+                  class="abtextmbopen md:p-5 md:w-5/6 text-[1.7rem] leading-[1.7rem]"
+                  :blocks="section.content"
+                  v-if="section.content"
+                ></Richtext>
+              </div>
+            </div>
+            <!-- </div> -->
+
+            <!-- contct -->
+            <!-- Display the About Image    v-if="section.image.image"-->
+            <div
+              v-if="home.sections2"
+              id="contact"
+              class="contact-section contactsecmd pt-20 flex justify-between"
+            >
+              <div class="contactsecall pt-20">
+                <!-- contact title text-6xl -->
+                <div
+                  class="contactheader text-[1.7rem] leading-[1.7rem] md:p-5 pb-3"
+                >
+                  <div class="">
+                    <span>Get in touch</span>
+                  </div>
+                </div>
+
+                <!-- contact text -->
+                <div class="md:flex md:pt-0 pt-5">
+                  <div>
+                    <div>
+                      <!-- leading-[1.5rem] text-[1.5rem] -->
+                      <p
+                        class="md:pl-5 pb-0 text-[1.7rem] leading-[1.7rem] justify-start"
+                      >
+                        <span>Contact</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="md:pl-10">
+                    <div
+                      v-for="sections2 in home.sections2"
+                      :key="sections2._key"
+                      class="contacttextmd"
+                    >
+                      <div class="contactsec text-[1.7rem] leading-[1.7rem]">
+                        <!-- <p v-if="sections2.title2" class="p-5 pb-0 contacttitle justify-start">
                     <span>{{ sections2.title2 }}</span>
-                  </p>
-                  <Richtext
-                  class="p-5"
-                    :blocks="sections2.content2"
-                    v-if="sections2.content2"
-                  ></Richtext>
+                  </p> -->
+                        <Richtext
+                          class="pb-2 contactinner"
+                          :blocks="sections2.content2"
+                          v-if="sections2.content2"
+                        ></Richtext>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div>
+                      <p
+                        class="md:pl-10 pt-10 flex md:pt-0 pb-0 leading-[.25rem] md:leading-[1.25rem] text-[1.25rem] justify-center"
+                      >
+                        COPYRIGHT ©2024
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="w-3/12">
+                    <div>
+                      <p class="p-5 pb-0 text-[1.5rem] justify-start">
+                        <span><br /></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- press -->
+                <div
+                  v-if="home.sections3"
+                  class="presssecmd pb-5 md:pb-0 text-[1.7rem] leading-[1.7rem] flex"
+                >
+                  <div
+                    v-for="sections3 in home.sections3"
+                    :key="sections3._key"
+                    class="md:p-5 w-7/12 presssecinnermd"
+                  >
+                    <div class="presssec">
+                      <p
+                        v-if="sections3.title3"
+                        class="presstitle md:pb-2 justify-start"
+                      >
+                        <span>{{ sections3.title3 }}</span>
+                      </p>
+                      <Richtext
+                        class="presssectext"
+                        :blocks="sections3.content3"
+                        v-if="sections3.content3"
+                      ></Richtext>
+                    </div>
+                    <!-- Arrow pointing down -->
+                    <!-- <div class="pt-5 justify-start arrow-down">
+                      <i class="fas fa-arrow-down"></i>
+                    </div> -->
+                  </div>
                 </div>
               </div>
-          <div class="contactimagemobilecont  flex justify-end">
-            <MediaImage
-                :size="section.image.size"
-                :aspect="section.image.aspect"
-                :src="section.image.image"
-                v-if="section.image.image"
-                class="contactimagemobile h-auto w-10/12"
-          
-              ></MediaImage>
-          </div>
-            </div>
-<!-- press -->
-            <div v-if="home.sections3" class="presssecmb pt-20 flex justify-end">
-              <div
-                v-for="sections3 in home.sections3"
-                :key="sections3._key"
-                class="p-5 w-7/12 presssecinnermb"
-              >
-                <div class="presssec">
-                  <p v-if="sections3.title3" class="presstitle pb-10 justify-start">
-                    <span>{{ sections3.title3 }}</span>
-                  </p>
-                  <Richtext
-                    class="presssectext"
-                    :blocks="sections3.content3"
-                    v-if="sections3.content3"
-                  ></Richtext>
-                </div>
-                       <!-- Arrow pointing down -->
-                       <div class="justify-start arrow-down">
-          <i class="fas fa-arrow-down"></i>
-        </div>
+
+              <div class="contactimagemobilecont w-[40vw] flex justify-end">
+                <MediaImage
+                  :size="section.image.size"
+                  :aspect="section.image.aspect"
+                  :src="section.image.image"
+                  v-if="section.image.image"
+                  class="contactimagemobile"
+                ></MediaImage>
               </div>
             </div>
           </div>
         </span>
-         
 
         <NuxtLink :to="`/projects`">
           <h1 class="morep text-6xl w-screen p-10 pt-0 pb-0">View Projects</h1>
         </NuxtLink>
 
-        <Grid3 class="imagemarquee" size="double" :items="home.grid2"></Grid3> 
+        <Grid3 class="imagemarquee" size="double" :items="home.grid2"></Grid3>
         <!-- <Grid size="small" :items="home.grid2"></Grid> -->
       </div>
     </div>
@@ -130,7 +220,7 @@
 <script>
 import { groq } from "@nuxtjs/sanity";
 import { mapState, mapActions } from "vuex";
-import "@fortawesome/fontawesome-free/css/all.css"; 
+import "@fortawesome/fontawesome-free/css/all.css";
 // import AboutPage from '~/components/AboutPage.vue'
 
 export default {
@@ -148,6 +238,7 @@ export default {
       back: false,
       abouts: [],
       activeStyle: { textDecoration: "none" },
+      isCollapsibleOpen: false,
     };
   },
 
@@ -173,13 +264,13 @@ export default {
     title, photographer,year,hair,styleing, link, production, location,
       "reference" : {"key" : reference._ref, "title" : reference->title, "clients" : reference->client[].label, "slug" : reference->slug.current, "talent" : reference->talent->title, "team" : reference->team, "meta" : reference->meta}} } 
      
-      {..., grid2[] {_key, spacer, thumbnailTime,youtubeUrl,vimeoUrl, "video" : 
+      {..., grid2[] {_key, spacer, thumdnailTime,youtubeUrl,vimeoUrl, "video" : 
     {"id" : video.asset->playbackId, "aspect" : video.asset->data.aspect_ratio},
       "image" : {"image" : image.asset._ref, "aspect" : image.asset->metadata.dimensions.aspectRatio, "position" : position}, 
     title, photographer,year,imageWidth,hair,makeup,dop,set,styleing, link, production, location, listImage, draft,
       "reference" : {"key" : reference._ref, "title" : reference->title, "clients" : reference->client[].label, "slug" : reference->slug.current, "talent" : reference->talent->title, "team" : reference->team, "meta" : reference->meta}} } 
      
-      {..., gridm[] {_key, spacer, thumbnailTime,youtubeUrl,vimeoUrl, "video" : 
+      {..., gridm[] {_key, spacer, thumdnailTime,youtubeUrl,vimeoUrl, "video" : 
     {"id" : video.asset->playbackId, "aspect" : video.asset->data.aspect_ratio},
       "image" : {"image" : image.asset._ref, "aspect" : image.asset->metadata.dimensions.aspectRatio, "position" : position}, 
     title, photographer,year,imageWidth,hair,makeup,dop,set,styleing, link, production, location, listImage, draft,
@@ -241,17 +332,19 @@ export default {
     // Commit meta and metaemails to the Vuex store
     store.commit("setMeta", home.meta);
     store.commit("setMetaEmails", home.metaemails);
-    store.commit("setThumbnailTime", home.thumbnailTime);
+    store.commit("setThumdnailTime", home.thumdnailTime);
     // store.commit('setYear', home.year);
 
     return { home };
   },
 
-  
   methods: {
     ...mapActions(["setTitle"]),
     setProject(reference) {
       this.project = reference;
+    },
+    toggleCollapsible() {
+      this.isCollapsibleOpen = !this.isCollapsibleOpen;
     },
 
     openGallery() {
@@ -260,16 +353,16 @@ export default {
     closeGallery() {
       this.$store.commit("setGalleryState", false); // Set gallery state as closed
     },
-    getYouTubeEmbedUrl(youtubeUrl) {
+    getYouTubeEmdedUrl(youtubeUrl) {
       // Extract YouTube video ID from the URL
       const videoId = youtubeUrl.split("v=")[1];
-      // Generate the YouTube embed URL with autoplay, mute, loop, and hide controls on hover parameters
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&showinfo=0`;
+      // Generate the YouTube emded URL with autoplay, mute, loop, and hide controls on hover parameters
+      return `https://www.youtube.com/emded/${videoId}?autoplay=1&mute=1&controls=0&loop=1&showinfo=0`;
     },
-    getVimeoEmbedUrl(vimeoUrl) {
+    getVimeoEmdedUrl(vimeoUrl) {
       // Extract Vimeo video ID from the URL
-      const videoId = vimeoUrl.split('/').pop();
-      // Generate the Vimeo embed URL
+      const videoId = vimeoUrl.split("/").pop();
+      // Generate the Vimeo emded URL
       return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&autopause=0`;
     },
     toggleBlueBox() {
@@ -304,6 +397,12 @@ export default {
       };
     },
   },
+  computed: {
+    arrowIconClass() {
+      // fas fa-arrow-up
+      return this.isCollapsibleOpen ? "" : "fas fa-arrow-down";
+    },
+  },
   created() {
     this.setTitle(this.home.title);
   },
@@ -325,7 +424,9 @@ export default {
   /* font-size: 6.75rem; */
   /* line-height: 4.3rem; */
   text-transform: uppercase;
+  /* font-family: "GTWalsheimdb"; */
   font-family: "GTWalsheimbb";
+  padding-top: 5rem;
   text-align: center;
 }
 .titleText {
@@ -333,7 +434,7 @@ export default {
   /* font-weight: bolder; */
   color: whitesmoke;
   /* color: #2a2a2a; */
-  font-family: "GTWalsheimb";
+  font-family: "GTWalsheimd";
   left: 50%;
   top: 50%;
   /* width: 100vw; */
@@ -341,17 +442,40 @@ export default {
   position: absolute;
 }
 
+.contactheader {
+  /* font-size: 3.75rem;
+    line-height: 2.5rem ; */
+  /* font-family: "GTWalsheimbb"; */
+  /* text-transform: uppercase; */
+  display: flex;
+  /* justify-content: center; */
+}
+
 .abouttitle {
   display: flex;
+  /* font-family: "GTWalsheimdb"; */
+  /* justify-content: right; */
+  /* text-transform: uppercase; */
+  /* line-height: 2.25rem;
+  font-size: 3.75rem; */
+  /* line-height: 2.5rem ; */
   font-family: "GTWalsheimbb";
-  justify-content: right;
-  text-transform: uppercase;
-  line-height: 4.3rem;
+  /* text-transform: uppercase; */
+}
+
+.scriptedt {
+  font-family: "GTWalsheimb";
+}
+
+.contactsecall {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .contacttitle {
   display: flex;
-  font-family: "GTWalsheimbb";
+  font-family: "GTWalsheimdb";
   text-transform: uppercase;
   /* line-height: 4.3rem; */
 }
@@ -359,17 +483,17 @@ export default {
 .contactsec {
   /* font-family: "GTWalsheiml" !important; */
   flex-direction: column;
-  font-size: 2rem !important;
-  line-height: 2rem !important;
+  /* font-size: 1.5rem !important;
+  line-height: 1.5rem !important; */
   display: flex;
   justify-content: space-between;
-  text-transform: uppercase;
+  /* text-transform: uppercase;*/
 }
 
 .presssec {
   /* font-family: "GTWalsheiml" !important; */
-  font-size: 2rem !important;
-  line-height: 2rem !important;
+  /* font-size: 1.5rem !important;
+  line-height: 1.5rem !important; */
   /* display: flex;
   justify-content: space-between !important; */
 }
@@ -388,87 +512,149 @@ export default {
   width: 100vw;
   display: flex;
   justify-content: center;
-  /* font-family: 'GTWalsheimbb'; */
+  /* font-family: 'GTWalsheimdb'; */
 }
 
 .imagemarquee {
   z-index: 10 !important;
 }
 
+.contacttextmd:nth-child(1) {
+  padding-bottom: 2rem;
+}
+
+.contacttextmd:nth-child(3) {
+  padding-bottom: 2rem;
+}
+
+/*  
+.contacttextmd:nth-child(6) .contactsec
+   display: flex;
+    justify-content: space-between;
+    flex-direction: row; */
+
 @media (max-width: 768px) {
-.landingimg{
-  height: auto;
+  .landingimg {
+    height: auto;
+  }
+
+  .aboutsec {
+    font-size: 1.25rem /* 36px */;
+    line-height: 1.5rem /* 40px */;
+  }
+
+  .abouttitle {
+    /* font-size: 1.25rem; */
+    line-height: 1;
+  }
+
+  .contactsecmd {
+    display: contents;
+  }
+
+  .contacttextmd {
+    /* width: 60vw; */
+    /* width: 100vw;  */
+    padding: 0%;
+    /* padding-top: 1.25rem; */
+  }
+
+  .contacttextmd:nth-child(1) {
+    padding-bottom: 0rem;
+    padding-top: 1.25rem;
+  }
+
+  .contacttextmd:nth-child(2) {
+    padding-bottom: 0rem;
+    padding-top: 1.25rem;
+  }
+
+  .contacttextmd:nth-child(3) {
+    padding-top: 1.25rem;
+    padding-bottom: 0rem;
+  }
+
+  .contacttextmd:nth-child(4) {
+    padding-top: 2rem;
+  }
+
+  .contactsec {
+    font-size: 1.7rem !important;
+    line-height: 1.7rem !important;
+    text-transform: none;
+  }
+
+  .contactheader {
+    font-family: "GTWalsheimbb";
+    /* text-transform: uppercase; */
+    font-size: 3rem;
 }
 
-.aboutsec{
-  font-size: 1.25rem/* 36px */;
-  line-height: 1.5rem/* 40px */;
-}
+  .presstitle {
+    /* font-family: "GTWalsheimbb"; */
+    text-transform: none;
+  }
 
-.abouttitle{
-  font-size: 1.25rem/* 60px */;
-  line-height: 1;
-}
+  .contactimagemobile {
+    width: 83.333333%;
+    float: right;
+  }
 
-.contactsecmb{
-  display: contents;
-}
-
-.contacttextmb{
-  /* width: 60vw; */
-  width: 100vw; 
-  padding: 0%;
-  padding-top: 1.25rem;
-}
-
-.contactsec{
-  font-size: 1.25rem !important;
-  line-height: 1.25rem !important;
-  text-transform: none;
-}
-
-.contactimagemobile{
-  width: 83.333333%;
-  float: right;
-}
-
-.contactimagemobilecont{
-  width: 100vw;
-  display: flex;
+  .contactimagemobilecont {
+    width: 100vw;
+    display: flex;
     justify-content: flex-end;
+  }
+
+  .presssecmd {
+    /* justify-content: unset; */
+    /* padding-top: 0; */
+    width: 100vw;
+    display: flex;
+    /* justify-content: flex-end; */
+  }
+
+  .presssecinnermd {
+    width: 83.333333%;
+    /* padding: 0; */
+    padding-top: 3rem;
+    padding-left: 0;
+  }
+
+  .presssec {
+    /* font-size: 1.25rem !important;
+    line-height: 1.25rem !important; */
+  }
+
+  .fa-arrow-down {
+    padding-top: 1.25rem;
+    font-size: 12px;
+  }
+
+  .morep {
+    /* font-size: 1.25rem; */
+    line-height: 1;
+  }
+
+  .collapsible-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 10px;
+    padding-top: 20px;
+  }
+
+  .collapsible-section {
+    /* display: none; */
+    /* padding: 10px; */
+  }
+
+  .collapsible-section.show {
+    display: block;
+  }
 }
 
-.presssecmb{
-  /* justify-content: unset; */
-  padding-top: 0;
-  width: 100vw;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.presssecinnermb{
-  width: 83.333333%;
-padding: 0;
-padding-top: 1.25rem;
-}
-
-.presssec{
-  font-size: 1.25rem !important;
-  line-height: 1.25rem !important;
-}
-
-.fa-arrow-down{
-  padding-top: 1.25rem;
-  font-size: 12px;
-}
-
-.morep{
-  font-size: 1.25rem/* 60px */;
-  line-height: 1;
-}
-
-
-}
 /* header {  
   animation: 1.5s ease-out 0s 1 slideInFromLeft;
 } */

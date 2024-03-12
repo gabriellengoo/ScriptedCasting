@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* Hide vertical scrollbar */
 ::-webkit-scrollbar {
   width: 0;
@@ -23,26 +22,71 @@ html {
   /* overflow: hidden; */
   overflow-x: hidden;
   /* cursor: crosshair; */
-   cursor: default;
+  cursor: default;
   /* cursor: url('/CURSOR.svg'), auto !important; */
 }
 
-.titleText{
-  font-family: 'GTWalsheimb';
+.titleText {
+  font-family: "GTWalsheimb";
 }
 
-
-a{
+a {
   /* cursor: url('/CURSOR.svg'), auto !important; */
 }
 
-
-
-svg{
+svg {
   /* cursor: url('/CURSOR.svg'), auto !important; */
 }
 
+.contacttextmb:nth-child(4) .contactsec .contactinner div {
+  display: flex;
+  justify-content: space-between;
+  /* justify-content: space-evenly; */
+  flex-direction: row;
+}
 
+.contacttextmb:nth-child(4) .contactsec .contactinner div p:nth-child(1) {
+  padding-right: 1rem;
+}
+
+/*  
+
+   display: flex;
+    justify-content: space-between;
+    flex-direction: row; */
+    .abtextmb div{
+      padding-top: 1.25rem;
+    }
+
+
+.abtextmb div p:nth-child(2) {
+  display: none;
+}
+
+.abtextmb div p:nth-child(3) {
+  display: none;
+}
+
+.abtextmb div p:nth-child(3) {
+  display: none;
+}
+
+.abtextmb div p:nth-child(4) {
+  display: none;
+}
+.abtextmb div p:nth-child(5) {
+  display: none;
+}
+.abtextmb div p:nth-child(6) {
+  display: none;
+}
+.abtextmb div p:nth-child(7) {
+  display: none;
+}
+
+.abtextmbopen div p:nth-child(1) {
+  display: none;
+}
 
 @media (min-width: 768px) {
   .pr-6 {
@@ -50,7 +94,7 @@ svg{
   }
   pr-6 {
     padding-right: 0rem;
-}
+  }
 }
 
 .content-container {
@@ -96,11 +140,5 @@ svg{
   outline: none;
 }
 
-
 @media (max-width: 768px) {
-
 }
-
-
-
-

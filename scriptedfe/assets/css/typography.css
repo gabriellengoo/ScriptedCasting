@@ -167,9 +167,12 @@
   }  
 
   strong{
-    font-size: 2rem;
-    line-height:2rem;
-    font-family: 'GTWalsheiml' !important;
+    /* font-size: 2rem;
+    line-height:2rem; */
+    font-size: 1.7rem;
+    line-height:1.7rem;
+    /* font-family: 'GTWalsheiml' !important; */
+    font-family: 'GTWalsheim' !important;
   }
 
   @media only screen and (min-width: 2560px) {

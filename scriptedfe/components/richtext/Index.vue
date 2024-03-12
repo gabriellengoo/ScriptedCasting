@@ -59,7 +59,7 @@ p{
   /* text-indent: 10vw; */
   /* display: flex; */
   /* text-align: right; */
-  text-align: justify;
+  /* text-align: justify; */
 }
 </style>
 <!-- <style scoped lang="css">

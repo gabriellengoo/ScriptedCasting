@@ -36,8 +36,14 @@
 
 .titleText{
   font-size: 6rem;
+  font-family: "GTWalsheimb";
 }
 }
+
+.titleText{
+  font-family: "GTWalsheimb";
+}
+
 .text-content {
   position: fixed;
   top: 50%; /* Vertically center the text */

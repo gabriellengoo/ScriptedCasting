@@ -3,14 +3,19 @@
   <header
     class="absolute top-0 left-0 z-20 w-full   text-xs leading-snug uppercase   "
   >
-  <!-- justify-center -->
+  <!-- justify-center border-b-2 border-black -->
     <div
-      class="fixed mobilemenu flex flex-wrap w-full  bg-white items-center gap-4 p-2 pt-8 md:pb-2 md:pt-2 md:flex-nowrap"
+      class="fixed mobilemenu flex flex-wrap w-full    items-center gap-4 p-2 pt-8 md:pb-2 md:pt-2 md:flex-nowrap"
     >
     <!-- <Animation></Animation> -->
     <!-- <div><h1 class="titleText flex justify-between items-center text-9xl align-baseline text-center uppercase">Scripted</h1></div> -->
-    <div><NuxtLink to="/" class="titleText flex justify-between items-center text-9xl align-baseline text-center uppercase">Scripted</NuxtLink></div>
-    <nav class="flex-col linktextmb text-[1.525rem] w-1/16 flex">
+    <div>
+      <NuxtLink to="/" class="titleText flex justify-between items-center text-9xl align-baseline text-center uppercase">
+      <span class="animate-hover">Script</span><span class="hover-move">ed</span>
+    </NuxtLink>
+  </div>
+  
+  <nav class="flex-col linktextmb text-[1.525rem] w-1/16 flex">
         <!-- hidden -->
         <NuxtLink to="/projects">Work</NuxtLink>
         <NuxtLink :to="{ path: '/', hash: '#about' }" >About</NuxtLink>
@@ -65,6 +70,29 @@ export default {
 </script>
 
 <style scoped>
+
+.titleText {
+  font-family: 'GTWalsheimb';
+}
+
+.animate-hover {
+  transition: color 0.3s ease-in-out;
+}
+
+.titleText:hover .animate-hover {
+  color: black; /* Change to the desired hover color */
+}
+
+.hover-move {
+  transition: transform 0.3s ease-in-out, margin-right 0.3s ease-in-out;
+}
+
+.titleText:hover .hover-move {
+  transform: translateX(30px); /* Adjust the value based on your preference */
+  margin-right: 30px; /* Adjust the value based on your preference */
+}
+
+
 @media (max-width: 768px) {
 .titleText{
   font-size: 5rem;
