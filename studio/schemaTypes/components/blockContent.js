@@ -73,26 +73,26 @@ export default {
             to: [{ type: "project" }],
             icon: GoFileSymlinkFile,
           },
-          {
-            title: "Phone",
-            name: "phoneLink",
-            type: "object",
-            icon: GoFileSymlinkFile,
-            fields: [
-              {
-                title: "Phone Number",
-                name: "phoneNumber",
-                type: "string",
-                validation: (Rule) =>
-                  Rule.custom((value) => {
-                    if (!/^\d+$/.test(value)) {
-                      return 'Please enter a valid phone number (only digits allowed).';
-                    }
-                    return true;
-                  }),
-              },
-            ],
-          },
+          // {
+          //   title: "Phone",
+          //   name: "phoneLink",
+          //   type: "object",
+          //   icon: GoFileSymlinkFile,
+          //   fields: [
+          //     {
+          //       title: "Phone Number",
+          //       name: "phoneNumber",
+          //       type: "string",
+          //       validation: (Rule) =>
+          //         Rule.custom((value) => {
+          //           if (!/^\d+$/.test(value)) {
+          //             return 'Please enter a valid phone number (only digits allowed).';
+          //           }
+          //           return true;
+          //         }),
+          //     },
+          //   ],
+          // },
         ],
         
       },

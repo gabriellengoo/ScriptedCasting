@@ -9,8 +9,7 @@
             :aspect="section.image4.aspect"
             :src="section.image4.image4"
             v-if="section.image4.image4"
-            class="landingimg h-screen object-cover"
-            :sizes="size == 'sm' ? 'sm:60vw md:15vw' : 'sm:150vw md:150vw'"
+            class="landingimg h-screen w-screen object-cover"
           ></MediaImage>
           <MediaVideo
                   :id="section.video.id"
@@ -47,17 +46,31 @@
           v-for="section in home.sections"
           :key="section._key"
         >
-          <div class="pt-[5vw] pb-[5vw] w-screen p-10" v-if="section.title">
+          <div class=" pt-[5vw] pb-[5vw] w-screen p-10" v-if="section.title">
             <!-- text-[1.5rem] leading-[1.5rem] -->
 
-            <div class=" md:flex md:justify-between md:flex-row-reverse">
-              <div
-                class="md:pt-0 pt-10 md:pb-20 abouttitle flex md:justify-end text-5xl md:text-6xl"
-              >
-                <p>
+            <p class="abouttitletexta">
                   {{ section.title }}
-                  <span class="scriptedt uppercase">Scripted</span>
+                  <!-- scriptedt uppercase -->
+                  <span class=" ">Coralie Casting</span>
                 </p>
+
+
+            <div class=" md:flex pt-[5vw] md:justify-between md:flex-row-reverse">
+              <div
+                class="md:pt-0 md:pb-20 abouttitle flex md:justify-end text-5xl md:text-6xl"
+              >
+               
+
+                <div class="contactimagemobilecont w-[40vw] flex justify-end">
+                <MediaImage
+                  :size="section.image.size"
+                  :aspect="section.image.aspect"
+                  :src="section.image.image"
+                  v-if="section.image.image"
+                  class="contactimagemobile"
+                ></MediaImage>
+              </div>
               </div>
               <!-- <p class="md:p-5 md:pt-0 pt-10 md:pb-0 pb-5 abouttitle scriptedt flex justify-end text-6xl">
               <span>Scripted</span>
@@ -104,10 +117,10 @@
               id="contact"
               class="contact-section contactsecmd pt-20 flex justify-between"
             >
-              <div class="contactsecall pt-20">
+              <div class="contactsecall pt-28 md:pt-0 ">
                 <!-- contact title text-6xl -->
                 <div
-                  class="contactheader text-[1.7rem] leading-[1.7rem] md:p-5 pb-3"
+                  class="contactheader text-[1.7rem] leading-[1.7rem] md:p-5 md:pl-0 pb-3"
                 >
                   <div class="">
                     <span>Get in touch</span>
@@ -120,7 +133,7 @@
                     <div>
                       <!-- leading-[1.5rem] text-[1.5rem] -->
                       <p
-                        class="md:pl-5 pb-0 text-[1.7rem] leading-[1.7rem] justify-start"
+                        class="md:pl-5 hidden md:contents pb-0 text-[1.7rem] leading-[1.7rem] justify-start"
                       >
                         <span>Contact</span>
                       </p>
@@ -149,9 +162,10 @@
                   <div>
                     <div>
                       <p
-                        class="md:pl-10 pt-10 flex md:pt-0 pb-0 leading-[.25rem] md:leading-[1.25rem] text-[1.25rem] justify-center"
+                        class="md:pl-10 pt-10  uppercase w-3/6 flex md:pt-0 pb-0  md:leading-[1.25rem] text-[1.25rem] justify-center"
                       >
                         COPYRIGHT ©2024
+                        Casting by Coralie Scripted
                       </p>
                     </div>
                   </div>
@@ -165,10 +179,17 @@
                   </div>
                 </div>
 
-                <!-- press -->
-                <div
+         
+            
+              </div>
+              
+            </div>
+
+
+                   <!-- press -->
+                   <div
                   v-if="home.sections3"
-                  class="presssecmd pb-5 md:pb-0 text-[1.7rem] leading-[1.7rem] flex"
+                  class="presssecmd md:pt-40 pb-5 md:pb-0 text-[1.7rem] leading-[1.7rem] flex"
                 >
                   <div
                     v-for="sections3 in home.sections3"
@@ -194,18 +215,6 @@
                     </div> -->
                   </div>
                 </div>
-              </div>
-
-              <div class="contactimagemobilecont w-[40vw] flex justify-end">
-                <MediaImage
-                  :size="section.image.size"
-                  :aspect="section.image.aspect"
-                  :src="section.image.image"
-                  v-if="section.image.image"
-                  class="contactimagemobile"
-                ></MediaImage>
-              </div>
-            </div>
           </div>
         </span>
 
@@ -415,6 +424,11 @@ export default {
 </script>
 
 <style scoped>
+.abouttitletexta{
+  text-transform: uppercase;
+    font-size: 1.7rem;
+    line-height: 1.7rem;
+}
 /* Arrow down styles */
 .arrow-down {
   /* text-align: center; */
@@ -539,6 +553,15 @@ export default {
     flex-direction: row; */
 
 @media (max-width: 768px) {
+  .abouttitletexta{
+    font-family: "GTWalsheimbb";
+    /* text-transform: uppercase; */
+    font-size: 3rem;
+    line-height: 3rem;
+    text-align: center;
+  }
+
+
   .landingimg {
     height: auto;
   }
@@ -608,13 +631,14 @@ export default {
   .contactimagemobilecont {
     width: 100vw;
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
+    justify-content: center;
   }
 
   .presssecmd {
     /* justify-content: unset; */
     /* padding-top: 0; */
-    width: 100vw;
+    /* width: 100vw; */
     display: flex;
     /* justify-content: flex-end; */
   }

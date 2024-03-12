@@ -20,6 +20,7 @@ img {
   width: auto;
   width: -webkit-fill-available;
   height: 100%;
+  height: max-content;
   /* object-fit: cover; */
   max-width: none;
   display: flex;

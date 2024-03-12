@@ -43,6 +43,11 @@ export default {
               title: "Content",
               type: "string",
             },
+            // {
+            //   name: "content",
+            //   title: "Content",
+            //   type: "blockContent",
+            // },
           ],
           preview: {
             select: {

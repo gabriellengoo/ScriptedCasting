@@ -11,8 +11,8 @@
   <style scoped>
   
   a{
-    font-family: 'GTWalsheimbb';
-    /* text-indent: 10vw; */
+    /* font-family: 'GTWalsheimbb'; */
+    /* text-indent: 10vw; */ 
   }
   </style>
   

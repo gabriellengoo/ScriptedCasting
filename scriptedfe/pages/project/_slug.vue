@@ -28,24 +28,37 @@
           v-if="project"
           class="ml-auto text-lg uppercase lg:text-xl md:text-xl font-heading w-full flex justify-center"
         >
+        <!-- fixed -->
           <div
-            class="titles mobiletitle fixed z-[10] justify-between w-full flex items-end"
+            class="titles mobiletitle  z-[10] justify-between w-full flex items-end"
           >
             <!-- text-[14.21px] -->
-            <!-- <About/> -->
+            <!-- <About/> md:w-4/6-->
             <div
-              class="inner-div pl-[1.5rem] textppad pb-5 top-[0vh] w-[25vw] sm:w-screen projecttextmb"
+              class="projectetxt inner-div pl-[1.5rem] textppad pb-5 top-[0vh]  w-screen projecttextmb"
               id="titleInnerDiv"
             >
               <div class="pb-5 mobileslugtitle">{{ project.title }}</div>
+                <!-- flex justify-between -->
+            <div class="">
               <div
                 v-if="project.related"
-                class="flex flex-col normal-case"
+                :class="{ 'projecttextarea': true, 'pt-10': meta.title }"
+                class=" projecttextarea justify-between md:justify-normal  flex  normal-case"
                 v-for="meta in project.meta"
               >
-                {{ meta.title }}
-                {{ meta.content }}
+              <!-- v-if="meta.title" -->
+                <div class="projecttextareati md:w-1/6 uppercase">
+                  {{ meta.title }} 
+                  <!-- <span v-if="meta.title"> : </span> -->
+                </div>
+               <!-- brake -->
+               <!-- <br> pt-5-->
+                <div class="pb-1 mobileprotext">
+                  {{ meta.content }}
+                </div>
               </div>
+            </div>
               <div v-if="project.location" class="pt-3">
                 <div class="flex flex-col normal-case">
                   {{ project.location }}
@@ -200,15 +213,17 @@
                           allowfullscreen
                           class="gallery-image relative object-cover object-center z-[10000000] w-full h-auto p-4 my-auto"
                         ></iframe>
-                         <!-- Display Vimeo Video -->
-              <iframe
-                v-else-if="image.vimeoUrl"
-                :src="getVimeoEmbedUrl(image.vimeoUrl)"
-                frameborder="0"
-                allowfullscreen
-                :style="{ width: `calc(${image.imageWidth}vw - 20px)` }"
-                class="gallery-image relative object-cover object-center z-[10000000] w-full h-auto p-4 my-auto"
-              ></iframe>
+                        <!-- Display Vimeo Video -->
+                        <iframe
+                          v-else-if="image.vimeoUrl"
+                          :src="getVimeoEmbedUrl(image.vimeoUrl)"
+                          frameborder="0"
+                          allowfullscreen
+                          :style="{
+                            width: `calc(${image.imageWidth}vw - 20px)`,
+                          }"
+                          class="gallery-image relative object-cover object-center z-[10000000] w-full h-auto p-4 my-auto"
+                        ></iframe>
                       </figure>
                     </div>
                   </div>
@@ -306,23 +321,23 @@ export default {
     // const titleInnerDiv = document.getElementById("titleInnerDiv");
 
     // Check if the titleInnerDiv exists
-    if (titleInnerDiv) {
+    // if (titleInnerDiv) {
       // Get the height of the title's inner div
-      const titleInnerDivHeight = titleInnerDiv.offsetHeight;
+      // const titleInnerDivHeight = titleInnerDiv.offsetHeight;
 
-      const isMobile = window.innerWidth <= 768;
+      // const isMobile = window.innerWidth <= 768;
 
-      const scrollContainer = this.$refs.scrollContainer; // Make sure you have a ref on your scroll container
+      // const scrollContainer = this.$refs.scrollContainer; 
 
-      if (isMobile) {
-        scrollContainer.style.paddingTop = 0 + "px";
-      } else {
-        // For non-mobile screens, you can use different padding
-        scrollContainer.style.paddingTop = titleInnerDivHeight + 10 + "px";
-      }
-    }
+    //   if (isMobile) {
+    //     scrollContainer.style.paddingTop = 0 + "px";
+    //   } else {
+    //     // For non-mobile screens, you can use different padding
+    //     scrollContainer.style.paddingTop = titleInnerDivHeight + 10 + "px";
+    //   }
+    // }
 
-    const overlay = document.querySelector(".overlay-gallery");
+    // const overlay = document.querySelector(".overlay-gallery");
   },
   methods: {
     openGallery() {
@@ -339,7 +354,7 @@ export default {
     },
     getVimeoEmbedUrl(vimeoUrl) {
       // Extract Vimeo video ID from the URL
-      const videoId = vimeoUrl.split('/').pop();
+      const videoId = vimeoUrl.split("/").pop();
       // Generate the Vimeo embed URL
       return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&autopause=0`;
     },
@@ -462,17 +477,17 @@ export default {
   height: 40vh;
 }
 
-.mobileslugtitle{
+.mobileslugtitle {
   font-size: 4.25rem /* 36px */;
-    line-height: 2.5rem /* 40px */;
-    font-family: "GTWalsheimbb";
+  line-height: 2.5rem /* 40px */;
+  font-family: "GTWalsheimbb";
 }
 
-@media only screen and (min-width: 2560px){
-  .mobileslugtitle{
-  font-size: 6.25rem !important;
+@media only screen and (min-width: 2560px) {
+  .mobileslugtitle {
+    font-size: 6.25rem !important;
     line-height: 3.5rem !important;
-}
+  }
 }
 /* header {  
   animation: 1.5s ease-out 0s 1 slideInFromLeft;
@@ -1288,9 +1303,8 @@ button {
   /* font-size: 1.25rem; */
   .mobileslugtitle {
     padding-bottom: 0.25rem;
-    font-size: 2.25rem/* 36px */;
-  line-height: 2.5rem/* 40px */;
-
+    font-size: 2.25rem /* 36px */;
+    line-height: 2.5rem /* 40px */;
   }
 
   .projecttextmb {
