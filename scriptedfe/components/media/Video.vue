@@ -1,5 +1,7 @@
 <!-- :src="`https://stream.mux.com/${this.id}-low.m3u8`"   :poster="`https://image.mux.com/${this.id}/thumbnail.jpg?`" 
-    :poster="`https://image.mux.com/${this.id}/thumbnail.jpg?time=15`"-->
+    :poster="`https://image.mux.com/${this.id}/thumbnail.jpg?time=15`"
+  :autoplay="mobile"
+-->
 <template>
   <video 
     ref="video"
@@ -7,7 +9,8 @@
     @mouseleave="pause"
     loop
     playsinline
-    :autoplay="mobile"
+    muted
+    autoplay
     :src="`https://stream.mux.com/${this.id}.m3u8`"
   ></video>
 

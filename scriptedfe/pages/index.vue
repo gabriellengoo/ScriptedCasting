@@ -219,7 +219,7 @@
         </span>
 
         <NuxtLink :to="`/projects`">
-          <h1 class="morep text-6xl w-screen p-10 pt-0 pb-0">View Projects</h1>
+          <h1 class="morep text-6xl w-screen p-10 pt-0 pb-0 underline">View Projects</h1>
         </NuxtLink>
 
         <Grid3 class="imagemarquee" size="double" :items="home.grid2"></Grid3>

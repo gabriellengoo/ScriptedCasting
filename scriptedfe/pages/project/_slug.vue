@@ -43,12 +43,12 @@
             <div class="">
               <div
                 v-if="project.related"
-                :class="{ 'projecttextarea': true, 'pt-10': meta.title }"
+                :class="{ 'projecttextarea': true, 'pt-5': meta.title }"
                 class=" projecttextarea justify-between md:justify-normal  flex  normal-case"
                 v-for="meta in project.meta"
               >
-              <!-- v-if="meta.title" -->
-                <div class="projecttextareati md:w-1/6 uppercase">
+              <!-- v-if="meta.title" uppercase -->
+                <div class="projecttextareati md:w-1/6 ">
                   {{ meta.title }} 
                   <!-- <span v-if="meta.title"> : </span> -->
                 </div>

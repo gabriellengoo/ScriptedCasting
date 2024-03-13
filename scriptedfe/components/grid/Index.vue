@@ -24,6 +24,7 @@
                   :src="getYouTubeEmbedUrl(item.youtubeUrl)"
                   frameborder="0"
                   allowfullscreen
+                  class="pointer-events-none"
                 ></iframe>
 
                 <!-- Render Vimeo Video -->
@@ -32,6 +33,7 @@
                   :src="getVimeoEmbedUrl(item.vimeoUrl)"
                   frameborder="0"
                   allowfullscreen
+                  class="pointer-events-none"
                 ></iframe>
               </figure>
             </span>
@@ -53,6 +55,7 @@
                 :src="getYouTubeEmbedUrl(item.youtubeUrl)"
                 frameborder="0"
                 allowfullscreen
+                class="pointer-events-none"
               ></iframe>
 
               <!-- Render Vimeo Video -->
@@ -61,6 +64,7 @@
                 :src="getVimeoEmbedUrl(item.vimeoUrl)"
                 frameborder="0"
                 allowfullscreen
+                class="pointer-events-none"
               ></iframe>
             </span>
           </a>
