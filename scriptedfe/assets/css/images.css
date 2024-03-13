@@ -27,6 +27,14 @@ img {
   /* padding: 5px; */
 }
 
+
+@media (max-width: 768px) {
+  img {
+    height: 100%;
+    /* height: max-content; */
+  }
+}
+
 picture img {
   width: auto;
   height: 100%;
