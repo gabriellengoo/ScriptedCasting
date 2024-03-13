@@ -554,6 +554,10 @@ export default {
     flex-direction: row; */
 
 @media (max-width: 768px) {
+  .presssectext {
+  font-family: unset;
+}
+
   .abouttitletexta{
     font-family: "GTWalsheimbb";
     /* text-transform: uppercase; */
