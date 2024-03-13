@@ -265,6 +265,7 @@ img{
 
 .images_marquee_wrapper{
   height: auto !important;
+  animation: none;
 }
 }
 
