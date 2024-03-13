@@ -162,7 +162,7 @@
                   <div>
                     <div>
                       <p
-                        class="md:pl-10 pt-10  uppercase w-3/6 flex md:pt-0 pb-0  md:leading-[1.25rem] text-[1.25rem] justify-center"
+                        class="copyrtext md:pl-10 pt-10  uppercase w-3/6 flex md:pt-0 pb-0  md:leading-[1.25rem] text-[1.25rem] justify-center"
                       >
                         COPYRIGHT ©2024
                         Casting by Coralie Scripted
@@ -194,7 +194,7 @@
                   <div
                     v-for="sections3 in home.sections3"
                     :key="sections3._key"
-                    class="md:p-5 w-7/12 presssecinnermd"
+                    class="md:p-5  presssecinnermd"
                   >
                     <div class="presssec">
                       <p
@@ -526,6 +526,7 @@ export default {
   text-transform: none !important;
   display: flex;
   justify-content: space-between !important;
+  padding-top: 1rem;
 }
 .aboutsec {
   width: 100vw;
@@ -561,6 +562,11 @@ export default {
     text-align: center;
   }
 
+  .copyrtext{
+    font-size: 1rem;
+    line-height: 1rem;
+    width: 30%;
+  }
 
   .landingimg {
     height: auto;
@@ -619,8 +625,10 @@ export default {
 }
 
   .presstitle {
-    /* font-family: "GTWalsheimbb"; */
+    font-family: "GTWalsheimbb";
     text-transform: none;
+    font-size: 3rem;
+    line-height: 3rem;
   }
 
   .contactimagemobile {
@@ -644,7 +652,7 @@ export default {
   }
 
   .presssecinnermd {
-    width: 83.333333%;
+    /* width: 83.333333%; */
     /* padding: 0; */
     padding-top: 3rem;
     padding-left: 0;
