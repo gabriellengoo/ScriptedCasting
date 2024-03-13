@@ -208,6 +208,11 @@ svg {
     width: 50%; 
   }
 
+
+  iframe{
+    width: 100%; 
+  }
+
   .marquee-1{
     width: 50%; 
   }
