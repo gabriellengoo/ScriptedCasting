@@ -17,8 +17,8 @@ img.contain-image {
 }
 
 img {
-  width: auto;
   width: -webkit-fill-available;
+  /* width: auto; */
   height: 100%;
   height: max-content;
   /* object-fit: cover; */

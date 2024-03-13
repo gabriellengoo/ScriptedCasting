@@ -261,7 +261,9 @@ export default {
 @media (max-width: 768px) {
 img{
   height: 29vh !important;
+  width: auto;
 }
+
 
 .images_marquee_wrapper{
   height: auto !important;
