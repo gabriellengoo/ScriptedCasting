@@ -128,7 +128,7 @@
                 </div>
 
                 <!-- contact text -->
-                <div class="md:flex md:pt-0 pt-5">
+                <div class="md:flex md:pt-0">
                   <div>
                     <div>
                       <!-- leading-[1.5rem] text-[1.5rem] -->
@@ -146,7 +146,7 @@
                       :key="sections2._key"
                       class="contacttextmd"
                     >
-                      <div class="contactsec text-[1.7rem] leading-[1.7rem]">
+                      <div v-if="sections2.content2" class="contactsec text-[1.7rem] leading-[1.7rem]">
                         <!-- <p v-if="sections2.title2" class="p-5 pb-0 contacttitle justify-start">
                     <span>{{ sections2.title2 }}</span>
                   </p> -->
@@ -565,7 +565,7 @@ export default {
   .copyrtext{
     font-size: 1rem;
     line-height: 1rem;
-    width: 30%;
+    width: 40%;
   }
 
   .landingimg {
@@ -633,6 +633,7 @@ export default {
 
   .contactimagemobile {
     width: 83.333333%;
+    width: 100%;
     float: right;
   }
 

@@ -204,6 +204,10 @@ svg {
     width: 100% !important; 
   } */
 
+  .contacttextmd:nth-child(1){
+    padding: 0rem !important;
+  }
+
   .mobileprotext{
     width: 50%; 
   }
