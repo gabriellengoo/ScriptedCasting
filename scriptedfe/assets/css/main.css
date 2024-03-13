@@ -145,6 +145,8 @@ svg {
   pr-6 {
     padding-right: 0rem;
   }
+
+
 }
 
 .content-container {
@@ -204,5 +206,21 @@ svg {
 
   .mobileprotext{
     width: 50%; 
+  }
+
+  .marquee-1{
+    width: 50%; 
+  }
+
+  .marquee-2{
+    width: 50%; 
+  }
+
+  .marquee-3{
+    display: none;
+  }
+
+  .marquee-4{
+    display: none;
   }
 }
