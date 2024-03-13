@@ -44,7 +44,7 @@
               <div
                 v-if="project.related"
                 :class="{ 'projecttextarea': true, 'pt-5': meta.title }"
-                class=" projecttextarea justify-between md:justify-normal  flex  normal-case"
+                class=" projecttextarea  justify-between md:justify-normal  flex  normal-case"
                 v-for="meta in project.meta"
               >
               <!-- v-if="meta.title" uppercase -->
@@ -483,6 +483,8 @@ export default {
   font-family: "GTWalsheimbb";
 }
 
+
+
 @media only screen and (min-width: 2560px) {
   .mobileslugtitle {
     font-size: 6.25rem !important;
@@ -798,6 +800,11 @@ button .circle:hover {
 }
 
 @media (max-width: 768px) {
+  .projecttextarea{
+  font-size: 1.7rem ;
+  line-height: 1.7rem ;
+}
+
   .text {
     padding: 10px;
   }
@@ -1269,6 +1276,10 @@ button {
 }
 
 @media (max-width: 768px) {
+  .scrollcost {
+  width: 100vw;
+}
+
   .overlay-gallery {
     z-index: 0;
   }
