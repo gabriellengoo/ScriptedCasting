@@ -260,11 +260,12 @@ export default {
 
 @media (max-width: 768px) {
 img{
-  /* height: 29vh !important; */
+  height: 29vh !important;
 }
 
 .images_marquee_wrapper{
-  /* height: auto !important; */
+  height: auto !important;
+  /* height: 29vh !important; */
   animation: none !important;
 }
 }
