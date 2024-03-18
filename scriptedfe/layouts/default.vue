@@ -32,6 +32,7 @@
 <script>
 import { mapActions, mapMutations } from 'vuex'
 import TransitionComponent from '~/components/TransitionComponent.vue';
+import LenisComponent from '~/components/LenisComponent.vue';
 import Lenis from '@studio-freight/lenis';
 
 
@@ -61,33 +62,8 @@ function raf(time) {
 }
 
 requestAnimationFrame(raf)
-  //   console.log('Creating Lenis instance');
-  // this.lenis = new Lenis({
-  //   // Your configuration options
-  //   duration: 1,
-  //   easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
-  //   direction: "vertical",
-  //   gestureDirection: "vertical",
-  //   smooth: true,
-  //   smoothTouch: true,
-  //   touchMultiplier: 2,
-  // });
-
-  // // Set up a scroll event listener
-  // this.lenis.on('scroll', (e) => {
-  //   // Handle scroll events here
-  //   console.log('Scroll event:', e);
-  // });
-
-  // Create a requestAnimationFrame function to keep the scroll listener active
-  // function raf(time) {
-  //   this.lenis.raf(time);
-  //   requestAnimationFrame(raf);
-  // }
-
-  // Start the requestAnimationFrame loop
-  // requestAnimationFrame(raf);
 },
+
   components: {
     TransitionComponent,
   },

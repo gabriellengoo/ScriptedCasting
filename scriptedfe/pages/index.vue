@@ -49,12 +49,12 @@
           <div class=" pt-[5vw] pb-[5vw] w-screen p-10" v-if="section.title">
             <!-- text-[1.5rem] leading-[1.5rem] -->
 
+   
             <p class="abouttitletexta">
                   {{ section.title }}
                   <!-- scriptedt uppercase -->
                   <span class=" ">Coralie Casting</span>
                 </p>
-
 
             <div class=" md:flex pt-[5vw] md:justify-between md:flex-row-reverse">
               <div
@@ -222,6 +222,8 @@
           <h1 class="morep text-6xl w-screen p-10 pt-0 pb-0 underline">View Projects</h1>
         </NuxtLink>
 
+
+        <!-- <Marqueec></Marqueec> -->
         <Grid3 class="imagemarquee" size="double" :items="home.grid2"></Grid3>
         <!-- <Grid size="small" :items="home.grid2"></Grid> -->
       </div>
@@ -233,10 +235,17 @@
 import { groq } from "@nuxtjs/sanity";
 import { mapState, mapActions } from "vuex";
 import "@fortawesome/fontawesome-free/css/all.css";
+import Marqueec from '~/components/Marqueec.vue';
+// import Vue3Marquee from 'vue3-marquee';
 // import AboutPage from '~/components/AboutPage.vue'
 
 export default {
   name: "IndexPage",
+
+  components: {
+    Marqueec
+  },
+
   data() {
     return {
       project: false,
@@ -424,6 +433,9 @@ export default {
 </script>
 
 <style scoped>
+
+
+
 .abouttitletexta{
   text-transform: uppercase;
     font-size: 1.7rem;

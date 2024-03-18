@@ -24,7 +24,7 @@
                   :src="getYouTubeEmbedUrl(item.youtubeUrl)"
                   frameborder="0"
                   allowfullscreen
-                  class="pointer-events-none"
+                  class="pointer-events-none framesz"
                 ></iframe>
 
                 <!-- Render Vimeo Video -->
@@ -33,7 +33,7 @@
                   :src="getVimeoEmbedUrl(item.vimeoUrl)"
                   frameborder="0"
                   allowfullscreen
-                  class="pointer-events-none"
+                  class="pointer-events-none framesz"
                 ></iframe>
               </figure>
             </span>

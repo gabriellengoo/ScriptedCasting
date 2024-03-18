@@ -1,35 +1,40 @@
 <template>
   <client-only>
     <!-- class="marquee2" -->
+    <Marqueec>
     <div class="images_marquee_wrapper ">
       <div
         v-masonry
         column-width=".item"
         item-selector=".item"
-        class="w-full images_marquee_wrapper marquee2"
+        class="w-full marquee2"
         :class="size"
         horizontal-order="true"
       >
+      
         <div
           v-masonry-tile
           class="item marquee2"
           v-for="item in items"
           :key="item._key"
         >
-          <figure >
+        
+          <figure class="md:p-20 p-10">
             <NuxtLink
               v-if="item.reference.slug"
               :to="`/project/${item.reference.slug}`"
             >
               <span>
-                <figure>
+                <figure                     :style="{
+   height: `80vh`,
+ }">
                   <MediaImage
                     :size="item.image.size"
                     :aspect="item.image.aspect"
                     :style="{
    
-                          height: `100vh`,
-                        }"
+   height: `inherit`,
+ }"
                     :src="item.image.image"
                     v-if="item.image.image"
                   ></MediaImage>
@@ -38,7 +43,7 @@
                     :id="item.video.id"
                     :style="{
    
-   height: `100vh`,
+   height: `inherit`,
  }"
                     v-if="item.video.id"
                   ></MediaVideo>
@@ -49,7 +54,7 @@
           frameborder="0"
           :style="{
    
-   height: `100vh`,
+   height: `inherit`,
  }"
           allowfullscreen
           class="vidsize"
@@ -62,7 +67,7 @@
           frameborder="0"
           :style="{
    
-   height: `100vh`,
+   height: `inherit`,
  }"
           allowfullscreen
           class="vidsize"
@@ -162,9 +167,12 @@
               </span>
             </figure>
           </figure>
+        
         </div>
+    
       </div>
     </div>
+  </Marqueec>
   </client-only>
 </template>
 
@@ -258,19 +266,7 @@ export default {
   }
 } */
 
-@media (max-width: 768px) {
-img{
-  height: 29vh !important;
-  width: auto;
-}
 
-
-.images_marquee_wrapper{
-  height: auto !important;
-  /* height: 29vh !important; */
-  /* animation: none !important; */
-}
-}
 
 .masonry {
   height: 100vw;
@@ -279,17 +275,17 @@ img{
 }
  
 .images_marquee_wrapper {
+  height: 90vh;
+    padding-bottom: 5vh;
   /* justify-content: center; */
   max-width: 100%;
-  height: 100vh ;
+  /* height: 100vh ; */
   display: flex;
-  /* overflow: hidden; */
-  /* overflow: scroll; */
-  -webkit-animation: 0.75s ease 0s normal forwards 1 fadein;
-  animation: 0.75s ease 0s normal forwards 1 fadein;
-  z-index: -1 !important;
-  animation: marquee2 3000s linear infinite;
-  animation: marquee2 10 steps(340); 
+  /* -webkit-animation: 0.75s ease 0s normal forwards 1 fadein;
+  animation: 0.75s ease 0s normal forwards 1 fadein; */
+  /* z-index: -1 !important; */
+  /* animation: marquee2 3000s linear infinite;
+  animation: marquee2 10 steps(340);  */
 }
 
 @keyframes fadein{
@@ -299,10 +295,10 @@ img{
 }
 
 .marquee2 {
-  width: 40vw;
+  /* width: 40vw; */
   display: flex;
   gap: 0;
-  animation: marquee2 500s linear infinite;
+  /* animation: marquee2 500s linear infinite; */
 }
 
 .marquee2.paused {
@@ -323,7 +319,7 @@ img{
 }
 
 .item {
-  height: 100vh; 
+  /* height: 100vh;  */
   box-sizing: border-box;
   display: contents;
   /* Remove the following two lines */
@@ -331,6 +327,21 @@ img{
   /* margin-right: 16px; */
 }
 
+@media (max-width: 768px) {
+img{
+  height: 29vh !important;
+  width: auto;
+}
+
+
+.images_marquee_wrapper{
+  /* height: auto !important; */
+
+  height: 40vh;
+  /* height: 29vh !important; */
+  /* animation: none !important; */
+}
+}
 /* .item {
   height: 100vh; 
   box-sizing: border-box;

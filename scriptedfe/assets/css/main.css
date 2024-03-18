@@ -30,6 +30,10 @@ html {
   font-family: "GTWalsheimb";
 }
 
+.framesz{
+width:20vw !important;
+}
+
 a {
   /* cursor: url('/CURSOR.svg'), auto !important; */
 }
@@ -88,7 +92,7 @@ svg {
 
 .projecttextarea:nth-child(1) {
   padding-top: 2rem;
-  /* padding-bottom: 2rem; */
+  padding-bottom: 4rem;
   font-size: 1.7rem;
   line-height:1.7rem;
   font-family: 'GTWalsheim' !important;
