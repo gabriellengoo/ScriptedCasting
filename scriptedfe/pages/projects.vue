@@ -31,9 +31,9 @@ export default {
       const tl4 = gsap.timeline({ repeat: -1, yoyo: true });
 
       tl1.to(this.$refs.marquee1, { duration: 20, y: '-90%' });
-      tl2.to(this.$refs.marquee2, { duration: 15, y: '-90%' });
+      tl2.to(this.$refs.marquee2, { duration: 25, y: '-90%' });
       tl3.to(this.$refs.marquee3, { duration: 50, y: '-90%' });
-      tl4.to(this.$refs.marquee4, { duration: 15, y: '-90%' });
+      tl4.to(this.$refs.marquee4, { duration: 25, y: '-90%' });
 
       return [tl1, tl2, tl3, tl4];
     },

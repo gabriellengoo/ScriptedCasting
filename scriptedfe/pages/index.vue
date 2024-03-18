@@ -222,7 +222,7 @@
           <h1 class="morep text-6xl w-screen p-10 pt-0 pb-0 underline">View Projects</h1>
         </NuxtLink>
 
-
+ 
         <!-- <Marqueec></Marqueec> -->
         <Grid3 class="imagemarquee" size="double" :items="home.grid2"></Grid3>
         <!-- <Grid size="small" :items="home.grid2"></Grid> -->
