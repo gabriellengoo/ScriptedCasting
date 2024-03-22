@@ -82,36 +82,38 @@
           class="md:pr-6 md:w-7/16 scroll-container resize-animation"
           ref="scrollContainer"
         >
-          <!-- md:p-5 -->
+          <!-- md:p-5             :style="{ width: `calc(${slide.imageWidth}vw - 20px)` }"
+-->
 
           <div
             v-for="(slide, index) in project.slider"
             :key="slide._key"
             class="gallmobile insidescrollcont"
-            :style="{ width: `calc(${slide.imageWidth}vw - 20px)` }"
           >
             <figure
               v-for="image in slide.images"
               :key="image._key"
               @click="openImageModal(index)"
               style="cursor: pointer"
+
+
             >
               <MediaImage
                 ref="scrollContainer resize-animation"
                 :src="image.image.asset._ref"
                 v-if="image.image"
-                :style="{ width: `calc(${image.imageWidth}vw - 20px)` }"
                 class="scrollcost"
+                :style="{ width: `30vw`,  height: `25vh`, }"
               >
               </MediaImage>
               <MediaVideo
                 :id="image.video.id"
                 :active="realIndex == index ? true : false"
                 v-else-if="image.video.id"
+                :style="{ width: `30vw`,  height: `25vh`, }"
                 :poster="`https://image.mux.com/${
                   image.video.id
                 }/thumbnail.jpg?time=${image.thumbnailTime || 0}`"
-                :style="{ width: `calc(${image.imageWidth}vw - 20px)` }"
                 class="scrollcost resize-animation object-contain object-top w-auto h-full"
               ></MediaVideo>
               <!-- Display YouTube Video -->
@@ -120,7 +122,7 @@
                 :src="getYouTubeEmbedUrl(image.youtubeUrl)"
                 frameborder="0"
                 allowfullscreen
-                :style="{ width: `calc(${image.imageWidth}vw - 20px)` }"
+                :style="{ width: `30vw`,  height: `25vh`, }"
                 class="scrollcost youtube resize-animation object-contain object-top w-auto h-full"
               ></iframe>
               <!-- Display Vimeo Video -->
@@ -129,7 +131,7 @@
                 :src="getVimeoEmbedUrl(image.vimeoUrl)"
                 frameborder="0"
                 allowfullscreen
-                :style="{ width: `calc(${image.imageWidth}vw - 20px)` }"
+                :style="{ width: `30vw`,  height: `25vh`, }"
                 class="scrollcost youtube resize-animation object-contain object-top w-auto h-full"
               ></iframe>
             </figure>
@@ -165,6 +167,7 @@
                       <figure
                         v-for="image in slide.images"
                         :key="image._key"
+                     
                         class="overlaydiv flex flex-col flex-1 w-full h-full"
                         :class="
                           image.padding
@@ -187,8 +190,10 @@
                           "
                           :style="{
                             pointerEvents: 'auto',
-                            width: `calc(${image.overlayimageWidth}vw - 20px)`,
+                            width: `30vw`,
+                              height: `25vh`,
                           }"
+                         
                           :sizes="'sm:200vw md:150vw lg:200vw'"
                         ></MediaImage>
                         <MediaVideo
@@ -200,7 +205,8 @@
                           }/thumbnail.jpg?time=${image.thumbnailTime || 0}`"
                           :style="{
                             pointerEvents: 'auto',
-                            width: `calc(${image.overlayimageWidth}vw - 20px)`,
+                            width: `30vw`,
+                              height: `25vh`,
                           }"
                           @click="handleVideoClick(image.video.id)"
                           class="gallery-image relative object-cover object-center z-[10000000] w-full h-auto p-4 my-auto"
@@ -210,6 +216,11 @@
                           v-else-if="image.youtubeUrl"
                           :src="getYouTubeEmbedUrl(image.youtubeUrl)"
                           frameborder="0"
+                          :style="{
+                               width: `30vw`,
+                                 height: `25vh`,
+                               
+                          }"
                           allowfullscreen
                           class="gallery-image relative object-cover object-center z-[10000000] w-full h-auto p-4 my-auto"
                         ></iframe>
@@ -220,7 +231,9 @@
                           frameborder="0"
                           allowfullscreen
                           :style="{
-                            width: `calc(${image.imageWidth}vw - 20px)`,
+                               width: `30vw`,
+                                 height: `25vh`,
+                              
                           }"
                           class="gallery-image relative object-cover object-center z-[10000000] w-full h-auto p-4 my-auto"
                         ></iframe>
@@ -475,6 +488,7 @@ export default {
 <style scoped>
 .youtube {
   height: 40vh;
+  height: 20vh;
 }
 
 .mobileslugtitle {
@@ -983,11 +997,12 @@ button .circle:hover {
   flex-direction: row;
   flex-wrap: wrap;
   align-content: flex-start;
-  justify-content: space-between;
+  /*  justify-content: space-between; */
 }
 
 .insidescrollcont {
   padding-bottom: 20px !important;
+  padding: 0.2rem;
 }
 
 @keyframes src-components-animation-2PZg {
@@ -1211,7 +1226,7 @@ button {
   }
 }
 .scroll-container div img {
-  /* object-fit: cover; */
+  object-fit: cover;
   /* height: 55vh; */
   /* height: auto; */
   object-position: center center;
