@@ -12,6 +12,10 @@
   height: 0;
 }
 
+.anchor {
+  scroll-margin-top: calc( 6rem + 2.5em);
+}
+
 #__nuxt,
 #__layout,
 body,

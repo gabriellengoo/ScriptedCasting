@@ -12,10 +12,10 @@
             class="landingimg h-screen w-screen object-cover"
           ></MediaImage>
           <MediaVideo
-                  :id="section.video.id"
-                  v-if="section.video.id"
-                  class="md:min-h-screen min-w-full w-screen object-cover "
-                ></MediaVideo>
+            :id="section.video.id"
+            v-if="section.video.id"
+            class="md:min-h-screen min-w-full w-screen object-cover"
+          ></MediaVideo>
           <!-- Display YouTube Video -->
           <iframe
             v-else-if="section.youtubeUrl"
@@ -31,46 +31,64 @@
             :src="getVimeoEmdedUrl(section.vimeoUrl)"
             frameborder="0"
             allowfullscreen
-            class="min-w-full md:min-h-screen  w-screen object-cover pointer-events-none"
+            class="min-w-full md:min-h-screen w-screen object-cover pointer-events-none"
           ></iframe>
+        </div>
+
+        <!-- Downward arrow -->
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="h-32 w-32 text-white"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 12.586L4.707 7.293a1 1 0 011.414-1.414L10 10.758l4.879-4.879a1 1 0 011.414 1.414l-5.293 5.293a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-32 w-32 text-white" viewBox="0 0 20 20" fill="currentColor" id="down-arrow">
+        <path d="m396.6 160 19.4 20.7L256 352 96 180.7l19.3-20.7L256 310.5z"></path>
+      </svg> -->
         </div>
       </div>
       <!-- <Grid2 class="imagemarquee" size="small" :items="home.grid2"></Grid2> -->
     </NuxtLink>
-    <div c>
+    <div>
       <!-- md:pb-5 sm:pb-5  -->
-      <div v-if="home.sections" class="pb-0" id="about">
+      <div v-if="home.sections" class="pb-0 anchor"  id="about">
         <!-- about -->
         <span
           class="aboutsec text-4xl"
           v-for="section in home.sections"
           :key="section._key"
         >
-          <div class=" pt-[5vw] pb-[5vw] w-screen p-10" v-if="section.title">
+          <div class="pt-[5vw] pb-[5vw] w-screen p-10" v-if="section.title">
             <!-- text-[1.5rem] leading-[1.5rem] -->
 
-   
             <p class="abouttitletexta">
-                  {{ section.title }}
-                  <!-- scriptedt uppercase -->
-                  <span class=" ">Coralie Casting</span>
-                </p>
+              {{ section.title }}
+              <!-- scriptedt uppercase -->
+              <span class=" ">Coralie Casting</span>
+            </p>
 
-            <div class=" md:flex pt-[5vw] md:justify-between md:flex-row-reverse">
+            <div
+              class="md:flex pt-[5vw] md:justify-between md:flex-row-reverse"
+            >
               <div
                 class="md:pt-0 md:pb-20 abouttitle flex md:justify-end text-5xl md:text-6xl"
               >
-               
-
                 <div class="contactimagemobilecont w-[40vw] flex justify-end">
-                <MediaImage
-                  :size="section.image.size"
-                  :aspect="section.image.aspect"
-                  :src="section.image.image"
-                  v-if="section.image.image"
-                  class="contactimagemobile"
-                ></MediaImage>
-              </div>
+                  <MediaImage
+                    :size="section.image.size"
+                    :aspect="section.image.aspect"
+                    :src="section.image.image"
+                    v-if="section.image.image"
+                    class="contactimagemobile"
+                  ></MediaImage>
+                </div>
               </div>
               <!-- <p class="md:p-5 md:pt-0 pt-10 md:pb-0 pb-5 abouttitle scriptedt flex justify-end text-6xl">
               <span>Scripted</span>
@@ -83,7 +101,7 @@
               ></Richtext>
 
               <Richtext
-                class="abtextmb contents md:hidden  md:p-5  text-[1.7rem] leading-[1.7rem]"
+                class="abtextmb contents md:hidden md:p-5 text-[1.7rem] leading-[1.7rem]"
                 :blocks="section.content"
                 v-if="section.content"
               ></Richtext>
@@ -92,7 +110,7 @@
               <button
                 @click="toggleCollapsible"
                 v-if="!isCollapsibleOpen"
-                class="contents md:hidden  collapsible-button"
+                class="contents md:hidden collapsible-button"
               >
                 ... view more
                 <!-- <i :class="arrowIconClass"></i> -->
@@ -112,117 +130,116 @@
 
             <!-- contct -->
             <!-- Display the About Image    v-if="section.image.image"-->
-            <div
-              v-if="home.sections2"
-              id="contact"
-              class="contact-section contactsecmd pt-20 flex justify-between"
-            >
-              <div class="contactsecall pt-28 md:pt-0 ">
-                <!-- contact title text-6xl -->
-                <div
-                  class="contactheader text-[1.7rem] leading-[1.7rem] md:p-5 md:pl-0 pb-3"
-                >
-                  <div class="">
-                    <span>Get in touch</span>
-                  </div>
-                </div>
-
-                <!-- contact text -->
-                <div class="md:flex md:pt-0">
-                  <div>
-                    <div>
-                      <!-- leading-[1.5rem] text-[1.5rem] -->
-                      <p
-                        class="md:pl-5 hidden md:contents pb-0 text-[1.7rem] leading-[1.7rem] justify-start"
-                      >
-                        <span>Contact</span>
-                      </p>
+            <div id="contact" class="anchor">
+              <div
+                v-if="home.sections2"
+                class="contact-section contactsecmd pt-20 flex justify-between"
+              >
+                <div class="contactsecall pt-28 md:pt-0">
+                  <!-- contact title text-6xl -->
+                  <div
+                    class="contactheader text-[1.7rem] leading-[1.7rem] md:p-5 md:pl-0 pb-3"
+                  >
+                    <div class="">
+                      <span>Get in touch</span>
                     </div>
                   </div>
 
-                  <div class="md:pl-10">
-                    <div
-                      v-for="sections2 in home.sections2"
-                      :key="sections2._key"
-                      class="contacttextmd"
-                    >
-                      <div v-if="sections2.content2" class="contactsec text-[1.7rem] leading-[1.7rem]">
-                        <!-- <p v-if="sections2.title2" class="p-5 pb-0 contacttitle justify-start">
+                  <!-- contact text -->
+                  <div class="md:flex md:pt-0">
+                    <div>
+                      <div>
+                        <!-- leading-[1.5rem] text-[1.5rem] -->
+                        <p
+                          class="md:pl-5 hidden md:contents pb-0 text-[1.7rem] leading-[1.7rem] justify-start"
+                        >
+                          <span>Contact</span>
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="md:pl-10">
+                      <div
+                        v-for="sections2 in home.sections2"
+                        :key="sections2._key"
+                        class="contacttextmd"
+                      >
+                        <div
+                          v-if="sections2.content2"
+                          class="contactsec text-[1.7rem] leading-[1.7rem]"
+                        >
+                          <!-- <p v-if="sections2.title2" class="p-5 pb-0 contacttitle justify-start">
                     <span>{{ sections2.title2 }}</span>
                   </p> -->
-                        <Richtext
-                          class="pb-2 contactinner"
-                          :blocks="sections2.content2"
-                          v-if="sections2.content2"
-                        ></Richtext>
+                          <Richtext
+                            class="pb-2 contactinner"
+                            :blocks="sections2.content2"
+                            v-if="sections2.content2"
+                          ></Richtext>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div>
+                        <p
+                          class="copyrtext md:pl-10 pt-10 uppercase w-3/6 flex md:pt-0 pb-0 md:leading-[1.25rem] text-[1.25rem] justify-center"
+                        >
+                          COPYRIGHT ©2024 Casting by Coralie Scripted
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="w-3/12">
+                      <div>
+                        <p class="p-5 pb-0 text-[1.5rem] justify-start">
+                          <span><br /></span>
+                        </p>
                       </div>
                     </div>
                   </div>
-
-                  <div>
-                    <div>
-                      <p
-                        class="copyrtext md:pl-10 pt-10  uppercase w-3/6 flex md:pt-0 pb-0  md:leading-[1.25rem] text-[1.25rem] justify-center"
-                      >
-                        COPYRIGHT ©2024
-                        Casting by Coralie Scripted
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="w-3/12">
-                    <div>
-                      <p class="p-5 pb-0 text-[1.5rem] justify-start">
-                        <span><br /></span>
-                      </p>
-                    </div>
-                  </div>
                 </div>
-
-         
-            
               </div>
-              
             </div>
 
-
-                   <!-- press -->
-                   <div
-                  v-if="home.sections3"
-                  class="presssecmd md:pt-40 pb-5 md:pb-0 text-[1.7rem] leading-[1.7rem] flex"
-                >
-                  <div
-                    v-for="sections3 in home.sections3"
-                    :key="sections3._key"
-                    class="md:p-5  presssecinnermd"
+            <!-- press -->
+            <div
+              v-if="home.sections3"
+              class="presssecmd md:pt-40 pb-5 md:pb-0 text-[1.7rem] leading-[1.7rem] flex"
+            >
+              <div
+                v-for="sections3 in home.sections3"
+                :key="sections3._key"
+                class="md:p-5 presssecinnermd"
+              >
+                <div class="presssec">
+                  <p
+                    v-if="sections3.title3"
+                    class="presstitle md:pb-2 justify-start"
                   >
-                    <div class="presssec">
-                      <p
-                        v-if="sections3.title3"
-                        class="presstitle md:pb-2 justify-start"
-                      >
-                        <span>{{ sections3.title3 }}</span>
-                      </p>
-                      <Richtext
-                        class="presssectext"
-                        :blocks="sections3.content3"
-                        v-if="sections3.content3"
-                      ></Richtext>
-                    </div>
-                    <!-- Arrow pointing down -->
-                    <!-- <div class="pt-5 justify-start arrow-down">
+                    <span>{{ sections3.title3 }}</span>
+                  </p>
+                  <Richtext
+                    class="presssectext"
+                    :blocks="sections3.content3"
+                    v-if="sections3.content3"
+                  ></Richtext>
+                </div>
+                <!-- Arrow pointing down -->
+                <!-- <div class="pt-5 justify-start arrow-down">
                       <i class="fas fa-arrow-down"></i>
                     </div> -->
-                  </div>
-                </div>
+              </div>
+            </div>
           </div>
         </span>
 
         <NuxtLink :to="`/projects`">
-          <h1 class="morep text-6xl w-screen p-10 pt-0 pb-0 underline">View Projects</h1>
+          <h1 class="morep text-6xl w-screen p-10 pt-0 pb-0 underline">
+            View Projects
+          </h1>
         </NuxtLink>
 
- 
         <!-- <Marqueec></Marqueec> -->
         <Grid3 class="imagemarquee" size="double" :items="home.grid2"></Grid3>
         <!-- <Grid size="small" :items="home.grid2"></Grid> -->
@@ -235,7 +252,7 @@
 import { groq } from "@nuxtjs/sanity";
 import { mapState, mapActions } from "vuex";
 import "@fortawesome/fontawesome-free/css/all.css";
-import Marqueec from '~/components/Marqueec.vue';
+import Marqueec from "~/components/Marqueec.vue";
 // import Vue3Marquee from 'vue3-marquee';
 // import AboutPage from '~/components/AboutPage.vue'
 
@@ -243,7 +260,7 @@ export default {
   name: "IndexPage",
 
   components: {
-    Marqueec
+    Marqueec,
   },
 
   data() {
@@ -433,13 +450,10 @@ export default {
 </script>
 
 <style scoped>
-
-
-
-.abouttitletexta{
+.abouttitletexta {
   text-transform: uppercase;
-    font-size: 1.7rem;
-    line-height: 1.7rem;
+  font-size: 1.7rem;
+  line-height: 1.7rem;
 }
 /* Arrow down styles */
 .arrow-down {
@@ -567,10 +581,10 @@ export default {
 
 @media (max-width: 768px) {
   .presssectext {
-  font-family: unset;
-}
+    font-family: unset;
+  }
 
-  .abouttitletexta{
+  .abouttitletexta {
     font-family: "GTWalsheimbb";
     /* text-transform: uppercase; */
     font-size: 3rem;
@@ -578,7 +592,7 @@ export default {
     text-align: center;
   }
 
-  .copyrtext{
+  .copyrtext {
     font-size: 1rem;
     line-height: 1rem;
     width: 40%;
@@ -638,7 +652,7 @@ export default {
     font-family: "GTWalsheimbb";
     /* text-transform: uppercase; */
     font-size: 3rem;
-}
+  }
 
   .presstitle {
     font-family: "GTWalsheimbb";

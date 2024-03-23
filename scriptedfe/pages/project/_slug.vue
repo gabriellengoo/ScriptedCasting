@@ -3,6 +3,14 @@
   <div class="relative md:min-h-fit md:overflow-hidden">
     <!-- <Headerproject /> -->
 
+    <div class="mobileslugtitle hidden w-screen fixed md:flex justify-end text-[1.525rem]">
+      <button class="  z-50 px-4 py-8" @click="goBack">
+      Back
+    </button>
+    </div>
+
+   
+
     <section>
       <!-- <div class="h-screen fixed z-[10]"     v-if="isGalleryExpanded"   @keydown="handleKeyDown" >
               <button v-if="isGalleryExpanded"
@@ -32,12 +40,19 @@
           <div
             class="titles mobiletitle  z-[10] justify-between w-full flex items-end"
           >
+      
             <!-- text-[14.21px] -->
             <!-- <About/> md:w-4/6-->
             <div
               class="projectetxt inner-div pl-[1.5rem] textppad pb-5 top-[0vh]  w-screen projecttextmb"
               id="titleInnerDiv"
             >
+            <div class="mobileslugtitle md:hidden flex ">
+      <button class="  z-50  pb-8 pt-0" @click="goBack">
+      Back
+    </button>
+    </div>
+
               <div class="pb-5 mobileslugtitle">{{ project.title }}</div>
                 <!-- flex justify-between -->
             <div class="">
@@ -353,6 +368,11 @@ export default {
     // const overlay = document.querySelector(".overlay-gallery");
   },
   methods: {
+    goBack() {
+      // Implement your logic to navigate back
+      // For example:
+      this.$router.go(-1); // This navigates back in the browser history
+    },
     openGallery() {
       this.$store.commit("setGalleryState", true); // Set gallery state as open
     },
@@ -495,6 +515,7 @@ export default {
   font-size: 4.25rem /* 36px */;
   line-height: 2.5rem /* 40px */;
   font-family: "GTWalsheimbb";
+  z-index: 100000;
 }
 
 

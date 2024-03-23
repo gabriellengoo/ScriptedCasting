@@ -84,8 +84,24 @@ export default {
         this.touchMove = false;
       }, 300);
     },
+    // scrollToContact() {
+    //   this.$emit('scroll-to-contact');
+    // },
     scrollToContact() {
-      this.$emit('scroll-to-contact');
+      this.scrollToSection('#contact');
+    },
+    scrollToAbout() {
+      this.scrollToSection('#about');
+    },
+    scrollToSection(selector) {
+  const section = document.querySelector(selector);
+  if (section) {
+    const offset = section.offsetTop;
+    window.scrollTo({
+      top: offset,
+      behavior: 'smooth'
+    });
+  }
     },
   },
 };
