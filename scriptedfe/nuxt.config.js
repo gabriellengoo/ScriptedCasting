@@ -19,6 +19,10 @@ export default {
     ]
   },
 
+  router: {
+    middleware: 'lenis'
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/css/main.css',
