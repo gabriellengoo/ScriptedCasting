@@ -1,7 +1,8 @@
 <template>
   <!-- pt-40 -->
   <div class="">
-    <NuxtLink class="w-screen flex justify-center" :to="`/projects`">
+    <LenisComponent /> 
+    <NuxtLink class="w-screen flex justify-center" :to="`/works`">
       <div v-if="home.sections4">
         <div v-for="section in home.sections4" :key="section._key">
           <MediaImage
@@ -234,7 +235,7 @@
           </div>
         </span>
 
-        <NuxtLink :to="`/projects`">
+        <NuxtLink :to="`/works`">
           <h1 class="morep text-6xl w-screen p-10 pt-0 pb-0 underline">
             View Projects
           </h1>
@@ -255,6 +256,7 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import Marqueec from "~/components/Marqueec.vue";
 // import Vue3Marquee from 'vue3-marquee';
 // import AboutPage from '~/components/AboutPage.vue'
+import LenisComponent from '~/components/LenisComponent.vue';
 
 export default {
   name: "IndexPage",

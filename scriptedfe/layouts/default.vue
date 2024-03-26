@@ -15,6 +15,7 @@
           : ' md:flex'
       "
     ></LayoutHeader>
+ 
     <!-- <LayoutHeaderMin
       :class="
         $nuxt.$route.name == 'index' ||
@@ -32,36 +33,37 @@
 <script>
 import { mapActions, mapMutations } from 'vuex'
 import TransitionComponent from '~/components/TransitionComponent.vue';
-import LenisComponent from '~/components/LenisComponent.vue';
-import Lenis from '@studio-freight/lenis';
+// import LenisComponent from '~/components/LenisComponent.vue';
+// import Lenis from '@studio-freight/lenis';
 
 
 
 export default {
+
   methods: {
     ...mapActions(['setTitle']),
     ...mapMutations(['SET_FOOTER', 'CLOSE_MENU']),
   },
   data() {
     return {
-      // lenis: null,
+      lenis: null,
       // loading: true,
       // ... other data properties
     };
   },
   mounted() {
-    const lenis = new Lenis()
+    // const lenis = new Lenis()
 
-lenis.on('scroll', (e) => {
-  console.log(e)
-})
+// lenis.on('scroll', (e) => {
+//   console.log(e)
+// })
 
-function raf(time) {
-  lenis.raf(time)
-  requestAnimationFrame(raf)
-}
+// function raf(time) {
+//   lenis.raf(time)
+//   requestAnimationFrame(raf)
+// }
 
-requestAnimationFrame(raf)
+// requestAnimationFrame(raf)
 },
 
   components: {

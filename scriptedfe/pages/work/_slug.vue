@@ -2,8 +2,9 @@
   <!-- md:h-screen -->
   <div class="relative md:min-h-fit md:overflow-hidden">
     <!-- <Headerproject /> -->
+    <LenisComponent /> 
 
-    <div class="mobileslugtitle hidden w-screen fixed md:flex justify-end text-[1.525rem]">
+    <div class="mobileslugtitle hidden left-[90vw] fixed md:flex justify-end text-[1.525rem]">
       <button class="  z-50 px-4 py-8" @click="goBack">
       Back
     </button>
@@ -205,8 +206,7 @@
                           "
                           :style="{
                             pointerEvents: 'auto',
-                            width: `30vw`,
-                              height: `25vh`,
+                        
                           }"
                          
                           :sizes="'sm:200vw md:150vw lg:200vw'"
@@ -220,8 +220,7 @@
                           }/thumbnail.jpg?time=${image.thumbnailTime || 0}`"
                           :style="{
                             pointerEvents: 'auto',
-                            width: `30vw`,
-                              height: `25vh`,
+                            
                           }"
                           @click="handleVideoClick(image.video.id)"
                           class="gallery-image relative object-cover object-center z-[10000000] w-full h-auto p-4 my-auto"
@@ -232,8 +231,7 @@
                           :src="getYouTubeEmbedUrl(image.youtubeUrl)"
                           frameborder="0"
                           :style="{
-                               width: `30vw`,
-                                 height: `25vh`,
+                             
                                
                           }"
                           allowfullscreen
@@ -246,8 +244,7 @@
                           frameborder="0"
                           allowfullscreen
                           :style="{
-                               width: `30vw`,
-                                 height: `25vh`,
+                              
                               
                           }"
                           class="gallery-image relative object-cover object-center z-[10000000] w-full h-auto p-4 my-auto"
@@ -270,6 +267,7 @@ import { mapMutations, mapState } from "vuex";
 // import Header from "~/components/layout/Header.vue";
 // import About from "~/components/Aboutpage.vue";
 // import Lenis from '@studio-freight/lenis';
+import LenisComponent from '~/components/LenisComponent.vue';
 // import Headerproject from "~/components/layout/Headerproject.vue";
 
 export default {
@@ -327,10 +325,11 @@ export default {
       imageOpacity: 1, // Add this property
       scrolled: false,
       back: false,
+      searchQuery: '', // Initialize search query
     };
   },
   computed: {
-    ...mapState(["meta", "metaemails"]), // Map Vuex state to local computed properties
+    ...mapState(["meta", "metaemails", "projects"]), // Map Vuex state to local computed properties
   },
   created() {
     if (
@@ -498,6 +497,17 @@ export default {
       } else {
         this.mySwiper.slidePrev();
       }
+    },
+    async searchProjects() {
+      const searchQuery = this.searchQuery.trim(); // Remove leading and trailing spaces
+      if (searchQuery.length === 0) {
+        // If search query is empty, reset search results
+        this.searchResults = [];
+        return;
+      }
+      // Perform search query against project titles
+      const searchResults = this.projects.filter(project => project.title.toLowerCase().includes(searchQuery.toLowerCase()));
+      this.searchResults = searchResults;
     },
 
     ...mapMutations(["SET_FOOTER"]),

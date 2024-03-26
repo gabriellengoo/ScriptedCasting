@@ -6,7 +6,7 @@
         <figure class=" p-10">
           <NuxtLink
             v-if="item.reference.slug"
-            :to="`/project/${item.reference.slug}`"
+            :to="`/work/${item.reference.slug}`"
           >
             <span>
               <figure>
@@ -95,7 +95,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["activeProject", "activeTalent"]),
+    ...mapState(["activeProject", "activeTalent"]), 
   },
   mounted() {
     this.redraw();

@@ -11,7 +11,7 @@
   export default {
     data() {
       return {
-        // lenis: null,
+        lenis: null,
         // loading: true,
         // ... other data properties
       };

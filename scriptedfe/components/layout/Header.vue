@@ -19,12 +19,17 @@
           ><span class="hover-move" :class="{ 'touch-move': touchMove }">ed</span>
         </NuxtLink>
   
+
+        <!-- <SearchBar /> -->
+
+
   <nav class="flex-col linktextmb text-[1.525rem] w-1/16 flex">
         <!-- hidden -->
-        <NuxtLink to="/projects">Work</NuxtLink>
+        <NuxtLink to="/works">Work</NuxtLink>
         <NuxtLink :to="{ path: '/', hash: '#about' }" >About</NuxtLink>
         <NuxtLink :to="{ path: '/', hash: '#contact' }" class="header-link">Contact</NuxtLink>
       </nav>
+
    
       <!-- <div class="flex-col hidden normal-case md:flex">
         <div class="flex" v-for="item in contact" :key="item._key">
@@ -60,8 +65,13 @@
 </template>
 <script>
 import { mapState, mapMutations } from 'vuex';
+import SearchBar from '~/components/SearchBar.vue'
 
 export default {
+  components: {
+    // Header,
+    SearchBar
+  },
   data() {
     return {
       touchHover: false,

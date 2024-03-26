@@ -19,7 +19,7 @@
           <figure >
             <NuxtLink
               v-if="item.reference.slug"
-              :to="`/project/${item.reference.slug}`"
+              :to="`/work/${item.reference.slug}`"
             >
               <span>
                 <figure>
