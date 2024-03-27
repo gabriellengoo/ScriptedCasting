@@ -1,7 +1,7 @@
 <template>
   <!-- pt-40 -->
   <div class="">
-    <LenisComponent /> 
+    <!-- <LenisComponent />  -->
     <NuxtLink class="w-screen flex justify-center" :to="`/works`">
       <div v-if="home.sections4">
         <div v-for="section in home.sections4" :key="section._key">

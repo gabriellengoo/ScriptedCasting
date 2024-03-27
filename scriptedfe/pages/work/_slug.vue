@@ -2,7 +2,7 @@
   <!-- md:h-screen -->
   <div class="relative md:min-h-fit md:overflow-hidden">
     <!-- <Headerproject /> -->
-    <LenisComponent /> 
+    <!-- <LenisComponent />  -->
 
     <div class="mobileslugtitle hidden left-[90vw] fixed md:flex justify-end text-[1.525rem]">
       <button class=" backc z-50 px-4 py-8" @click="goBack">
