@@ -59,6 +59,7 @@
 import { mapState } from 'vuex';
 import gsap from 'gsap';
 // import LenisComponent from '~/components/LenisComponent.vue';
+import Lenis from '@studio-freight/lenis'; 
 
 export default {
   computed: {
@@ -95,6 +96,9 @@ export default {
   mounted() {
     const marqueesTimelines = this.animateVerticalMarquees();
     this.marqueesTimelines = marqueesTimelines;
+
+
+
     // this.$refs.marquee1.addEventListener('mouseenter', () => this.pauseMarquee(marqueesTimelines[0]));
     // this.$refs.marquee1.addEventListener('mouseleave', () => this.playMarquee(marqueesTimelines[0]));
     // this.$refs.marquee2.addEventListener('mouseenter', () => this.pauseMarquee(marqueesTimelines[1]));
@@ -124,11 +128,19 @@ export default {
   }
 
   .marquee-1{
-    width: unset !important;
+    width: 50vw !important;
   }
 
   .marquee-2{
-    width: unset !important;
+    width: 50vw !important;
+  }
+
+  .marquee-3{
+    display: none !important;
+  }
+
+  .marquee-4{
+    display: none !important;
   }
 }
 </style>

@@ -4,7 +4,7 @@
   <script>
 //   import { mapActions, mapMutations } from 'vuex'
 //   import TransitionComponent from '~/components/TransitionComponent.vue';
-  import Lenis from '@studio-freight/lenis';
+  import Lenis from '@studio-freight/lenis'; 
   
   
   

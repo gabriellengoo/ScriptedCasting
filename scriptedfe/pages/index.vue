@@ -257,6 +257,9 @@ import Marqueec from "~/components/Marqueec.vue";
 // import Vue3Marquee from 'vue3-marquee';
 // import AboutPage from '~/components/AboutPage.vue'
 import LenisComponent from '~/components/LenisComponent.vue';
+import Lenis from '@studio-freight/lenis'; 
+// import gsap from 'gsap';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger'; 
 
 export default {
   name: "IndexPage",
@@ -271,6 +274,7 @@ export default {
       project: false,
       abouts: [],
       index: 1,
+      lenis: null,
       realIndex: 0,
       step: 0,
       isBlueBoxActive: false,
@@ -381,6 +385,22 @@ export default {
     return { home };
   },
 
+//   mounted() {
+//     const lenis = new Lenis()
+
+// lenis.on('scroll', (e) => {
+//   console.log(e)
+// })
+
+// function raf(time) {
+//   lenis.raf(time)
+//   requestAnimationFrame(raf)
+// }
+
+// requestAnimationFrame(raf)
+
+//   },
+  
   methods: {
     ...mapActions(["setTitle"]),
     setProject(reference) {
