@@ -26,8 +26,8 @@
   <nav class="headtoplinks flex-col linktextmb text-[1.525rem] w-1/16 flex">
         <!-- hidden -->
         <NuxtLink to="/works">Work</NuxtLink>
-        <NuxtLink :to="{ path: '/', hash: '#about' }" >About</NuxtLink>
-        <NuxtLink :to="{ path: '/', hash: '#contact' }" class="header-link">Contact</NuxtLink>
+        <NuxtLink :to="{ path: '/#about', hash: '#about' }" >About</NuxtLink>
+        <NuxtLink :to="{ path: '/#contact', hash: '#contact' }" class="header-link">Contact</NuxtLink>
       </nav>
 
    
