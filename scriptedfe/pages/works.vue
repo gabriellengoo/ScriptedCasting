@@ -3,7 +3,7 @@
   <main class="mt-1  flex h-screen overflow-hidden">
    
  
-    <div class="w-1/4 gridset overflow-scroll h-screen">
+    <div class="w-1/4 gridset overflow-y-scroll h-screen">
       <div class="marquee-container marquee-1" ref="marquee1">
       <Grid  :items="grid.grid" size="small"></Grid>
       <Grid  :items="grid.grid" size="small"></Grid>
@@ -13,7 +13,7 @@
     </div>
   
 
-    <div class="w-1/4 gridset overflow-scroll h-screen">
+    <div class="w-1/4 gridset overflow-y-scroll h-screen">
       <div class="marquee-container marquee-2" ref="marquee2">
         <Grid :items="grid.gridm" size="small"></Grid>
         <Grid :items="grid.gridm" size="small"></Grid>
@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <div class="w-1/4 gridset overflow-scroll h-screen">
+    <div class="w-1/4 gridset overflow-y-scroll h-screen">
       <div class="marquee-container marquee-3" ref="marquee3">
         <Grid :items="grid.gride" size="small"></Grid>
         <Grid :items="grid.gride" size="small"></Grid>
@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <div class="w-1/4 gridset overflow-scroll h-screen">
+    <div class="w-1/4 gridset overflow-y-scroll h-screen">
       <div class="marquee-container marquee-4" ref="marquee4">
         <Grid :items="grid.gridl" size="small"></Grid>
         <Grid :items="grid.gridl" size="small"></Grid>
