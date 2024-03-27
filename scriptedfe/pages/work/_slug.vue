@@ -5,7 +5,7 @@
     <LenisComponent /> 
 
     <div class="mobileslugtitle hidden left-[90vw] fixed md:flex justify-end text-[1.525rem]">
-      <button class="  z-50 px-4 py-8" @click="goBack">
+      <button class=" backc z-50 px-4 py-8" @click="goBack">
       Back
     </button>
     </div>
@@ -37,9 +37,9 @@
           v-if="project"
           class="ml-auto text-lg uppercase lg:text-xl md:text-xl font-heading w-full flex justify-center"
         >
-        <!-- fixed -->
+        <!-- fixed z-[10] -->
           <div
-            class="titles mobiletitle  z-[10] justify-between w-full flex items-end"
+            class="titles mobiletitle  justify-between w-full flex items-end"
           >
       
             <!-- text-[14.21px] -->
@@ -81,13 +81,7 @@
                 </div>
               </div>
 
-              <button
-                v-if="isGalleryExpanded"
-                @click="closeImageModal"
-                class="block close-button leading-5"
-              >
-                Close
-              </button>
+             
             </div>
           </div>
         </div>
@@ -156,6 +150,8 @@
       </div>
 
       <!-- Image Overlay Gallery -->
+     
+           
       <div class="block">
         <div
           v-if="isGalleryExpanded"
@@ -165,6 +161,41 @@
           @mouseleave="hideGalleryOnLeave"
         >
           <div class="gallery-content">
+            <div class="close-button">
+                <button
+                v-if="isGalleryExpanded"
+                @click="closeImageModal"
+                class=" close-buttons"
+              >
+                Exit
+              </button>
+              <button
+        v-if="isGalleryExpanded"
+          class="previous close-buttons"
+          :class="back ? '' : 'disabled'"
+          @click="prev"
+          ref="prev"
+          aria-label="Previous"
+        >previous</button>
+        <button
+        v-if="isGalleryExpanded"
+          class="next close-buttons"
+          @click="next"
+          aria-label="Next"
+        >next</button>
+              </div>
+                        <!-- Next Arrow -->
+        <!-- <div  v-if="isGalleryExpanded" class="next-arrow" @click="nextImage">
+         next
+        </div> -->
+
+        <!-- <div  v-if="isGalleryExpanded" class="close-button" @click="next">
+          next
+        </div> -->
+
+
+
+
             <div class="gallery-images">
               <section
                 class="top-0 left-0 hidden w-full md:block cursor-grab slider"
@@ -249,12 +280,23 @@
                           }"
                           class="gallery-image relative object-cover object-center z-[10000000] w-full h-auto p-4 my-auto"
                         ></iframe>
+                        
                       </figure>
+               
                     </div>
+
+                    
                   </div>
+                  
                 </div>
               </section>
             </div>
+            
+            
+      
+    
+
+
           </div>
         </div>
       </div>
@@ -273,6 +315,7 @@ import LenisComponent from '~/components/LenisComponent.vue';
 export default {
   components: {
     // Headerproject,
+    LenisComponent,
   },
   async asyncData({ params, $sanity, store }) {
     const query = groq`*[_type == "project" && slug.current == "${params.slug}" ] {
@@ -367,6 +410,9 @@ export default {
     // const overlay = document.querySelector(".overlay-gallery");
   },
   methods: {
+    nextImage() {
+      // Implement your logic to go to the next image
+    },
     goBack() {
       // Implement your logic to navigate back
       // For example:
@@ -527,6 +573,7 @@ export default {
   font-family: "GTWalsheimbb";
   z-index: 100000;
 }
+
 
 
 
@@ -1012,7 +1059,7 @@ button .circle:hover {
 .overlaydiv {
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: center;
 }
 
 .overlaycont {
@@ -1125,7 +1172,7 @@ button .circle:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9;
+  /* z-index: 9; */
   /* z-index: 100; */
   cursor: crosshair;
 }
@@ -1141,20 +1188,63 @@ button .circle:hover {
 
 .close-button {
   background: none;
-  border: none;
-  color: rgb(0, 0, 0);
-  font-size: 1.2rem;
+    border: none;
+    color: rgb(0, 0, 0);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    z-index: 99999 !important;
+    position: relative;
+    /* padding-left: 0vw !important; */
+    /* height: inherit !important; */
+       /* left: 0; */
+       padding: 2rem;
+       /* left: .5vw; */
+    top: 20vh;
+    /* top: 3vh; */
+    font-size: 3.25rem;
+    font-size: 2rem;
+    /* line-height: 2.5rem; */
+    font-family: "GTWalsheimbb";
+    /* font-size: 14.21px !important; */
+}
+
+.close-buttons{
+  background: none;
+    border: none;
+    color: rgb(0, 0, 0);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    z-index: 99999 !important;
+    position: relative;
+    /* padding-left: 0vw !important; */
+    /* height: inherit !important; */
+       /* left: 0; */
+       padding: 2rem;
+       padding-top: 0;
+    top: 0vh;
+    /* top: -20vh; */
+    /* top: 3vh; */
+    font-size: 2rem;
+    /* line-height: 2.5rem; */
+    /* font-family: "GTWalsheimbb"; */
+    /* font-size: 14.21px !important; */
+}
+
+
+.close-button button{
   text-transform: uppercase;
-  cursor: pointer;
-  z-index: 99999;
-  padding-left: 0vw !important;
-  height: inherit !important;
-  /* font-size: 14.21px !important; */
-  padding-top: 4vh;
-  /* letter-spacing: -1px; */
-  /* position: inherit;
-    bottom: 0vh;
-    padding-bottom: 14vh; */
+}
+
+.backc{
+  z-index: 9 !important;
+  position: relative;
+  text-transform: uppercase;
+}
+
+iframe .gallery-image {
+  height: 70vh;
 }
 
 button {
@@ -1323,7 +1413,7 @@ button {
 
 @media (max-width: 768px) {
   .scrollcost {
-  width: 100vw;
+  width: 100vw !important;
 }
 
   .overlay-gallery {

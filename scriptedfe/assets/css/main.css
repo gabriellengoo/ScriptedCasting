@@ -30,6 +30,10 @@ html {
   /* cursor: url('/CURSOR.svg'), auto !important; */
 }
 
+.overlaydiv iframe {
+  height: 70vh !important;
+}
+
 .titleText {
   font-family: "GTWalsheimb";
 }
@@ -37,6 +41,17 @@ html {
 .framesz{
 width:20vw !important;
 }
+
+.headtop{
+  z-index: 10000; /* Ensure search input appears above overlay */
+}
+
+.headtoplinks{
+  z-index: 10000; /* Ensure search input appears above overlay */
+}
+
+
+
 
 a {
   /* cursor: url('/CURSOR.svg'), auto !important; */
@@ -154,7 +169,6 @@ svg {
     padding-right: 0rem;
   }
 
-
 }
 
 .content-container {
@@ -201,6 +215,14 @@ svg {
 }
 
 @media (max-width: 768px) {
+  .framesz{
+    width: 50vw !important;
+  }
+  
+  .headtoplinks{
+    z-index: 1000; /* Ensure search input appears above overlay */
+  }
+
   .projecttextarea:nth-child(1) {
     width: 100%; 
   }
@@ -220,7 +242,9 @@ svg {
     width: 50%; 
   }
 
-
+  .notmobile{
+    display:none;
+  }
 
   iframe{
     width: 100%; 

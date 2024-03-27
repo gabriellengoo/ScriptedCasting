@@ -37,7 +37,7 @@
         </div>
 
         <!-- Downward arrow -->
-        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+        <div class="notmobile absolute bottom-4 left-1/2 transform -translate-x-1/2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
@@ -263,6 +263,7 @@ export default {
 
   components: {
     Marqueec,
+    LenisComponent,
   },
 
   data() {

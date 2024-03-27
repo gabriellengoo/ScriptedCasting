@@ -2,30 +2,56 @@
   <!-- md:pt-20 -->
   <main class="mt-1  flex h-screen overflow-hidden">
    
-    <div class="gridset w-1/4" >
-      <!-- <LenisComponent /> -->
-    <div class="marquee-container marquee-1" ref="marquee1">
-      <Grid class="" :items="grid.grid" size="small"></Grid>
-    </div>
-  </div>
-
-    <div class="gridset w-1/4" >
-    <div class="marquee-container marquee-2 " ref="marquee2">
-      <Grid class="" :items="grid.gridm" size="small"></Grid>
-    </div>
-  </div>
-
-    <div class="gridset w-1/4" >
-    <div class="marquee-container marquee-3 " ref="marquee3">
-      <Grid class="" :items="grid.gride" size="small"></Grid>
-    </div>
-  </div>
-
-    <div class="gridset w-1/4" >
-      <div class="marquee-container marquee-4 " ref="marquee4">
-      <Grid class="" :items="grid.gridl" size="small"></Grid>
+ 
+    <div class="w-1/4 gridset overflow-scroll h-screen">
+      <div class="marquee-container marquee-1" ref="marquee1">
+      <Grid  :items="grid.grid" size="small"></Grid>
+      <Grid  :items="grid.grid" size="small"></Grid>
+      <Grid  :items="grid.grid" size="small"></Grid>
+      <Grid  :items="grid.grid" size="small"></Grid>
       </div>
     </div>
+  
+
+    <div class="w-1/4 gridset overflow-scroll h-screen">
+      <div class="marquee-container marquee-2" ref="marquee2">
+        <Grid :items="grid.gridm" size="small"></Grid>
+        <Grid :items="grid.gridm" size="small"></Grid>
+        <Grid :items="grid.gridm" size="small"></Grid>
+        <Grid :items="grid.gridm" size="small"></Grid>
+      </div>
+    </div>
+
+    <div class="w-1/4 gridset overflow-scroll h-screen">
+      <div class="marquee-container marquee-3" ref="marquee3">
+        <Grid :items="grid.gride" size="small"></Grid>
+        <Grid :items="grid.gride" size="small"></Grid>
+        <Grid :items="grid.gride" size="small"></Grid>
+        <Grid :items="grid.gride" size="small"></Grid>
+      </div>
+    </div>
+
+    <div class="w-1/4 gridset overflow-scroll h-screen">
+      <div class="marquee-container marquee-4" ref="marquee4">
+        <Grid :items="grid.gridl" size="small"></Grid>
+        <Grid :items="grid.gridl" size="small"></Grid>
+        <Grid :items="grid.gridl" size="small"></Grid>
+        <Grid :items="grid.gridl" size="small"></Grid>
+      </div>
+    </div>
+
+
+ 
+    
+
+
+
+      
+
+
+
+      
+   
   </main>
 </template>
 
@@ -52,10 +78,10 @@ export default {
       const tl3 = gsap.timeline({ repeat: -1, yoyo: true });
       const tl4 = gsap.timeline({ repeat: -1, yoyo: true });
 
-      tl1.to(this.$refs.marquee1, { duration: 40, y: '-60%' });
-      tl2.to(this.$refs.marquee2, { duration: 35, y: '-60%' });
-      tl3.to(this.$refs.marquee3, { duration: 60, y: '-60%' });
-      tl4.to(this.$refs.marquee4, { duration: 35, y: '-60%' });
+      tl1.to(this.$refs.marquee1, { duration: 40, y: '-20%' });
+      tl2.to(this.$refs.marquee2, { duration: 35, y: '-20%' });
+      tl3.to(this.$refs.marquee3, { duration: 60, y: '-20%' });
+      tl4.to(this.$refs.marquee4, { duration: 35, y: '-20%' });
 
       return [tl1, tl2, tl3, tl4];
     },

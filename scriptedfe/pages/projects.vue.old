@@ -1,16 +1,30 @@
 <template>
-  <main class="mt-1 md:pt-20 flex h-screen overflow-hidden allmb">
-    <div class="scroll marquee-container marquee-1 w-1/4" ref="marquee1">
+  <!-- md:pt-20 -->
+  <main class="mt-1  flex h-screen overflow-hidden">
+   
+    <div class="gridset w-1/4" >
+      <!-- <LenisComponent /> -->
+    <div class="marquee-container marquee-1" ref="marquee1">
       <Grid class="" :items="grid.grid" size="small"></Grid>
     </div>
-    <div class="scroll marquee-container marquee-2 w-1/4" ref="marquee2">
-      <div><Grid class="" :items="grid.gridm" size="small"></Grid></div>
+  </div>
+
+    <div class="gridset w-1/4" >
+    <div class="marquee-container marquee-2 " ref="marquee2">
+      <Grid class="" :items="grid.gridm" size="small"></Grid>
     </div>
-    <div class="scroll marquee-container marquee-3 w-1/4" ref="marquee3">
+  </div>
+
+    <div class="gridset w-1/4" >
+    <div class="marquee-container marquee-3 " ref="marquee3">
       <Grid class="" :items="grid.gride" size="small"></Grid>
     </div>
-    <div class="scroll marquee-container marquee-4 w-1/4" ref="marquee4">
+  </div>
+
+    <div class="gridset w-1/4" >
+      <div class="marquee-container marquee-4 " ref="marquee4">
       <Grid class="" :items="grid.gridl" size="small"></Grid>
+      </div>
     </div>
   </main>
 </template>
@@ -18,16 +32,18 @@
 <script>
 import { mapState } from 'vuex';
 import gsap from 'gsap';
+// import LenisComponent from '~/components/LenisComponent.vue';
 
 export default {
-  data() {
-    return {
-      lenisEnabled: false,
-      scrollSpeed: 1, // Initial scroll speed factor
-    };
-  },
   computed: {
     ...mapState(['grid', 'activeProject']),
+  },
+  data() {
+    return {
+      lenis: null,
+      // loading: true,
+      // ... other data properties
+    };
   },
   methods: {
     animateVerticalMarquees() {
@@ -36,10 +52,10 @@ export default {
       const tl3 = gsap.timeline({ repeat: -1, yoyo: true });
       const tl4 = gsap.timeline({ repeat: -1, yoyo: true });
 
-      tl1.to(this.$refs.marquee1, { duration: 20 / this.scrollSpeed, y: '-80%' });
-      tl2.to(this.$refs.marquee2, { duration: 15 / this.scrollSpeed, y: '-80%' });
-      tl3.to(this.$refs.marquee3, { duration: 50 / this.scrollSpeed, y: '-80%' });
-      tl4.to(this.$refs.marquee4, { duration: 15 / this.scrollSpeed, y: '-50%' });
+      tl1.to(this.$refs.marquee1, { duration: 40, y: '-60%' });
+      tl2.to(this.$refs.marquee2, { duration: 35, y: '-60%' });
+      tl3.to(this.$refs.marquee3, { duration: 60, y: '-60%' });
+      tl4.to(this.$refs.marquee4, { duration: 35, y: '-60%' });
 
       return [tl1, tl2, tl3, tl4];
     },
@@ -49,47 +65,44 @@ export default {
     playMarquee(timeline) {
       timeline.play();
     },
-    updateScrollSpeed() {
-      // Update scroll speed based on scroll position
-      const scrollPosition = window.scrollY;
-      this.scrollSpeed = 1 + (scrollPosition / 500); // Adjust this factor as needed
-      const marqueesTimelines = this.marqueesTimelines;
-      if (marqueesTimelines) {
-        marqueesTimelines.forEach((tl, index) => {
-          tl.timeScale(this.scrollSpeed);
-        });
-      }
-    },
   },
   mounted() {
     const marqueesTimelines = this.animateVerticalMarquees();
     this.marqueesTimelines = marqueesTimelines;
-    this.updateScrollSpeed(); // Initial call to set scroll speed
-    window.addEventListener('scroll', this.updateScrollSpeed); // Listen for scroll event
-    // Add event listeners for mouseenter and mouseleave as before...
-  },
-  beforeDestroy() {
-    window.removeEventListener('scroll', this.updateScrollSpeed); // Remove scroll event listener on component destroy
+    // this.$refs.marquee1.addEventListener('mouseenter', () => this.pauseMarquee(marqueesTimelines[0]));
+    // this.$refs.marquee1.addEventListener('mouseleave', () => this.playMarquee(marqueesTimelines[0]));
+    // this.$refs.marquee2.addEventListener('mouseenter', () => this.pauseMarquee(marqueesTimelines[1]));
+    // this.$refs.marquee2.addEventListener('mouseleave', () => this.playMarquee(marqueesTimelines[1]));
+    // this.$refs.marquee3.addEventListener('mouseenter', () => this.pauseMarquee(marqueesTimelines[2]));
+    // this.$refs.marquee3.addEventListener('mouseleave', () => this.playMarquee(marqueesTimelines[2]));
+    // this.$refs.marquee4.addEventListener('mouseenter', () => this.pauseMarquee(marqueesTimelines[3]));
+    // this.$refs.marquee4.addEventListener('mouseleave', () => this.playMarquee(marqueesTimelines[3]));
   },
 };
 </script>
 
-
 <style scoped>
-
-.scroll{
-    /* overflow-y: scroll; */
+.gridset{
+  top: 0;
+  height: 100vh !important;
+  position: relative;
+  overflow-y: scroll;
 }
-
 @media (max-width: 768px) {
-  .allmb{
-    /* height: 90vw;
-  display: flex;
-  justify-content: center;
-  align-content: center; */
+  .framesz{
+    width: 50vw !important;
   }
-  .marquee-container {
-    width: 50vw;
+
+  .gridset {
+    width: unset !important;
+  }
+
+  .marquee-1{
+    width: unset !important;
+  }
+
+  .marquee-2{
+    width: unset !important;
   }
 }
 </style>

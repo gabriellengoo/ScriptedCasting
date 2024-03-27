@@ -1,17 +1,17 @@
 <template>
   <!-- bg-white -->
   <header
-    class="absolute top-0 left-0 z-20 w-full   text-xs leading-snug uppercase   "
+    class=" absolute top-0 left-0 w-full   text-xs leading-snug uppercase   "
   >
   <!-- justify-center border-b-2 border-black pt-8 -->
     <div
-      class="fixed mobilemenu flex flex-wrap w-full    items-center gap-4 p-2  md:pb-2 md:pt-2 md:flex-nowrap"
+      class="fixed mobilemenu flex flex-wrap w-full items-center gap-4 p-2  md:pb-2 md:pt-2 md:flex-nowrap"
     >
     <!-- <Animation></Animation> -->
     <!-- <div><h1 class="titleText flex justify-between items-center text-9xl align-baseline text-center uppercase">Scripted</h1></div> -->
     <NuxtLink
           to="/"
-          class="titleText flex justify-between items-center text-9xl align-baseline text-center uppercase"
+          class="headtop titleText flex justify-between items-center text-9xl align-baseline text-center uppercase"
           @touchstart="startAnimation"
           @touchend="endAnimation"
         >
@@ -20,10 +20,10 @@
         </NuxtLink>
   
 
-        <!-- <SearchBar /> -->
+        <SearchBar />
 
 
-  <nav class="flex-col linktextmb text-[1.525rem] w-1/16 flex">
+  <nav class="headtoplinks flex-col linktextmb text-[1.525rem] w-1/16 flex">
         <!-- hidden -->
         <NuxtLink to="/works">Work</NuxtLink>
         <NuxtLink :to="{ path: '/', hash: '#about' }" >About</NuxtLink>
@@ -31,6 +31,10 @@
       </nav>
 
    
+
+      <!-- <SearchBar /> -->
+
+
       <!-- <div class="flex-col hidden normal-case md:flex">
         <div class="flex" v-for="item in contact" :key="item._key">
           <span class="block w-24 uppercase">{{ item.title }}</span>
@@ -60,6 +64,10 @@
         ></span>
       </button> -->
     </div>
+    <!-- <div class="fixed top-0 left-[60vw] w-1/6 z-20">
+      <SearchBar />
+    </div> -->
+
     <LayoutMenu v-if="menu"></LayoutMenu>
   </header>
 </template>
@@ -146,7 +154,7 @@ export default {
 /* Mobile styles using media query */
 @media (max-width: 768px) {
   .titleText {
-    font-size: 5rem;
+    font-size: 13vw;
   }
 
   .mobilemenu {
@@ -155,6 +163,7 @@ export default {
 
   .linktextmb {
     text-align: end;
+    font-size: 4vw;
   }
 }
 </style>
