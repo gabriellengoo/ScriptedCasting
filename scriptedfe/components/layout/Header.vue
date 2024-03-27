@@ -23,11 +23,16 @@
         <SearchBar />
 
 
-  <nav class="headtoplinks flex-col linktextmb text-[1.525rem] w-1/16 flex">
-        <!-- hidden -->
+  <!-- <nav class="headtoplinks flex-col linktextmb text-[1.525rem] w-1/16 flex">
         <NuxtLink to="/works">Work</NuxtLink>
         <NuxtLink :to="{ path: '/#about', hash: '#about' }" >About</NuxtLink>
         <NuxtLink :to="{ path: '/#contact', hash: '#contact' }" class="header-link">Contact</NuxtLink>
+      </nav> -->
+
+      <nav class="headtoplinks flex-col linktextmb text-[1.525rem] w-1/16 flex">
+        <NuxtLink to="/works">Work</NuxtLink>
+        <NuxtLink to="./#about" >About</NuxtLink>
+        <NuxtLink to="./#contact" class="header-link">Contact</NuxtLink>
       </nav>
 
    
